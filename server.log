@@ -1,0 +1,11 @@
+2025-10-28 00:04:35 [INFO] Server initialized successfully on port 33333
+2025-10-28 00:04:35 [INFO] Server started and listening for connections
+2025-10-28 00:04:38 [INFO] Client connected from 127.0.0.1:39891
+2025-10-28 00:04:38 [INFO] Received login: 'user'
+2025-10-28 00:04:38 [INFO] Generated salt for user user: 823030b5e392b3ea
+2025-10-28 00:04:38 [INFO] Received hash from client
+2025-10-28 00:04:38 [INFO] Authentication successful for user: user
+2025-10-28 00:04:38 [INFO] Client 127.0.0.1 authenticated successfully
+2025-10-28 00:04:38 [INFO] Client 127.0.0.1 disconnected
+2025-10-28 00:05:22 [INFO] Server stopped
+2025-10-28 00:05:22 [INFO] Server stopped

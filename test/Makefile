@@ -4,14 +4,7 @@ CXXFLAGS = -std=c++17 -Wall -Wextra -pthread
 LIBS = -lssl -lcrypto
 
 # Основные исходные файлы сервера
-SRCS = CommandLineParser.cpp \
-       Authenticator.cpp \
-       ClientBase.cpp \
-       VectorCalculator.cpp \
-       Logger.cpp \
-       Server.cpp \
-       ClientHandler.cpp \
-       main.cpp
+SRCS = Logger.cpp
 
 # Тестовые файлы
 TEST_SRCS = test_main.cpp \
@@ -42,10 +35,14 @@ $(TEST_TARGET): $(TEST_OBJS) $(filter-out main.o, $(OBJS))
 
 # Команды для тестирования
 test: $(TEST_TARGET)
+	./$(TEST_TARGET)
+
+test-verbose: $(TEST_TARGET)
+	./$(TEST_TARGET) -v
 
 # Очистка
 clean:
 	rm -f $(OBJS) $(TEST_OBJS) $(TARGET) $(TEST_TARGET)
 	rm -f test_log.txt test_clients.txt valid_test.log
 
-.PHONY: test clean
+.PHONY: test test-verbose clean

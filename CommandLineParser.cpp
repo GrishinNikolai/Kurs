@@ -1,10 +1,11 @@
 #include "CommandLineParser.h"
 #include <iostream>
-#include <getopt.h>
 #include <sstream>
+#include <string>
+#include <cstring>
 
 CommandLineParser::CommandLineParser() {
-    config.port = 0;  // 0 - невалидное значение
+    config.port = 0;
     config.clientBaseFile = "";
     config.logFile = "";
 
@@ -19,43 +20,61 @@ CommandLineParser::CommandLineParser() {
 }
 
 bool CommandLineParser::parse(int argc, char* argv[]) {
-    static struct option long_options[] = {
-        {"base", required_argument, 0, 'b'},
-        {"log", required_argument, 0, 'l'},
-        {"port", required_argument, 0, 'p'},
-        {"help", no_argument, 0, 'h'},
-        {0, 0, 0, 0}
-    };
+    // Всегда сбрасываем конфиг перед парсингом
+    config.port = 0;
+    config.clientBaseFile = "";
+    config.logFile = "";
 
-    int opt;
-    while ((opt = getopt_long(argc, argv, "b:l:p:h", long_options, nullptr)) != -1) {
-        switch (opt) {
-            case 'b':
-                config.clientBaseFile = optarg;
-                break;
-            case 'l':
-                config.logFile = optarg;
-                break;
-            case 'p':
-                config.port = std::stoi(optarg);
-                break;
-            case 'h':
-                std::cout << helpText;
+    // Ручной парсинг аргументов
+    for (int i = 1; i < argc; i++) {
+        std::string arg = argv[i];
+
+        if (arg == "-h" || arg == "--help") {
+            std::cout << helpText;
+            return false;
+        }
+        else if (arg == "-b" || arg == "--base") {
+            if (i + 1 < argc) {
+                config.clientBaseFile = argv[++i];
+            } else {
+                std::cerr << "Error: Missing value for " << arg << std::endl;
                 return false;
-            default:
-                std::cerr << "Unknown option. Use -h for help.\n";
+            }
+        }
+        else if (arg == "-l" || arg == "--log") {
+            if (i + 1 < argc) {
+                config.logFile = argv[++i];
+            } else {
+                std::cerr << "Error: Missing value for " << arg << std::endl;
                 return false;
+            }
+        }
+        else if (arg == "-p" || arg == "--port") {
+            if (i + 1 < argc) {
+                try {
+                    config.port = std::stoi(argv[++i]);
+                } catch (const std::exception&) {
+                    std::cerr << "Error: Invalid port number" << std::endl;
+                    return false;
+                }
+            } else {
+                std::cerr << "Error: Missing value for " << arg << std::endl;
+                return false;
+            }
+        }
+        else {
+            std::cerr << "Error: Unknown option: " << arg << std::endl;
+            return false;
         }
     }
 
-    // ПРОВЕРЯЕМ, что все обязательные параметры указаны
+    // Проверяем обязательные параметры
     if (config.clientBaseFile.empty() || config.logFile.empty() || config.port == 0) {
         std::cerr << "Error: All parameters are required!\n\n";
         std::cerr << helpText;
         return false;
     }
 
-    // Дополнительная проверка порта
     if (config.port < 1 || config.port > 65535) {
         std::cerr << "Error: Port must be between 1 and 65535\n";
         return false;

@@ -1,12 +1,74 @@
-2025-11-10 19:43:55 [INFO] Server initialized successfully on port 33333
-2025-11-10 19:43:55 [INFO] Server started and listening for connections
-2025-11-10 19:44:09 [INFO] Server stopped
-2025-11-10 19:44:09 [INFO] Server stopped
-2025-11-10 20:30:05 [INFO] Server initialized successfully on port 33333
-2025-11-10 20:30:05 [INFO] Server started and listening for connections
-2025-11-10 20:30:07 [INFO] Server stopped
-2025-11-10 20:30:07 [INFO] Server stopped
-2025-11-10 21:52:32 [INFO] Server initialized successfully on port 33333
-2025-11-10 21:52:32 [INFO] Server started and listening for connections
-2025-11-10 21:52:34 [INFO] Server stopped
-2025-11-10 21:52:34 [INFO] Server stopped
+2025-11-24 21:50:49 [INFO] Server initialized successfully on port 33333
+2025-11-24 21:50:49 [INFO] Server started and listening for connections
+2025-11-24 21:50:52 [INFO] Client connected from 127.0.0.1:49421
+2025-11-24 21:50:52 [INFO] Received login: 'user'
+2025-11-24 21:50:52 [INFO] Generated salt for user user: 2df4fc73a3a19690
+2025-11-24 21:50:52 [INFO] Received hash from client
+2025-11-24 21:50:52 [INFO] Authentication successful for user: user
+2025-11-24 21:50:52 [INFO] Client 127.0.0.1 authenticated successfully
+2025-11-24 21:50:52 [INFO] Client 127.0.0.1 disconnected
+2025-11-24 21:50:53 [INFO] Client connected from 127.0.0.1:53651
+2025-11-24 21:50:53 [INFO] Received login: 'user'
+2025-11-24 21:50:53 [INFO] Generated salt for user user: b9d75852e0d97155
+2025-11-24 21:50:53 [INFO] Received hash from client
+2025-11-24 21:50:53 [INFO] Authentication successful for user: user
+2025-11-24 21:50:53 [INFO] Client 127.0.0.1 authenticated successfully
+2025-11-24 21:50:53 [INFO] Client 127.0.0.1 disconnected
+2025-11-24 21:50:54 [INFO] Client connected from 127.0.0.1:35893
+2025-11-24 21:50:54 [INFO] Received login: 'user'
+2025-11-24 21:50:54 [INFO] Generated salt for user user: 9aa95c2ab20a6b61
+2025-11-24 21:50:54 [INFO] Received hash from client
+2025-11-24 21:50:54 [INFO] Authentication successful for user: user
+2025-11-24 21:50:54 [INFO] Client 127.0.0.1 authenticated successfully
+2025-11-24 21:50:54 [INFO] Client 127.0.0.1 disconnected
+2025-11-24 21:50:55 [INFO] Client connected from 127.0.0.1:53309
+2025-11-24 21:50:55 [INFO] Received login: 'user'
+2025-11-24 21:50:55 [INFO] Generated salt for user user: b685f193e9c7a8a7
+2025-11-24 21:50:55 [INFO] Received hash from client
+2025-11-24 21:50:55 [INFO] Authentication successful for user: user
+2025-11-24 21:50:55 [INFO] Client 127.0.0.1 authenticated successfully
+2025-11-24 21:50:55 [INFO] Client 127.0.0.1 disconnected
+2025-11-24 21:50:57 [INFO] Client connected from 127.0.0.1:49253
+2025-11-24 21:50:57 [INFO] Received login: 'user'
+2025-11-24 21:50:57 [INFO] Generated salt for user user: 001163afe9340f3c
+2025-11-24 21:50:57 [INFO] Received hash from client
+2025-11-24 21:50:57 [INFO] Authentication successful for user: user
+2025-11-24 21:50:57 [INFO] Client 127.0.0.1 authenticated successfully
+2025-11-24 21:50:57 [INFO] Client 127.0.0.1 disconnected
+2025-11-24 21:50:58 [INFO] Client connected from 127.0.0.1:45283
+2025-11-24 21:50:58 [INFO] Received login: 'user'
+2025-11-24 21:50:58 [INFO] Generated salt for user user: 82417c3bb93ac58c
+2025-11-24 21:50:58 [INFO] Received hash from client
+2025-11-24 21:50:58 [INFO] Authentication successful for user: user
+2025-11-24 21:50:58 [INFO] Client 127.0.0.1 authenticated successfully
+2025-11-24 21:50:58 [INFO] Client 127.0.0.1 disconnected
+2025-11-24 21:50:59 [INFO] Client connected from 127.0.0.1:47587
+2025-11-24 21:50:59 [INFO] Received login: 'user'
+2025-11-24 21:50:59 [INFO] Generated salt for user user: c07fd3f52ea06238
+2025-11-24 21:50:59 [INFO] Received hash from client
+2025-11-24 21:50:59 [INFO] Authentication successful for user: user
+2025-11-24 21:50:59 [INFO] Client 127.0.0.1 authenticated successfully
+2025-11-24 21:50:59 [INFO] Client 127.0.0.1 disconnected
+2025-11-24 21:51:00 [INFO] Client connected from 127.0.0.1:36355
+2025-11-24 21:51:00 [INFO] Received login: 'user'
+2025-11-24 21:51:00 [INFO] Generated salt for user user: 958f9d43994a7340
+2025-11-24 21:51:00 [INFO] Received hash from client
+2025-11-24 21:51:00 [INFO] Authentication successful for user: user
+2025-11-24 21:51:00 [INFO] Client 127.0.0.1 authenticated successfully
+2025-11-24 21:51:00 [INFO] Client 127.0.0.1 disconnected
+2025-11-24 21:51:01 [INFO] Client connected from 127.0.0.1:40735
+2025-11-24 21:51:01 [INFO] Received login: 'user'
+2025-11-24 21:51:01 [INFO] Generated salt for user user: dd69dee19b4e2855
+2025-11-24 21:51:01 [INFO] Received hash from client
+2025-11-24 21:51:01 [INFO] Authentication successful for user: user
+2025-11-24 21:51:01 [INFO] Client 127.0.0.1 authenticated successfully
+2025-11-24 21:51:02 [INFO] Client 127.0.0.1 disconnected
+2025-11-24 21:51:02 [INFO] Client connected from 127.0.0.1:37085
+2025-11-24 21:51:02 [INFO] Received login: 'user'
+2025-11-24 21:51:02 [INFO] Generated salt for user user: 53294990eef801b5
+2025-11-24 21:51:02 [INFO] Received hash from client
+2025-11-24 21:51:02 [INFO] Authentication successful for user: user
+2025-11-24 21:51:02 [INFO] Client 127.0.0.1 authenticated successfully
+2025-11-24 21:51:03 [INFO] Client 127.0.0.1 disconnected
+2025-11-24 22:54:27 [INFO] Server stopped
+2025-11-24 22:54:27 [INFO] Server stopped

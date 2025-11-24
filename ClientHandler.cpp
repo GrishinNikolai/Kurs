@@ -198,14 +198,6 @@ bool ClientHandler::receiveData(void* buffer, size_t size) {
 
 bool ClientHandler::sendData(const void* data, size_t size) {
     const char* charData = static_cast<const char*>(data);
-    for (size_t i = 0; i < size && i < 20; i++) {
-        if (charData[i] >= 32 && charData[i] <= 126) {
-            std::cout << charData[i];
-        } else {
-            std::cout << "[" << (int)charData[i] << "]";
-        }
-    }
-    std::cout << std::endl;
 
     size_t totalSent = 0;
     while (totalSent < size) {
@@ -230,14 +222,6 @@ bool ClientHandler::receiveString(std::string& result, size_t maxSize) {
     ssize_t peeked = recv(clientSocket, peekBuffer, sizeof(peekBuffer) - 1, MSG_PEEK);
 
     if (peeked > 0) {
-        for (int i = 0; i < (peeked < 20 ? peeked : 20); i++) {
-            if (peekBuffer[i] >= 32 && peekBuffer[i] <= 126) {
-                std::cout << peekBuffer[i];
-            } else {
-                std::cout << "[" << (int)peekBuffer[i] << "]";
-            }
-        }
-        std::cout << "'" << std::endl;
 
         // If we see a complete string without terminator, read exactly that many bytes
         bool hasTerminator = false;

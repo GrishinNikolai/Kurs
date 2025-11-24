@@ -3,16 +3,29 @@
 #include <signal.h>
 #include <system_error>
 
+/**
+ * @brief Конструктор класса Server
+ * @param clientBaseFile Файл базы клиентов
+ * @param logFile Файл журнала
+ * @param port Порт для прослушивания
+ */
 Server::Server(const std::string& clientBaseFile, const std::string& logFile, int port)
     : clientBaseFile(clientBaseFile), logFile(logFile), port(port), 
       serverSocket(-1), running(false) {}
 
+/**
+ * @brief Деструктор класса Server
+ */
 Server::~Server() {
     cleanup();
 }
 
+/**
+ * @brief Инициализация сервера
+ * @return true если инициализация успешна, false в противном случае
+ */
 bool Server::initialize() {
-    // Initialize client base
+    // Инициализация базы клиентов
     clientBase = std::make_unique<ClientBase>(clientBaseFile);
     if (!clientBase->load()) {
         std::cerr << "Failed to load client database: " << clientBaseFile << std::endl;
@@ -22,7 +35,7 @@ bool Server::initialize() {
     // ДОБАВИТЬ: проверим что база загрузилась
     std::cout << "DEBUG: Client database loaded successfully" << std::endl;
     
-    // Initialize logger
+    // Инициализация Логера
     try {
         logger = std::make_unique<Logger>(logFile);
     } catch (const std::exception& e) {
@@ -30,21 +43,21 @@ bool Server::initialize() {
         return false;
     }
     
-    // Create socket
+    // Создание сокета
     serverSocket = socket(AF_INET, SOCK_STREAM, 0);
     if (serverSocket == -1) {
         logger->error("Failed to create socket");
         return false;
     }
     
-    // Set socket options
+    // Установка параметров сокета
     int opt = 1;
     if (setsockopt(serverSocket, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt)) == -1) {
         logger->error("Failed to set socket options");
         return false;
     }
     
-    // Bind socket
+    // Привязка сокета
     sockaddr_in serverAddr{};
     serverAddr.sin_family = AF_INET;
     serverAddr.sin_addr.s_addr = INADDR_ANY;
@@ -65,6 +78,9 @@ bool Server::initialize() {
     return true;
 }
 
+/**
+ * @brief Запуск основного цикла сервера
+ */
 void Server::run() {
     running = true;
     logger->info("Server started and listening for connections");
@@ -81,12 +97,14 @@ void Server::run() {
             continue;
         }
         
-        // Handle client in the same thread (single-threaded as required)
         ClientHandler handler(clientSocket, clientAddr, *clientBase, *logger);
         handler.handle();
     }
 }
 
+/**
+ * @brief Остановка сервера
+ */
 void Server::stop() {
     running = false;
     if (serverSocket != -1) {
@@ -96,6 +114,9 @@ void Server::stop() {
     logger->info("Server stopped");
 }
 
+/**
+ * @brief Очистка ресурсов сервера
+ */
 void Server::cleanup() {
     stop();
 }

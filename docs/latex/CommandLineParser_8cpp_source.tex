@@ -1,0 +1,94 @@
+\hypertarget{CommandLineParser_8cpp_source}{}\doxysection{Command\+Line\+Parser.\+cpp}
+\mbox{\hyperlink{CommandLineParser_8cpp}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{CommandLineParser_8h}{CommandLineParser.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00002}00002 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00003}00003 \textcolor{preprocessor}{\#include <sstream>}}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00004}00004 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00005}00005 \textcolor{preprocessor}{\#include <cstring>}}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00010}\mbox{\hyperlink{classCommandLineParser_a9bbf0d70950652b7944f12f0564014ac}{00010}} \mbox{\hyperlink{classCommandLineParser_a9bbf0d70950652b7944f12f0564014ac}{CommandLineParser::CommandLineParser}}() \{}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00011}00011     \mbox{\hyperlink{classCommandLineParser_ae5feb0a7b695cc7243113304fb72664d}{config}}.\mbox{\hyperlink{structServerConfig_ae459946703124ef5a1d98dba38a8b493}{port}} = 0;}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00012}00012     \mbox{\hyperlink{classCommandLineParser_ae5feb0a7b695cc7243113304fb72664d}{config}}.\mbox{\hyperlink{structServerConfig_a7acfed3875a50ffc24a4ecc5682a127a}{clientBaseFile}} = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00013}00013     \mbox{\hyperlink{classCommandLineParser_ae5feb0a7b695cc7243113304fb72664d}{config}}.\mbox{\hyperlink{structServerConfig_a2824fefce2ee247cee3aec8f953b3023}{logFile}} = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00015}00015     std::ostringstream oss;}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00016}00016     oss << \textcolor{stringliteral}{"{}Server usage:\(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00017}00017         << \textcolor{stringliteral}{"{}  -\/b, -\/-\/base <file>    Client database file (REQUIRED)\(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00018}00018         << \textcolor{stringliteral}{"{}  -\/l, -\/-\/log <file>     Log file (REQUIRED)\(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00019}00019         << \textcolor{stringliteral}{"{}  -\/p, -\/-\/port <port>    Port to listen on (REQUIRED)\(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00020}00020         << \textcolor{stringliteral}{"{}  -\/h, -\/-\/help           Show this help\(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00021}00021         << \textcolor{stringliteral}{"{}Example: ./server -\/b clients.txt -\/l server.log -\/p 33333\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00022}00022     \mbox{\hyperlink{classCommandLineParser_a9084fcadf5fd4b4b4e6a997fde0d21e0}{helpText}} = oss.str();}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00023}00023 \}}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00031}\mbox{\hyperlink{classCommandLineParser_a7d350b3f4481bf7e2595b4b737c9909a}{00031}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classCommandLineParser_a7d350b3f4481bf7e2595b4b737c9909a}{CommandLineParser::parse}}(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char}* argv[]) \{}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00032}00032     \textcolor{comment}{// Всегда сбрасываем конфиг перед парсингом}}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00033}00033     \mbox{\hyperlink{classCommandLineParser_ae5feb0a7b695cc7243113304fb72664d}{config}}.\mbox{\hyperlink{structServerConfig_ae459946703124ef5a1d98dba38a8b493}{port}} = 0;}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00034}00034     \mbox{\hyperlink{classCommandLineParser_ae5feb0a7b695cc7243113304fb72664d}{config}}.\mbox{\hyperlink{structServerConfig_a7acfed3875a50ffc24a4ecc5682a127a}{clientBaseFile}} = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00035}00035     \mbox{\hyperlink{classCommandLineParser_ae5feb0a7b695cc7243113304fb72664d}{config}}.\mbox{\hyperlink{structServerConfig_a2824fefce2ee247cee3aec8f953b3023}{logFile}} = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00037}00037     \textcolor{comment}{// Ручной парсинг аргументов}}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00038}00038     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 1; i < argc; i++) \{}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00039}00039         std::string arg = argv[i];}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00041}00041         \textcolor{keywordflow}{if} (arg == \textcolor{stringliteral}{"{}-\/h"{}} || arg == \textcolor{stringliteral}{"{}-\/-\/help"{}}) \{}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00042}00042             std::cout << \mbox{\hyperlink{classCommandLineParser_a9084fcadf5fd4b4b4e6a997fde0d21e0}{helpText}};}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00043}00043             \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00044}00044         \}}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00045}00045         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (arg == \textcolor{stringliteral}{"{}-\/b"{}} || arg == \textcolor{stringliteral}{"{}-\/-\/base"{}}) \{}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00046}00046             \textcolor{keywordflow}{if} (i + 1 < argc) \{}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00047}00047                 \mbox{\hyperlink{classCommandLineParser_ae5feb0a7b695cc7243113304fb72664d}{config}}.\mbox{\hyperlink{structServerConfig_a7acfed3875a50ffc24a4ecc5682a127a}{clientBaseFile}} = argv[++i];}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00048}00048             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00049}00049                 std::cerr << \textcolor{stringliteral}{"{}Error: Missing value for "{}} << arg << std::endl;}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00050}00050                 \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00051}00051             \}}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00052}00052         \}}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00053}00053         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (arg == \textcolor{stringliteral}{"{}-\/l"{}} || arg == \textcolor{stringliteral}{"{}-\/-\/log"{}}) \{}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00054}00054             \textcolor{keywordflow}{if} (i + 1 < argc) \{}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00055}00055                 \mbox{\hyperlink{classCommandLineParser_ae5feb0a7b695cc7243113304fb72664d}{config}}.\mbox{\hyperlink{structServerConfig_a2824fefce2ee247cee3aec8f953b3023}{logFile}} = argv[++i];}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00056}00056             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00057}00057                 std::cerr << \textcolor{stringliteral}{"{}Error: Missing value for "{}} << arg << std::endl;}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00058}00058                 \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00059}00059             \}}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00060}00060         \}}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00061}00061         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (arg == \textcolor{stringliteral}{"{}-\/p"{}} || arg == \textcolor{stringliteral}{"{}-\/-\/port"{}}) \{}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00062}00062             \textcolor{keywordflow}{if} (i + 1 < argc) \{}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00063}00063                 \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00064}00064                     \mbox{\hyperlink{classCommandLineParser_ae5feb0a7b695cc7243113304fb72664d}{config}}.\mbox{\hyperlink{structServerConfig_ae459946703124ef5a1d98dba38a8b493}{port}} = std::stoi(argv[++i]);}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00065}00065                 \} \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} std::exception\&) \{}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00066}00066                     std::cerr << \textcolor{stringliteral}{"{}Error: Invalid port number"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00067}00067                     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00068}00068                 \}}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00069}00069             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00070}00070                 std::cerr << \textcolor{stringliteral}{"{}Error: Missing value for "{}} << arg << std::endl;}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00071}00071                 \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00072}00072             \}}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00073}00073         \}}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00074}00074         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00075}00075             std::cerr << \textcolor{stringliteral}{"{}Error: Unknown option: "{}} << arg << std::endl;}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00076}00076             \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00077}00077         \}}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00078}00078     \}}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00080}00080     \textcolor{comment}{// Проверяем обязательные параметры}}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00081}00081     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classCommandLineParser_ae5feb0a7b695cc7243113304fb72664d}{config}}.\mbox{\hyperlink{structServerConfig_a7acfed3875a50ffc24a4ecc5682a127a}{clientBaseFile}}.empty() || \mbox{\hyperlink{classCommandLineParser_ae5feb0a7b695cc7243113304fb72664d}{config}}.\mbox{\hyperlink{structServerConfig_a2824fefce2ee247cee3aec8f953b3023}{logFile}}.empty() || \mbox{\hyperlink{classCommandLineParser_ae5feb0a7b695cc7243113304fb72664d}{config}}.\mbox{\hyperlink{structServerConfig_ae459946703124ef5a1d98dba38a8b493}{port}} == 0) \{}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00082}00082         std::cerr << \textcolor{stringliteral}{"{}Error: All parameters are required!\(\backslash\)n\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00083}00083         std::cerr << \mbox{\hyperlink{classCommandLineParser_a9084fcadf5fd4b4b4e6a997fde0d21e0}{helpText}};}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00084}00084         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00085}00085     \}}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00087}00087     \textcolor{comment}{// Проверяем значение порта}}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00088}00088     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classCommandLineParser_ae5feb0a7b695cc7243113304fb72664d}{config}}.\mbox{\hyperlink{structServerConfig_ae459946703124ef5a1d98dba38a8b493}{port}} < 1 || \mbox{\hyperlink{classCommandLineParser_ae5feb0a7b695cc7243113304fb72664d}{config}}.\mbox{\hyperlink{structServerConfig_ae459946703124ef5a1d98dba38a8b493}{port}} > 65535) \{}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00089}00089         std::cerr << \textcolor{stringliteral}{"{}Error: Port must be between 1 and 65535\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00090}00090         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00091}00091     \}}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00092}00092 }
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00093}00093     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00094}00094 \}}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00095}00095 }
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00100}\mbox{\hyperlink{classCommandLineParser_a83a903c5b6f63e1133646470592690ed}{00100}} std::string \mbox{\hyperlink{classCommandLineParser_a83a903c5b6f63e1133646470592690ed}{CommandLineParser::getHelp}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00101}00101     \textcolor{keywordflow}{return} \mbox{\hyperlink{classCommandLineParser_a9084fcadf5fd4b4b4e6a997fde0d21e0}{helpText}};}
+\DoxyCodeLine{\Hypertarget{CommandLineParser_8cpp_source_l00102}00102 \}}
+
+\end{DoxyCode}

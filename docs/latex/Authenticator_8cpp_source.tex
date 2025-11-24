@@ -1,0 +1,56 @@
+\hypertarget{Authenticator_8cpp_source}{}\doxysection{Authenticator.\+cpp}
+\mbox{\hyperlink{Authenticator_8cpp}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Authenticator_8h}{Authenticator.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00002}00002 \textcolor{preprocessor}{\#include <random>}}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00003}00003 \textcolor{preprocessor}{\#include <iomanip>}}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00004}00004 \textcolor{preprocessor}{\#include <sstream>}}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00005}00005 \textcolor{preprocessor}{\#include <openssl/sha.h>}}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00006}00006 \textcolor{preprocessor}{\#include <cstring>}}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00007}00007 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00013}\mbox{\hyperlink{classAuthenticator_aeb0de37f54c3fad7f3c5b5a6a3b09d91}{00013}} std::string \mbox{\hyperlink{classAuthenticator_aeb0de37f54c3fad7f3c5b5a6a3b09d91}{Authenticator::generateSalt}}() \{}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00014}00014     std::random\_device rd;}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00015}00015     std::mt19937\_64 gen(rd());}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00016}00016     std::uniform\_int\_distribution<uint64\_t> dis;}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00018}00018     uint64\_t salt = dis(gen);}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00020}00020     std::stringstream ss;}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00021}00021     ss << std::hex << std::setw(16) << std::setfill(\textcolor{charliteral}{'0'}) << salt;}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00022}00022     std::string result = ss.str();}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00024}00024     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00025}00025 \}}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00032}\mbox{\hyperlink{classAuthenticator_a5eec671a694056992c7c9f94d6450c40}{00032}} std::string \mbox{\hyperlink{classAuthenticator_a5eec671a694056992c7c9f94d6450c40}{Authenticator::computeSHA1}}(\textcolor{keyword}{const} std::string\& data) \{}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00033}00033     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} hash[SHA\_DIGEST\_LENGTH];}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00034}00034     SHA1(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}*\textcolor{keyword}{>}(data.c\_str()), data.length(), hash);}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00035}00035     }
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00036}00036     std::stringstream ss;}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00037}00037     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < SHA\_DIGEST\_LENGTH; i++) \{}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00038}00038         ss << std::hex << std::setw(2) << std::setfill('0') << static\_cast<unsigned int>(hash[i]);}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00039}00039     \}}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00040}00040     }
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00041}00041     \textcolor{keywordflow}{return} ss.str();}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00042}00042 \}}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00051}\mbox{\hyperlink{classAuthenticator_a8a82cd12b1083d7f0158669bcc12e97a}{00051}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classAuthenticator_a8a82cd12b1083d7f0158669bcc12e97a}{Authenticator::authenticate}}(\textcolor{keyword}{const} std::string\& password, \textcolor{keyword}{const} std::string\& salt, \textcolor{keyword}{const} std::string\& clientHash) \{}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00052}00052     std::string combined = salt + password;}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00053}00053     std::string serverHash = \mbox{\hyperlink{classAuthenticator_a5eec671a694056992c7c9f94d6450c40}{computeSHA1}}(combined);}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00055}00055     \textcolor{keywordtype}{bool} match = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00056}00056     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < serverHash.length(); i++) \{}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00057}00057         \textcolor{keywordtype}{char} serverChar = std::tolower(serverHash[i]);}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00058}00058         \textcolor{keywordtype}{char} clientChar = std::tolower(clientHash[i]);}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00060}00060         \textcolor{keywordflow}{if} (serverChar != clientChar) \{}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00061}00061             match = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00062}00062             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00063}00063         \}}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00064}00064     \}}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00066}00066     \textcolor{keywordflow}{return} match;}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00067}00067 \}}
+
+\end{DoxyCode}

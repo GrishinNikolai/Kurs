@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Программная реализация сетевого сервера: Класс Authenticator</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Программная реализация сетевого сервера<span id="projectnumber">&#160;1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.4 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Поиск','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-static-methods">Открытые статические члены</a> &#124;
+<a href="classAuthenticator-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle"><div class="title">Класс Authenticator</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Класс для аутентификации клиентов  
+ <a href="classAuthenticator.html#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="Authenticator_8h_source.html">Authenticator.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Открытые статические члены</h2></td></tr>
+<tr class="memitem:aeb0de37f54c3fad7f3c5b5a6a3b09d91"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAuthenticator.html#aeb0de37f54c3fad7f3c5b5a6a3b09d91">generateSalt</a> ()</td></tr>
+<tr class="memdesc:aeb0de37f54c3fad7f3c5b5a6a3b09d91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Генерация случайной соли  <a href="classAuthenticator.html#aeb0de37f54c3fad7f3c5b5a6a3b09d91">Подробнее...</a><br /></td></tr>
+<tr class="separator:aeb0de37f54c3fad7f3c5b5a6a3b09d91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5eec671a694056992c7c9f94d6450c40"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAuthenticator.html#a5eec671a694056992c7c9f94d6450c40">computeSHA1</a> (const std::string &amp;data)</td></tr>
+<tr class="memdesc:a5eec671a694056992c7c9f94d6450c40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Вычисление SHA1 хеша от данных  <a href="classAuthenticator.html#a5eec671a694056992c7c9f94d6450c40">Подробнее...</a><br /></td></tr>
+<tr class="separator:a5eec671a694056992c7c9f94d6450c40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a82cd12b1083d7f0158669bcc12e97a"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAuthenticator.html#a8a82cd12b1083d7f0158669bcc12e97a">authenticate</a> (const std::string &amp;password, const std::string &amp;salt, const std::string &amp;clientHash)</td></tr>
+<tr class="memdesc:a8a82cd12b1083d7f0158669bcc12e97a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Аутентификация клиента  <a href="classAuthenticator.html#a8a82cd12b1083d7f0158669bcc12e97a">Подробнее...</a><br /></td></tr>
+<tr class="separator:a8a82cd12b1083d7f0158669bcc12e97a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p >Класс для аутентификации клиентов </p>
+<dl class="section author"><dt>Автор</dt><dd>Гришин Николай </dd></dl>
+<dl class="section version"><dt>Версия</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Дата</dt><dd>24.11.2025 </dd></dl>
+<dl class="section copyright"><dt>Авторство</dt><dd>ИБСТ ПГУ </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="Authenticator_8h_source.html">Authenticator.h</a> строка <a class="el" href="Authenticator_8h_source.html#l00019">19</a></p>
+</div><h2 class="groupheader">Методы</h2>
+<a id="a8a82cd12b1083d7f0158669bcc12e97a" name="a8a82cd12b1083d7f0158669bcc12e97a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a82cd12b1083d7f0158669bcc12e97a">&#9670;&nbsp;</a></span>authenticate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Authenticator::authenticate </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>password</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>salt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>clientHash</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Аутентификация клиента </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">password</td><td>Пароль пользователя </td></tr>
+    <tr><td class="paramname">salt</td><td>Соль для аутентификации </td></tr>
+    <tr><td class="paramname">clientHash</td><td>Хеш от клиента </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true если аутентификация успешна, false в противном случае </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="Authenticator_8cpp_source.html">Authenticator.cpp</a> строка <a class="el" href="Authenticator_8cpp_source.html#l00051">51</a></p>
+
+</div>
+</div>
+<a id="a5eec671a694056992c7c9f94d6450c40" name="a5eec671a694056992c7c9f94d6450c40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5eec671a694056992c7c9f94d6450c40">&#9670;&nbsp;</a></span>computeSHA1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Authenticator::computeSHA1 </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Вычисление SHA1 хеша от данных </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>Данные для хеширования </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Хеш в виде строки шестнадцатеричных цифр </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="Authenticator_8cpp_source.html">Authenticator.cpp</a> строка <a class="el" href="Authenticator_8cpp_source.html#l00032">32</a></p>
+
+</div>
+</div>
+<a id="aeb0de37f54c3fad7f3c5b5a6a3b09d91" name="aeb0de37f54c3fad7f3c5b5a6a3b09d91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb0de37f54c3fad7f3c5b5a6a3b09d91">&#9670;&nbsp;</a></span>generateSalt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Authenticator::generateSalt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Генерация случайной соли </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Соль в виде строки из 16 шестнадцатеричных цифр </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="Authenticator_8cpp_source.html">Authenticator.cpp</a> строка <a class="el" href="Authenticator_8cpp_source.html#l00013">13</a></p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li><a class="el" href="Authenticator_8h_source.html">Authenticator.h</a></li>
+<li><a class="el" href="Authenticator_8cpp_source.html">Authenticator.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+</small></address>
+</body>
+</html>

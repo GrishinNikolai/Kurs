@@ -1,0 +1,374 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Программная реализация сетевого сервера: Исходный файл ClientHandler.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Программная реализация сетевого сервера<span id="projectnumber">&#160;1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.4 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Поиск','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">ClientHandler.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="ClientHandler_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="ClientHandler_8h.html">ClientHandler.h</a>&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;cstring&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;arpa/inet.h&gt;</span> <span class="comment">// для be64toh/htobe64</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#ifndef be64toh</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">// Если макросы не определены, создаем свои</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#if __BYTE_ORDER == __LITTLE_ENDIAN</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="ClientHandler_8cpp.html#af94eb043f5be14b4f260fb9b4c89ca2e">   10</a></span><span class="preprocessor">#define be64toh(x) __bswap_64(x)</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="ClientHandler_8cpp.html#a5c81b75e6da4507e0a90b6f6169c4787">   11</a></span><span class="preprocessor">#define htobe64(x) __bswap_64(x)</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define be64toh(x) (x)</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#define htobe64(x) (x)</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classClientHandler.html#a0ce22e114d6eb644918758aa356f1119">   25</a></span><a class="code hl_function" href="classClientHandler.html#a0ce22e114d6eb644918758aa356f1119">ClientHandler::ClientHandler</a>(<span class="keywordtype">int</span> clientSocket, <span class="keyword">const</span> sockaddr_in&amp; clientAddr, </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>                           <a class="code hl_class" href="classClientBase.html">ClientBase</a>&amp; clientBase, <a class="code hl_class" href="classLogger.html">Logger</a>&amp; logger)</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    : clientSocket(clientSocket), clientAddr(clientAddr), </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>      clientBase(clientBase), logger(logger) {}</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classClientHandler.html#a51bc7a8d97802d84b6e62832ef278f58">   34</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classClientHandler.html#a51bc7a8d97802d84b6e62832ef278f58">ClientHandler::handle</a>() {</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    std::string clientIP = inet_ntoa(<a class="code hl_variable" href="classClientHandler.html#adefd3a4802a5d9ef85cc4d97cf6d007e">clientAddr</a>.sin_addr);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">int</span> clientPort = ntohs(<a class="code hl_variable" href="classClientHandler.html#adefd3a4802a5d9ef85cc4d97cf6d007e">clientAddr</a>.sin_port);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <a class="code hl_variable" href="classClientHandler.html#a7d0767f8f02465e43ff6042f30206e43">logger</a>.<a class="code hl_function" href="classLogger.html#ab4c4d86279176eb0ede726bc5b4d5ddb">info</a>(<span class="stringliteral">&quot;Client connected from &quot;</span> + clientIP + <span class="stringliteral">&quot;:&quot;</span> + std::to_string(clientPort));</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordflow">try</span> {</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="classClientHandler.html#a31756d2f3ef847259223260e1d96c709">authenticateClient</a>()) {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            <a class="code hl_variable" href="classClientHandler.html#a7d0767f8f02465e43ff6042f30206e43">logger</a>.<a class="code hl_function" href="classLogger.html#a5164af2f632902fa3c477d5c0cb463f7">warning</a>(<span class="stringliteral">&quot;Authentication failed for client &quot;</span> + clientIP);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            close(<a class="code hl_variable" href="classClientHandler.html#a754e26f5c7bf63f9419cd127a5591d0c">clientSocket</a>);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        }</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <a class="code hl_variable" href="classClientHandler.html#a7d0767f8f02465e43ff6042f30206e43">logger</a>.<a class="code hl_function" href="classLogger.html#ab4c4d86279176eb0ede726bc5b4d5ddb">info</a>(<span class="stringliteral">&quot;Client &quot;</span> + clientIP + <span class="stringliteral">&quot; authenticated successfully&quot;</span>);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="classClientHandler.html#a5489f70d86ee1834a313316306dc7200">receiveVectorsAndProcess</a>()) {</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            <a class="code hl_variable" href="classClientHandler.html#a7d0767f8f02465e43ff6042f30206e43">logger</a>.<a class="code hl_function" href="classLogger.html#a5164af2f632902fa3c477d5c0cb463f7">warning</a>(<span class="stringliteral">&quot;Vector processing failed for client &quot;</span> + clientIP);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        }</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <a class="code hl_variable" href="classClientHandler.html#a7d0767f8f02465e43ff6042f30206e43">logger</a>.<a class="code hl_function" href="classLogger.html#ab6042fdfcbb14026098e0df9d6b32f27">error</a>(<span class="stringliteral">&quot;Error handling client &quot;</span> + clientIP + <span class="stringliteral">&quot;: &quot;</span> + e.what());</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    }</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    close(<a class="code hl_variable" href="classClientHandler.html#a754e26f5c7bf63f9419cd127a5591d0c">clientSocket</a>);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <a class="code hl_variable" href="classClientHandler.html#a7d0767f8f02465e43ff6042f30206e43">logger</a>.<a class="code hl_function" href="classLogger.html#ab4c4d86279176eb0ede726bc5b4d5ddb">info</a>(<span class="stringliteral">&quot;Client &quot;</span> + clientIP + <span class="stringliteral">&quot; disconnected&quot;</span>);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>}</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classClientHandler.html#a31756d2f3ef847259223260e1d96c709">   71</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classClientHandler.html#a31756d2f3ef847259223260e1d96c709">ClientHandler::authenticateClient</a>() {</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="comment">// Шаг 1: Получаем логин</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    std::string login;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classClientHandler.html#a892adb559e65f0eedd76698592bc8176">receiveString</a>(login)) {</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <a class="code hl_variable" href="classClientHandler.html#a7d0767f8f02465e43ff6042f30206e43">logger</a>.<a class="code hl_function" href="classLogger.html#ab6042fdfcbb14026098e0df9d6b32f27">error</a>(<span class="stringliteral">&quot;Failed to receive login&quot;</span>);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    }</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="comment">// Удаляем все пробелы из имени пользователя</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    login.erase(0, login.find_first_not_of(<span class="stringliteral">&quot; \t\n\r&quot;</span>));</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    login.erase(login.find_last_not_of(<span class="stringliteral">&quot; \t\n\r&quot;</span>) + 1);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <a class="code hl_variable" href="classClientHandler.html#a7d0767f8f02465e43ff6042f30206e43">logger</a>.<a class="code hl_function" href="classLogger.html#ab4c4d86279176eb0ede726bc5b4d5ddb">info</a>(<span class="stringliteral">&quot;Received login: &#39;&quot;</span> + login + <span class="stringliteral">&quot;&#39;&quot;</span>);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="comment">// Шаг 2: Проверяем, существует ли пользователь - ВОЗВРАЩАЕМ ПРОВЕРКУ</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classClientHandler.html#a0682f1553034c2e01fe500c01eb26a9c">clientBase</a>.<a class="code hl_function" href="classClientBase.html#a82e85a3a86240e04c16fbd9c2933d17a">userExists</a>(login)) {</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <a class="code hl_variable" href="classClientHandler.html#a7d0767f8f02465e43ff6042f30206e43">logger</a>.<a class="code hl_function" href="classLogger.html#a5164af2f632902fa3c477d5c0cb463f7">warning</a>(<span class="stringliteral">&quot;User not found: &quot;</span> + login);</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <a class="code hl_function" href="classClientHandler.html#a3965f2e59a78cecc0ea22b7ea3655988">sendMessage</a>(<span class="stringliteral">&quot;ERR&quot;</span>);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    }</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="comment">// ИСПОЛЬЗУЕМ ПАРОЛЬ ИЗ БАЗЫ ДАННЫХ</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    std::string password = <a class="code hl_variable" href="classClientHandler.html#a0682f1553034c2e01fe500c01eb26a9c">clientBase</a>.<a class="code hl_function" href="classClientBase.html#afccfa7bb2e5c6f5627d48020852db567">getPassword</a>(login);</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="comment">// Шаг 3: Генерируем и отправляем соль</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    std::string salt = <a class="code hl_function" href="classAuthenticator.html#aeb0de37f54c3fad7f3c5b5a6a3b09d91">Authenticator::generateSalt</a>();</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <a class="code hl_variable" href="classClientHandler.html#a7d0767f8f02465e43ff6042f30206e43">logger</a>.<a class="code hl_function" href="classLogger.html#ab4c4d86279176eb0ede726bc5b4d5ddb">info</a>(<span class="stringliteral">&quot;Generated salt for user &quot;</span> + login + <span class="stringliteral">&quot;: &quot;</span> + salt);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classClientHandler.html#ade2db53cabbe8379edec95bef4a9edac">sendSalt</a>(salt)) {</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <a class="code hl_variable" href="classClientHandler.html#a7d0767f8f02465e43ff6042f30206e43">logger</a>.<a class="code hl_function" href="classLogger.html#ab6042fdfcbb14026098e0df9d6b32f27">error</a>(<span class="stringliteral">&quot;Failed to send salt&quot;</span>);</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    }</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="comment">// Шаг 4: Получаем хэш</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    std::string clientHash;</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="comment">// Используем receiveString для хеша тоже</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classClientHandler.html#a892adb559e65f0eedd76698592bc8176">receiveString</a>(clientHash)) {</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        <a class="code hl_variable" href="classClientHandler.html#a7d0767f8f02465e43ff6042f30206e43">logger</a>.<a class="code hl_function" href="classLogger.html#ab6042fdfcbb14026098e0df9d6b32f27">error</a>(<span class="stringliteral">&quot;Failed to receive hash&quot;</span>);</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    }</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <a class="code hl_variable" href="classClientHandler.html#a7d0767f8f02465e43ff6042f30206e43">logger</a>.<a class="code hl_function" href="classLogger.html#ab4c4d86279176eb0ede726bc5b4d5ddb">info</a>(<span class="stringliteral">&quot;Received hash from client&quot;</span>);</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <span class="comment">// Шаг 5: Аутентификация</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    std::string combined = salt + password;</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    std::string serverHash = <a class="code hl_function" href="classAuthenticator.html#a5eec671a694056992c7c9f94d6450c40">Authenticator::computeSHA1</a>(combined);</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordtype">bool</span> authResult = <a class="code hl_function" href="classAuthenticator.html#a8a82cd12b1083d7f0158669bcc12e97a">Authenticator::authenticate</a>(password, salt, clientHash);</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <span class="keywordflow">if</span> (authResult) {</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <a class="code hl_variable" href="classClientHandler.html#a7d0767f8f02465e43ff6042f30206e43">logger</a>.<a class="code hl_function" href="classLogger.html#ab4c4d86279176eb0ede726bc5b4d5ddb">info</a>(<span class="stringliteral">&quot;Authentication successful for user: &quot;</span> + login);</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="classClientHandler.html#a3965f2e59a78cecc0ea22b7ea3655988">sendMessage</a>(<span class="stringliteral">&quot;OK&quot;</span>);</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        <a class="code hl_variable" href="classClientHandler.html#a7d0767f8f02465e43ff6042f30206e43">logger</a>.<a class="code hl_function" href="classLogger.html#a5164af2f632902fa3c477d5c0cb463f7">warning</a>(<span class="stringliteral">&quot;Authentication failed for user: &quot;</span> + login);</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        <a class="code hl_function" href="classClientHandler.html#a3965f2e59a78cecc0ea22b7ea3655988">sendMessage</a>(<span class="stringliteral">&quot;ERR&quot;</span>);</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    }</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>}</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno"><a class="line" href="classClientHandler.html#a5489f70d86ee1834a313316306dc7200">  144</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classClientHandler.html#a5489f70d86ee1834a313316306dc7200">ClientHandler::receiveVectorsAndProcess</a>() {</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <span class="comment">// Шаг 6: Получаем количество векторов</span></div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    uint32_t numVectors;</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classClientHandler.html#a063fb4fdf3ed51e568aec20e90cfa146">receiveData</a>(&amp;numVectors, <span class="keyword">sizeof</span>(numVectors))) {</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        <a class="code hl_variable" href="classClientHandler.html#a7d0767f8f02465e43ff6042f30206e43">logger</a>.<a class="code hl_function" href="classLogger.html#ab6042fdfcbb14026098e0df9d6b32f27">error</a>(<span class="stringliteral">&quot;Failed to receive number of vectors&quot;</span>);</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    }</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    numVectors = le32toh(numVectors);</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <span class="keywordflow">if</span> (numVectors &gt; 1000) {</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        <a class="code hl_variable" href="classClientHandler.html#a7d0767f8f02465e43ff6042f30206e43">logger</a>.<a class="code hl_function" href="classLogger.html#ab6042fdfcbb14026098e0df9d6b32f27">error</a>(<span class="stringliteral">&quot;Invalid number of vectors: &quot;</span> + std::to_string(numVectors));</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    }</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    <span class="comment">// НЕ отправляем количество результатов - это не результат вычислений</span></div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <span class="comment">// Просто переходим к обработке векторов</span></div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    <span class="comment">// Обрабатываем каждый вектор</span></div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="keywordflow">for</span> (uint32_t i = 0; i &lt; numVectors; i++) {</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        <span class="comment">// Шаг 7: Получаем размер вектора</span></div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        uint32_t vectorSize;</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="classClientHandler.html#a063fb4fdf3ed51e568aec20e90cfa146">receiveData</a>(&amp;vectorSize, <span class="keyword">sizeof</span>(vectorSize))) {</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>            <a class="code hl_variable" href="classClientHandler.html#a7d0767f8f02465e43ff6042f30206e43">logger</a>.<a class="code hl_function" href="classLogger.html#ab6042fdfcbb14026098e0df9d6b32f27">error</a>(<span class="stringliteral">&quot;Failed to receive vector size&quot;</span>);</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>        }</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        vectorSize = le32toh(vectorSize);</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        <span class="keywordflow">if</span> (vectorSize &gt; 100000) {</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>            <a class="code hl_variable" href="classClientHandler.html#a7d0767f8f02465e43ff6042f30206e43">logger</a>.<a class="code hl_function" href="classLogger.html#ab6042fdfcbb14026098e0df9d6b32f27">error</a>(<span class="stringliteral">&quot;Invalid vector size: &quot;</span> + std::to_string(vectorSize));</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>        }</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span> </div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        <span class="comment">// Шаг 8: Получаем данные вектора</span></div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        std::vector&lt;uint64_t&gt; vector(vectorSize);</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        <span class="keywordflow">for</span> (uint32_t j = 0; j &lt; vectorSize; j++) {</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>            uint64_t value;</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>            <span class="keywordflow">if</span> (!<a class="code hl_function" href="classClientHandler.html#a063fb4fdf3ed51e568aec20e90cfa146">receiveData</a>(&amp;value, <span class="keyword">sizeof</span>(value))) {</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>                <a class="code hl_variable" href="classClientHandler.html#a7d0767f8f02465e43ff6042f30206e43">logger</a>.<a class="code hl_function" href="classLogger.html#ab6042fdfcbb14026098e0df9d6b32f27">error</a>(<span class="stringliteral">&quot;Failed to receive vector data&quot;</span>);</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>            }</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>            value = le64toh(value);</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>            vector[j] = value;</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>        }</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        <span class="comment">// Шаг 9: Вычисляем и отправляем результат</span></div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        uint64_t result = <a class="code hl_function" href="classVectorCalculator.html#aee70c284c8decfdbe4e742fd219c1f10">VectorCalculator::computeProduct</a>(vector);</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>        result = htole64(result);</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="classClientHandler.html#a7ed3f95e9b517359e232003e416ed2e3">sendData</a>(&amp;result, <span class="keyword">sizeof</span>(result))) {</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>            <a class="code hl_variable" href="classClientHandler.html#a7d0767f8f02465e43ff6042f30206e43">logger</a>.<a class="code hl_function" href="classLogger.html#ab6042fdfcbb14026098e0df9d6b32f27">error</a>(<span class="stringliteral">&quot;Failed to send result&quot;</span>);</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        }</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    }</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>}</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno"><a class="line" href="classClientHandler.html#ade2db53cabbe8379edec95bef4a9edac">  208</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classClientHandler.html#ade2db53cabbe8379edec95bef4a9edac">ClientHandler::sendSalt</a>(<span class="keyword">const</span> std::string&amp; salt) {</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    <span class="comment">// Для соли отправляем БЕЗ нулевого байта (16 байт)</span></div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classClientHandler.html#a7ed3f95e9b517359e232003e416ed2e3">sendData</a>(salt.c_str(), 16); <span class="comment">// Только 16 байт</span></div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>}</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span> </div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno"><a class="line" href="classClientHandler.html#a3965f2e59a78cecc0ea22b7ea3655988">  219</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classClientHandler.html#a3965f2e59a78cecc0ea22b7ea3655988">ClientHandler::sendMessage</a>(<span class="keyword">const</span> std::string&amp; message) {</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>    <span class="comment">// Для текстовых сообщений отправляем С нулевым байтом</span></div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classClientHandler.html#a7ed3f95e9b517359e232003e416ed2e3">sendData</a>(message.c_str(), message.length() + 1);</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>}</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span> </div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno"><a class="line" href="classClientHandler.html#a063fb4fdf3ed51e568aec20e90cfa146">  231</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classClientHandler.html#a063fb4fdf3ed51e568aec20e90cfa146">ClientHandler::receiveData</a>(<span class="keywordtype">void</span>* buffer, <span class="keywordtype">size_t</span> size) {</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>    <span class="comment">// Для бинарных данных всегда читаем точное количество байт</span></div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    <span class="comment">// без поиска нулевого терминатора</span></div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span> </div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>    <span class="keywordtype">size_t</span> totalReceived = 0;</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>    <span class="keywordflow">while</span> (totalReceived &lt; size) {</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>        ssize_t received = recv(<a class="code hl_variable" href="classClientHandler.html#a754e26f5c7bf63f9419cd127a5591d0c">clientSocket</a>,</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>                               <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(buffer) + totalReceived,</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>                               size - totalReceived, 0);</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span> </div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>        <span class="keywordflow">if</span> (received &lt;= 0) {</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>        }</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>        totalReceived += received;</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    }</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span> </div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>}</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span> </div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno"><a class="line" href="classClientHandler.html#a7ed3f95e9b517359e232003e416ed2e3">  257</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classClientHandler.html#a7ed3f95e9b517359e232003e416ed2e3">ClientHandler::sendData</a>(<span class="keyword">const</span> <span class="keywordtype">void</span>* data, <span class="keywordtype">size_t</span> size) {</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>    <span class="keyword">const</span> <span class="keywordtype">char</span>* charData = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(data);</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span> </div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>    <span class="keywordtype">size_t</span> totalSent = 0;</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    <span class="keywordflow">while</span> (totalSent &lt; size) {</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>        ssize_t sent = send(<a class="code hl_variable" href="classClientHandler.html#a754e26f5c7bf63f9419cd127a5591d0c">clientSocket</a>,</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>                           <span class="keyword">static_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(data) + totalSent,</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>                           size - totalSent, 0);</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>        <span class="keywordflow">if</span> (sent &lt;= 0) {</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>        }</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>        totalSent += sent;</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>    }</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>}</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span> </div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno"><a class="line" href="classClientHandler.html#a892adb559e65f0eedd76698592bc8176">  283</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classClientHandler.html#a892adb559e65f0eedd76698592bc8176">ClientHandler::receiveString</a>(std::string&amp; result, <span class="keywordtype">size_t</span> maxSize) {</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>    <span class="keywordtype">char</span> buffer[256] = {0};</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>    <span class="keywordtype">size_t</span> totalReceived = 0;</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span> </div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span> </div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>    <span class="comment">// Сначала посмотрим, что находится в буфере</span></div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>    <span class="keywordtype">char</span> peekBuffer[256] = {0};</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>    ssize_t peeked = recv(<a class="code hl_variable" href="classClientHandler.html#a754e26f5c7bf63f9419cd127a5591d0c">clientSocket</a>, peekBuffer, <span class="keyword">sizeof</span>(peekBuffer) - 1, MSG_PEEK);</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span> </div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>    <span class="keywordflow">if</span> (peeked &gt; 0) {</div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span> </div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>        <span class="comment">// Если мы видим полную строку без терминатора, считываем ровно столько байт</span></div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>        <span class="keywordtype">bool</span> hasTerminator = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; peeked; i++) {</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>            <span class="keywordflow">if</span> (peekBuffer[i] == <span class="charliteral">&#39;\0&#39;</span> || peekBuffer[i] == <span class="charliteral">&#39;\n&#39;</span> || peekBuffer[i] == <span class="charliteral">&#39;\r&#39;</span>) {</div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>                hasTerminator = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>            }</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>        }</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span> </div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>        <span class="keywordflow">if</span> (!hasTerminator &amp;&amp; peeked &gt; 0) {</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>            <span class="comment">// Терминатор не найден, прочитаем ровно столько байт, сколько мы просмотрели</span></div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>            ssize_t received = recv(<a class="code hl_variable" href="classClientHandler.html#a754e26f5c7bf63f9419cd127a5591d0c">clientSocket</a>, buffer, peeked, 0);</div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>            <span class="keywordflow">if</span> (received == peeked) {</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>                buffer[received] = <span class="charliteral">&#39;\0&#39;</span>; <span class="comment">// Добавляем нулевой терминатор</span></div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>                result = std::string(buffer);</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>            }</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>        }</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>    }</div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span> </div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>    <span class="comment">// Резервный вариант: читаем побайтно</span></div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>    <span class="keywordflow">while</span> (totalReceived &lt; maxSize - 1) {</div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>        ssize_t received = recv(<a class="code hl_variable" href="classClientHandler.html#a754e26f5c7bf63f9419cd127a5591d0c">clientSocket</a>, &amp;buffer[totalReceived], 1, 0);</div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span> </div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>        <span class="keywordflow">if</span> (received &lt;= 0) {</div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>        }</div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span> </div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span> </div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>        <span class="comment">// Проверяем наличие различных возможных терминаторов</span></div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>        <span class="keywordflow">if</span> (buffer[totalReceived] == <span class="charliteral">&#39;\0&#39;</span> ||</div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>            buffer[totalReceived] == <span class="charliteral">&#39;\n&#39;</span> ||</div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>            buffer[totalReceived] == <span class="charliteral">&#39;\r&#39;</span>) {</div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span> </div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>            buffer[totalReceived] = <span class="charliteral">&#39;\0&#39;</span>; <span class="comment">// Гарантируем нулевой терминатор</span></div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>        }</div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span> </div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>        totalReceived++;</div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span> </div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>        <span class="comment">// Если мы получили 4 байта и это «пользователь», считаем, что он завершен</span></div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>        <span class="keywordflow">if</span> (totalReceived == 4 &amp;&amp; strncmp(buffer, <span class="stringliteral">&quot;user&quot;</span>, 4) == 0) {</div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>            buffer[4] = <span class="charliteral">&#39;\0&#39;</span>; <span class="comment">// Добавляем нулевой терминатор</span></div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>        }</div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>    }</div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span> </div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>    result = std::string(buffer);</div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>}</div>
+<div class="ttc" id="aClientHandler_8h_html"><div class="ttname"><a href="ClientHandler_8h.html">ClientHandler.h</a></div></div>
+<div class="ttc" id="aclassAuthenticator_html_a5eec671a694056992c7c9f94d6450c40"><div class="ttname"><a href="classAuthenticator.html#a5eec671a694056992c7c9f94d6450c40">Authenticator::computeSHA1</a></div><div class="ttdeci">static std::string computeSHA1(const std::string &amp;data)</div><div class="ttdoc">Вычисление SHA1 хеша от данных</div><div class="ttdef"><b>Definition:</b> <a href="Authenticator_8cpp_source.html#l00032">Authenticator.cpp:32</a></div></div>
+<div class="ttc" id="aclassAuthenticator_html_a8a82cd12b1083d7f0158669bcc12e97a"><div class="ttname"><a href="classAuthenticator.html#a8a82cd12b1083d7f0158669bcc12e97a">Authenticator::authenticate</a></div><div class="ttdeci">static bool authenticate(const std::string &amp;password, const std::string &amp;salt, const std::string &amp;clientHash)</div><div class="ttdoc">Аутентификация клиента</div><div class="ttdef"><b>Definition:</b> <a href="Authenticator_8cpp_source.html#l00051">Authenticator.cpp:51</a></div></div>
+<div class="ttc" id="aclassAuthenticator_html_aeb0de37f54c3fad7f3c5b5a6a3b09d91"><div class="ttname"><a href="classAuthenticator.html#aeb0de37f54c3fad7f3c5b5a6a3b09d91">Authenticator::generateSalt</a></div><div class="ttdeci">static std::string generateSalt()</div><div class="ttdoc">Генерация случайной соли</div><div class="ttdef"><b>Definition:</b> <a href="Authenticator_8cpp_source.html#l00013">Authenticator.cpp:13</a></div></div>
+<div class="ttc" id="aclassClientBase_html"><div class="ttname"><a href="classClientBase.html">ClientBase</a></div><div class="ttdoc">Класс для работы с базой данных клиентов</div><div class="ttdef"><b>Definition:</b> <a href="ClientBase_8h_source.html#l00014">ClientBase.h:14</a></div></div>
+<div class="ttc" id="aclassClientBase_html_a82e85a3a86240e04c16fbd9c2933d17a"><div class="ttname"><a href="classClientBase.html#a82e85a3a86240e04c16fbd9c2933d17a">ClientBase::userExists</a></div><div class="ttdeci">bool userExists(const std::string &amp;login) const</div><div class="ttdoc">Проверка существования пользователя в базе</div><div class="ttdef"><b>Definition:</b> <a href="ClientBase_8cpp_source.html#l00041">ClientBase.cpp:41</a></div></div>
+<div class="ttc" id="aclassClientBase_html_afccfa7bb2e5c6f5627d48020852db567"><div class="ttname"><a href="classClientBase.html#afccfa7bb2e5c6f5627d48020852db567">ClientBase::getPassword</a></div><div class="ttdeci">std::string getPassword(const std::string &amp;login) const</div><div class="ttdoc">Получение пароля пользователя</div><div class="ttdef"><b>Definition:</b> <a href="ClientBase_8cpp_source.html#l00050">ClientBase.cpp:50</a></div></div>
+<div class="ttc" id="aclassClientHandler_html_a063fb4fdf3ed51e568aec20e90cfa146"><div class="ttname"><a href="classClientHandler.html#a063fb4fdf3ed51e568aec20e90cfa146">ClientHandler::receiveData</a></div><div class="ttdeci">bool receiveData(void *buffer, size_t size)</div><div class="ttdoc">Прием данных от клиента</div><div class="ttdef"><b>Definition:</b> <a href="ClientHandler_8cpp_source.html#l00231">ClientHandler.cpp:231</a></div></div>
+<div class="ttc" id="aclassClientHandler_html_a0682f1553034c2e01fe500c01eb26a9c"><div class="ttname"><a href="classClientHandler.html#a0682f1553034c2e01fe500c01eb26a9c">ClientHandler::clientBase</a></div><div class="ttdeci">ClientBase &amp; clientBase</div><div class="ttdoc">Ссылка на базу клиентов</div><div class="ttdef"><b>Definition:</b> <a href="ClientHandler_8h_source.html#l00041">ClientHandler.h:41</a></div></div>
+<div class="ttc" id="aclassClientHandler_html_a0ce22e114d6eb644918758aa356f1119"><div class="ttname"><a href="classClientHandler.html#a0ce22e114d6eb644918758aa356f1119">ClientHandler::ClientHandler</a></div><div class="ttdeci">ClientHandler(int clientSocket, const sockaddr_in &amp;clientAddr, ClientBase &amp;clientBase, Logger &amp;logger)</div><div class="ttdoc">Конструктор класса ClientHandler.</div><div class="ttdef"><b>Definition:</b> <a href="ClientHandler_8cpp_source.html#l00025">ClientHandler.cpp:25</a></div></div>
+<div class="ttc" id="aclassClientHandler_html_a31756d2f3ef847259223260e1d96c709"><div class="ttname"><a href="classClientHandler.html#a31756d2f3ef847259223260e1d96c709">ClientHandler::authenticateClient</a></div><div class="ttdeci">bool authenticateClient()</div><div class="ttdoc">Аутентификация клиента</div><div class="ttdef"><b>Definition:</b> <a href="ClientHandler_8cpp_source.html#l00071">ClientHandler.cpp:71</a></div></div>
+<div class="ttc" id="aclassClientHandler_html_a3965f2e59a78cecc0ea22b7ea3655988"><div class="ttname"><a href="classClientHandler.html#a3965f2e59a78cecc0ea22b7ea3655988">ClientHandler::sendMessage</a></div><div class="ttdeci">bool sendMessage(const std::string &amp;message)</div><div class="ttdoc">Отправка текстового сообщения клиенту</div><div class="ttdef"><b>Definition:</b> <a href="ClientHandler_8cpp_source.html#l00219">ClientHandler.cpp:219</a></div></div>
+<div class="ttc" id="aclassClientHandler_html_a51bc7a8d97802d84b6e62832ef278f58"><div class="ttname"><a href="classClientHandler.html#a51bc7a8d97802d84b6e62832ef278f58">ClientHandler::handle</a></div><div class="ttdeci">void handle()</div><div class="ttdoc">Основной метод обработки клиента</div><div class="ttdef"><b>Definition:</b> <a href="ClientHandler_8cpp_source.html#l00034">ClientHandler.cpp:34</a></div></div>
+<div class="ttc" id="aclassClientHandler_html_a5489f70d86ee1834a313316306dc7200"><div class="ttname"><a href="classClientHandler.html#a5489f70d86ee1834a313316306dc7200">ClientHandler::receiveVectorsAndProcess</a></div><div class="ttdeci">bool receiveVectorsAndProcess()</div><div class="ttdoc">Прием и обработка векторов от клиента</div><div class="ttdef"><b>Definition:</b> <a href="ClientHandler_8cpp_source.html#l00144">ClientHandler.cpp:144</a></div></div>
+<div class="ttc" id="aclassClientHandler_html_a754e26f5c7bf63f9419cd127a5591d0c"><div class="ttname"><a href="classClientHandler.html#a754e26f5c7bf63f9419cd127a5591d0c">ClientHandler::clientSocket</a></div><div class="ttdeci">int clientSocket</div><div class="ttdoc">Сокет клиента</div><div class="ttdef"><b>Definition:</b> <a href="ClientHandler_8h_source.html#l00039">ClientHandler.h:39</a></div></div>
+<div class="ttc" id="aclassClientHandler_html_a7d0767f8f02465e43ff6042f30206e43"><div class="ttname"><a href="classClientHandler.html#a7d0767f8f02465e43ff6042f30206e43">ClientHandler::logger</a></div><div class="ttdeci">Logger &amp; logger</div><div class="ttdoc">Ссылка на логгер</div><div class="ttdef"><b>Definition:</b> <a href="ClientHandler_8h_source.html#l00042">ClientHandler.h:42</a></div></div>
+<div class="ttc" id="aclassClientHandler_html_a7ed3f95e9b517359e232003e416ed2e3"><div class="ttname"><a href="classClientHandler.html#a7ed3f95e9b517359e232003e416ed2e3">ClientHandler::sendData</a></div><div class="ttdeci">bool sendData(const void *data, size_t size)</div><div class="ttdoc">Отправка данных клиенту</div><div class="ttdef"><b>Definition:</b> <a href="ClientHandler_8cpp_source.html#l00257">ClientHandler.cpp:257</a></div></div>
+<div class="ttc" id="aclassClientHandler_html_a892adb559e65f0eedd76698592bc8176"><div class="ttname"><a href="classClientHandler.html#a892adb559e65f0eedd76698592bc8176">ClientHandler::receiveString</a></div><div class="ttdeci">bool receiveString(std::string &amp;result, size_t maxSize=256)</div><div class="ttdoc">Прием строки от клиента</div><div class="ttdef"><b>Definition:</b> <a href="ClientHandler_8cpp_source.html#l00283">ClientHandler.cpp:283</a></div></div>
+<div class="ttc" id="aclassClientHandler_html_ade2db53cabbe8379edec95bef4a9edac"><div class="ttname"><a href="classClientHandler.html#ade2db53cabbe8379edec95bef4a9edac">ClientHandler::sendSalt</a></div><div class="ttdeci">bool sendSalt(const std::string &amp;salt)</div><div class="ttdoc">Отправка соли клиенту</div><div class="ttdef"><b>Definition:</b> <a href="ClientHandler_8cpp_source.html#l00208">ClientHandler.cpp:208</a></div></div>
+<div class="ttc" id="aclassClientHandler_html_adefd3a4802a5d9ef85cc4d97cf6d007e"><div class="ttname"><a href="classClientHandler.html#adefd3a4802a5d9ef85cc4d97cf6d007e">ClientHandler::clientAddr</a></div><div class="ttdeci">sockaddr_in clientAddr</div><div class="ttdoc">Адрес клиента</div><div class="ttdef"><b>Definition:</b> <a href="ClientHandler_8h_source.html#l00040">ClientHandler.h:40</a></div></div>
+<div class="ttc" id="aclassLogger_html"><div class="ttname"><a href="classLogger.html">Logger</a></div><div class="ttdoc">Класс для логирования событий сервера</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8h_source.html#l00028">Logger.h:28</a></div></div>
+<div class="ttc" id="aclassLogger_html_a5164af2f632902fa3c477d5c0cb463f7"><div class="ttname"><a href="classLogger.html#a5164af2f632902fa3c477d5c0cb463f7">Logger::warning</a></div><div class="ttdeci">void warning(const std::string &amp;message)</div><div class="ttdoc">Логирование предупреждения</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8h_source.html#l00059">Logger.h:59</a></div></div>
+<div class="ttc" id="aclassLogger_html_ab4c4d86279176eb0ede726bc5b4d5ddb"><div class="ttname"><a href="classLogger.html#ab4c4d86279176eb0ede726bc5b4d5ddb">Logger::info</a></div><div class="ttdeci">void info(const std::string &amp;message)</div><div class="ttdoc">Логирование информационного сообщения</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8h_source.html#l00053">Logger.h:53</a></div></div>
+<div class="ttc" id="aclassLogger_html_ab6042fdfcbb14026098e0df9d6b32f27"><div class="ttname"><a href="classLogger.html#ab6042fdfcbb14026098e0df9d6b32f27">Logger::error</a></div><div class="ttdeci">void error(const std::string &amp;message)</div><div class="ttdoc">Логирование ошибки</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8h_source.html#l00065">Logger.h:65</a></div></div>
+<div class="ttc" id="aclassVectorCalculator_html_aee70c284c8decfdbe4e742fd219c1f10"><div class="ttname"><a href="classVectorCalculator.html#aee70c284c8decfdbe4e742fd219c1f10">VectorCalculator::computeProduct</a></div><div class="ttdeci">static uint64_t computeProduct(const std::vector&lt; uint64_t &gt; &amp;vector)</div><div class="ttdoc">Вычисление произведения элементов вектора</div><div class="ttdef"><b>Definition:</b> <a href="VectorCalculator_8cpp_source.html#l00012">VectorCalculator.cpp:12</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+</small></address>
+</body>
+</html>

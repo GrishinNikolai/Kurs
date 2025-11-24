@@ -1,0 +1,32 @@
+\hypertarget{VectorCalculator_8cpp_source}{}\doxysection{Vector\+Calculator.\+cpp}
+\mbox{\hyperlink{VectorCalculator_8cpp}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{VectorCalculator_8h}{VectorCalculator.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00002}00002 \textcolor{preprocessor}{\#include <limits>}}
+\DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00003}00003 \textcolor{preprocessor}{\#include <climits>}}
+\DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00004}00004 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00012}\mbox{\hyperlink{classVectorCalculator_aee70c284c8decfdbe4e742fd219c1f10}{00012}} uint64\_t \mbox{\hyperlink{classVectorCalculator_aee70c284c8decfdbe4e742fd219c1f10}{VectorCalculator::computeProduct}}(\textcolor{keyword}{const} std::vector<uint64\_t>\& vector) \{}
+\DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00013}00013     \textcolor{keywordflow}{if} (vector.empty()) \{}
+\DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00014}00014         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00015}00015     \}}
+\DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00017}00017     uint64\_t product = 1;}
+\DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00019}00019     \textcolor{keywordflow}{for} (uint64\_t value : vector) \{}
+\DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00020}00020         \textcolor{keywordflow}{if} (value == 0) \{}
+\DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00021}00021             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00022}00022         \}}
+\DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00024}00024         \textcolor{comment}{// Check for overflow for uint64\_t}}
+\DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00025}00025         \textcolor{keywordflow}{if} (product > UINT64\_MAX / value) \{}
+\DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00026}00026             \textcolor{keywordflow}{return} UINT64\_MAX;}
+\DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00027}00027         \}}
+\DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00029}00029         product *= value;}
+\DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00030}00030     \}}
+\DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00032}00032     \textcolor{keywordflow}{return} product;}
+\DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00033}00033 \}}
+
+\end{DoxyCode}

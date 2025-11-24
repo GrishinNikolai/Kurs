@@ -1,0 +1,12 @@
+PROJECT_NAME           = "Сервер"
+PROJECT_NUMBER         = 1.0
+PROJECT_BRIEF          = "Программа сервер"
+OUTPUT_DIRECTORY       = docs
+INPUT                  = .
+RECURSIVE              = YES
+OUTPUT_LANGUAGE        = Russian
+GENERATE_LATEX         = NO
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
+HTML_OUTPUT            = html
+GENERATE_HTML          = YES

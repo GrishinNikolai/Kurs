@@ -1,0 +1,57 @@
+\hypertarget{Test__ClientBase_8cpp_source}{}\doxysection{Test\+\_\+\+Client\+Base.\+cpp}
+\mbox{\hyperlink{Test__ClientBase_8cpp}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include <UnitTest++/UnitTest++.h>}}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00002}00002 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{ClientBase_8h}{ClientBase.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00003}00003 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00004}00004 }
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00005}\mbox{\hyperlink{structClientBaseFixture}{00005}} \textcolor{keyword}{struct }\mbox{\hyperlink{structClientBaseFixture}{ClientBaseFixture}} \{}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00006}\mbox{\hyperlink{structClientBaseFixture_a086eff911b7082e1d1c77ae79c87c55b}{00006}}     std::string \mbox{\hyperlink{structClientBaseFixture_a086eff911b7082e1d1c77ae79c87c55b}{testFilename}} = \textcolor{stringliteral}{"{}test\_clients.txt"{}};}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00007}00007     }
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00008}\mbox{\hyperlink{structClientBaseFixture_a0fbb750c970e85fde7fd6f5e94d74b20}{00008}}     \mbox{\hyperlink{structClientBaseFixture_a0fbb750c970e85fde7fd6f5e94d74b20}{ClientBaseFixture}}() \{}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00009}00009         \textcolor{comment}{// Create test file}}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00010}00010         std::ofstream file(\mbox{\hyperlink{structClientBaseFixture_a086eff911b7082e1d1c77ae79c87c55b}{testFilename}});}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00011}00011         file << \textcolor{stringliteral}{"{}user1:pass1\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00012}00012         file << \textcolor{stringliteral}{"{}user2:pass2\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00013}00013         file << \textcolor{stringliteral}{"{}user3:pass3\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00014}00014         file.close();}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00015}00015     \}}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00016}00016     }
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00017}\mbox{\hyperlink{structClientBaseFixture_affb5474ac993ef2a9261eb03f49c3b11}{00017}}     \mbox{\hyperlink{structClientBaseFixture_affb5474ac993ef2a9261eb03f49c3b11}{\string~ClientBaseFixture}}() \{}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00018}00018         \textcolor{comment}{// Remove test file}}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00019}00019         remove(\mbox{\hyperlink{structClientBaseFixture_a086eff911b7082e1d1c77ae79c87c55b}{testFilename}}.c\_str());}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00020}00020     \}}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00021}00021 \};}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00023}\mbox{\hyperlink{Test__ClientBase_8cpp_a4cb647bfa9376493a61c29ced8a086c2}{00023}} \mbox{\hyperlink{Test__ClientBase_8cpp_a4cb647bfa9376493a61c29ced8a086c2}{SUITE}}(ClientBaseTest)}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00024}00024 \{}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00025}00025     TEST\_FIXTURE(\mbox{\hyperlink{structClientBaseFixture}{ClientBaseFixture}}, LoadSuccess) \{}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00026}00026         \mbox{\hyperlink{classClientBase}{ClientBase}} clientBase(testFilename);}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00027}00027         CHECK(clientBase.\mbox{\hyperlink{classClientBase_a7a5278105c04692e4e16bd5564fe9cf7}{load}}());}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00028}00028     \}}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00029}00029     }
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00030}00030     TEST\_FIXTURE(\mbox{\hyperlink{structClientBaseFixture}{ClientBaseFixture}}, UserExists) \{}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00031}00031         \mbox{\hyperlink{classClientBase}{ClientBase}} clientBase(testFilename);}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00032}00032         clientBase.\mbox{\hyperlink{classClientBase_a7a5278105c04692e4e16bd5564fe9cf7}{load}}();}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00033}00033         }
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00034}00034         CHECK(clientBase.\mbox{\hyperlink{classClientBase_a82e85a3a86240e04c16fbd9c2933d17a}{userExists}}(\textcolor{stringliteral}{"{}user1"{}}));}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00035}00035         CHECK(clientBase.\mbox{\hyperlink{classClientBase_a82e85a3a86240e04c16fbd9c2933d17a}{userExists}}(\textcolor{stringliteral}{"{}user2"{}}));}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00036}00036         CHECK(!clientBase.\mbox{\hyperlink{classClientBase_a82e85a3a86240e04c16fbd9c2933d17a}{userExists}}(\textcolor{stringliteral}{"{}nonexistent"{}}));}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00037}00037     \}}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00038}00038     }
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00039}00039     TEST\_FIXTURE(\mbox{\hyperlink{structClientBaseFixture}{ClientBaseFixture}}, GetPassword) \{}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00040}00040         \mbox{\hyperlink{classClientBase}{ClientBase}} clientBase(testFilename);}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00041}00041         clientBase.\mbox{\hyperlink{classClientBase_a7a5278105c04692e4e16bd5564fe9cf7}{load}}();}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00042}00042         }
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00043}00043         CHECK\_EQUAL(\textcolor{stringliteral}{"{}pass1"{}}, clientBase.\mbox{\hyperlink{classClientBase_afccfa7bb2e5c6f5627d48020852db567}{getPassword}}(\textcolor{stringliteral}{"{}user1"{}}));}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00044}00044         CHECK\_EQUAL(\textcolor{stringliteral}{"{}pass2"{}}, clientBase.\mbox{\hyperlink{classClientBase_afccfa7bb2e5c6f5627d48020852db567}{getPassword}}(\textcolor{stringliteral}{"{}user2"{}}));}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00045}00045         CHECK\_EQUAL(\textcolor{stringliteral}{"{}"{}}, clientBase.\mbox{\hyperlink{classClientBase_afccfa7bb2e5c6f5627d48020852db567}{getPassword}}(\textcolor{stringliteral}{"{}nonexistent"{}}));}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00046}00046     \}}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00047}00047     }
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00048}00048     TEST(LoadFailure) \{}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00049}00049         \mbox{\hyperlink{classClientBase}{ClientBase}} clientBase(\textcolor{stringliteral}{"{}nonexistent\_file.txt"{}});}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00050}00050         CHECK(!clientBase.\mbox{\hyperlink{classClientBase_a7a5278105c04692e4e16bd5564fe9cf7}{load}}());}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00051}00051     \}}
+\DoxyCodeLine{\Hypertarget{Test__ClientBase_8cpp_source_l00052}00052 \}}
+
+\end{DoxyCode}

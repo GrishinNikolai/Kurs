@@ -1,0 +1,44 @@
+\hypertarget{Server_8h_source}{}\doxysection{Server.\+h}
+\mbox{\hyperlink{Server_8h}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00001}00001 \textcolor{preprocessor}{\#ifndef SERVER\_H}}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00002}00002 \textcolor{preprocessor}{\#define SERVER\_H}}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00004}00004 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{ClientBase_8h}{ClientBase.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00005}00005 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Logger_8h}{Logger.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00006}00006 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{ClientHandler_8h}{ClientHandler.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00007}00007 \textcolor{preprocessor}{\#include <sys/socket.h>}}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00008}00008 \textcolor{preprocessor}{\#include <netinet/in.h>}}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00009}00009 \textcolor{preprocessor}{\#include <unistd.h>}}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00010}00010 \textcolor{preprocessor}{\#include <arpa/inet.h>}}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00011}00011 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00012}00012 \textcolor{preprocessor}{\#include <thread>}}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00021}\mbox{\hyperlink{classServer}{00021}} \textcolor{keyword}{class }\mbox{\hyperlink{classServer}{Server}} \{}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00022}00022 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00029}00029     \mbox{\hyperlink{classServer_abf4af0d3efaac2e1dad53bdd98dad5c4}{Server}}(\textcolor{keyword}{const} std::string\& \mbox{\hyperlink{classServer_a153015e788ce8623e22485590726f764}{clientBaseFile}}, \textcolor{keyword}{const} std::string\& \mbox{\hyperlink{classServer_a88371f429abcd5721ae390485ca8548f}{logFile}}, \textcolor{keywordtype}{int} \mbox{\hyperlink{classServer_a926c9dae229a62b6d33fdbb41dca6d82}{port}});}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00030}00030     }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00034}00034     \mbox{\hyperlink{classServer_a4b3aa2579cb1c8cd1d069582c14d0fa6}{\string~Server}}();}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00035}00035     }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00040}00040     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classServer_aef42e8353dbb746ac0da85a3bec1ad6c}{initialize}}();}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00041}00041     }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00045}00045     \textcolor{keywordtype}{void} \mbox{\hyperlink{classServer_abb27d30b40a94326e3fd629d3b30b7d5}{run}}();}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00046}00046     }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00050}00050     \textcolor{keywordtype}{void} \mbox{\hyperlink{classServer_a07c45a7e101a3926d8f9685c3c5d14e4}{stop}}();}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00052}00052 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00053}\mbox{\hyperlink{classServer_a153015e788ce8623e22485590726f764}{00053}}     std::string \mbox{\hyperlink{classServer_a153015e788ce8623e22485590726f764}{clientBaseFile}}; }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00054}\mbox{\hyperlink{classServer_a88371f429abcd5721ae390485ca8548f}{00054}}     std::string \mbox{\hyperlink{classServer_a88371f429abcd5721ae390485ca8548f}{logFile}}; }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00055}\mbox{\hyperlink{classServer_a926c9dae229a62b6d33fdbb41dca6d82}{00055}}     \textcolor{keywordtype}{int} \mbox{\hyperlink{classServer_a926c9dae229a62b6d33fdbb41dca6d82}{port}}; }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00056}\mbox{\hyperlink{classServer_a0e1f90d176dd31898b84088e6f4c1d87}{00056}}     \textcolor{keywordtype}{int} \mbox{\hyperlink{classServer_a0e1f90d176dd31898b84088e6f4c1d87}{serverSocket}}; }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00057}\mbox{\hyperlink{classServer_a4db32e1a16e0423cf619d7914fa9b8c2}{00057}}     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classServer_a4db32e1a16e0423cf619d7914fa9b8c2}{running}}; }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00058}00058     }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00059}\mbox{\hyperlink{classServer_a46f72b2c47bf2876d4f1c14183e79f8f}{00059}}     std::unique\_ptr<ClientBase> \mbox{\hyperlink{classServer_a46f72b2c47bf2876d4f1c14183e79f8f}{clientBase}}; }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00060}\mbox{\hyperlink{classServer_a26265a2754991752eee43f17303147ec}{00060}}     std::unique\_ptr<Logger> \mbox{\hyperlink{classServer_a26265a2754991752eee43f17303147ec}{logger}}; }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00061}00061     }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00065}00065     \textcolor{keywordtype}{void} \mbox{\hyperlink{classServer_a452594d15d1943b0be0569475d4375ec}{cleanup}}();}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00066}00066 \};}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00068}00068 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

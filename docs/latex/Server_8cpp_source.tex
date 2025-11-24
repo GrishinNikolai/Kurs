@@ -1,0 +1,105 @@
+\hypertarget{Server_8cpp_source}{}\doxysection{Server.\+cpp}
+\mbox{\hyperlink{Server_8cpp}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Server_8h}{Server.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00002}00002 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00003}00003 \textcolor{preprocessor}{\#include <signal.h>}}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00004}00004 \textcolor{preprocessor}{\#include <system\_error>}}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00012}\mbox{\hyperlink{classServer_abf4af0d3efaac2e1dad53bdd98dad5c4}{00012}} \mbox{\hyperlink{classServer_abf4af0d3efaac2e1dad53bdd98dad5c4}{Server::Server}}(\textcolor{keyword}{const} std::string\& clientBaseFile, \textcolor{keyword}{const} std::string\& logFile, \textcolor{keywordtype}{int} port)}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00013}00013     : clientBaseFile(clientBaseFile), logFile(logFile), port(port), }
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00014}00014       serverSocket(-\/1), running(false) \{\}}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00019}\mbox{\hyperlink{classServer_a4b3aa2579cb1c8cd1d069582c14d0fa6}{00019}} \mbox{\hyperlink{classServer_a4b3aa2579cb1c8cd1d069582c14d0fa6}{Server::\string~Server}}() \{}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00020}00020     \mbox{\hyperlink{classServer_a452594d15d1943b0be0569475d4375ec}{cleanup}}();}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00021}00021 \}}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00027}\mbox{\hyperlink{classServer_aef42e8353dbb746ac0da85a3bec1ad6c}{00027}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classServer_aef42e8353dbb746ac0da85a3bec1ad6c}{Server::initialize}}() \{}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00028}00028     \textcolor{comment}{// Инициализация базы клиентов}}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00029}00029     \mbox{\hyperlink{classServer_a46f72b2c47bf2876d4f1c14183e79f8f}{clientBase}} = std::make\_unique<ClientBase>(\mbox{\hyperlink{classServer_a153015e788ce8623e22485590726f764}{clientBaseFile}});}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00030}00030     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classServer_a46f72b2c47bf2876d4f1c14183e79f8f}{clientBase}}-\/>load()) \{}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00031}00031         std::cerr << \textcolor{stringliteral}{"{}Failed to load client database: "{}} << \mbox{\hyperlink{classServer_a153015e788ce8623e22485590726f764}{clientBaseFile}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00032}00032         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00033}00033     \}}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00035}00035     \textcolor{comment}{// ДОБАВИТЬ: проверим что база загрузилась}}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00036}00036     std::cout << \textcolor{stringliteral}{"{}DEBUG: Client database loaded successfully"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00037}00037     }
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00038}00038     \textcolor{comment}{// Инициализация Логера}}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00039}00039     \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00040}00040         \mbox{\hyperlink{classServer_a26265a2754991752eee43f17303147ec}{logger}} = std::make\_unique<Logger>(\mbox{\hyperlink{classServer_a88371f429abcd5721ae390485ca8548f}{logFile}});}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00041}00041     \} \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} std::exception\& e) \{}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00042}00042         std::cerr << \textcolor{stringliteral}{"{}Failed to initialize logger: "{}} << e.what() << std::endl;}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00043}00043         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00044}00044     \}}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00045}00045     }
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00046}00046     \textcolor{comment}{// Создание сокета}}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00047}00047     \mbox{\hyperlink{classServer_a0e1f90d176dd31898b84088e6f4c1d87}{serverSocket}} = socket(AF\_INET, SOCK\_STREAM, 0);}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00048}00048     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classServer_a0e1f90d176dd31898b84088e6f4c1d87}{serverSocket}} == -\/1) \{}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00049}00049         \mbox{\hyperlink{classServer_a26265a2754991752eee43f17303147ec}{logger}}-\/>error(\textcolor{stringliteral}{"{}Failed to create socket"{}});}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00050}00050         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00051}00051     \}}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00052}00052     }
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00053}00053     \textcolor{comment}{// Установка параметров сокета}}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00054}00054     \textcolor{keywordtype}{int} opt = 1;}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00055}00055     \textcolor{keywordflow}{if} (setsockopt(\mbox{\hyperlink{classServer_a0e1f90d176dd31898b84088e6f4c1d87}{serverSocket}}, SOL\_SOCKET, SO\_REUSEADDR, \&opt, \textcolor{keyword}{sizeof}(opt)) == -\/1) \{}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00056}00056         \mbox{\hyperlink{classServer_a26265a2754991752eee43f17303147ec}{logger}}-\/>error(\textcolor{stringliteral}{"{}Failed to set socket options"{}});}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00057}00057         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00058}00058     \}}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00059}00059     }
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00060}00060     \textcolor{comment}{// Привязка сокета}}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00061}00061     sockaddr\_in serverAddr\{\};}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00062}00062     serverAddr.sin\_family = AF\_INET;}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00063}00063     serverAddr.sin\_addr.s\_addr = INADDR\_ANY;}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00064}00064     serverAddr.sin\_port = htons(\mbox{\hyperlink{classServer_a926c9dae229a62b6d33fdbb41dca6d82}{port}});}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00065}00065     }
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00066}00066     \textcolor{keywordflow}{if} (bind(\mbox{\hyperlink{classServer_a0e1f90d176dd31898b84088e6f4c1d87}{serverSocket}}, (\textcolor{keyword}{struct} sockaddr*)\&serverAddr, \textcolor{keyword}{sizeof}(serverAddr)) == -\/1) \{}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00067}00067         \mbox{\hyperlink{classServer_a26265a2754991752eee43f17303147ec}{logger}}-\/>error(\textcolor{stringliteral}{"{}Failed to bind socket to port "{}} + std::to\_string(\mbox{\hyperlink{classServer_a926c9dae229a62b6d33fdbb41dca6d82}{port}}));}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00068}00068         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00069}00069     \}}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00070}00070     }
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00071}00071     \textcolor{comment}{// Listen for connections}}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00072}00072     \textcolor{keywordflow}{if} (listen(\mbox{\hyperlink{classServer_a0e1f90d176dd31898b84088e6f4c1d87}{serverSocket}}, 10) == -\/1) \{}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00073}00073         \mbox{\hyperlink{classServer_a26265a2754991752eee43f17303147ec}{logger}}-\/>error(\textcolor{stringliteral}{"{}Failed to listen on socket"{}});}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00074}00074         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00075}00075     \}}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00076}00076     }
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00077}00077     \mbox{\hyperlink{classServer_a26265a2754991752eee43f17303147ec}{logger}}-\/>info(\textcolor{stringliteral}{"{}Server initialized successfully on port "{}} + std::to\_string(\mbox{\hyperlink{classServer_a926c9dae229a62b6d33fdbb41dca6d82}{port}}));}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00078}00078     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00079}00079 \}}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00080}00080 }
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00084}\mbox{\hyperlink{classServer_abb27d30b40a94326e3fd629d3b30b7d5}{00084}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classServer_abb27d30b40a94326e3fd629d3b30b7d5}{Server::run}}() \{}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00085}00085     \mbox{\hyperlink{classServer_a4db32e1a16e0423cf619d7914fa9b8c2}{running}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00086}00086     \mbox{\hyperlink{classServer_a26265a2754991752eee43f17303147ec}{logger}}-\/>info(\textcolor{stringliteral}{"{}Server started and listening for connections"{}});}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00087}00087     }
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00088}00088     \textcolor{keywordflow}{while} (\mbox{\hyperlink{classServer_a4db32e1a16e0423cf619d7914fa9b8c2}{running}}) \{}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00089}00089         sockaddr\_in clientAddr\{\};}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00090}00090         socklen\_t clientAddrLen = \textcolor{keyword}{sizeof}(clientAddr);}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00091}00091         }
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00092}00092         \textcolor{keywordtype}{int} clientSocket = accept(\mbox{\hyperlink{classServer_a0e1f90d176dd31898b84088e6f4c1d87}{serverSocket}}, (\textcolor{keyword}{struct} sockaddr*)\&clientAddr, \&clientAddrLen);}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00093}00093         \textcolor{keywordflow}{if} (clientSocket == -\/1) \{}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00094}00094             \textcolor{keywordflow}{if} (\mbox{\hyperlink{classServer_a4db32e1a16e0423cf619d7914fa9b8c2}{running}}) \{}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00095}00095                 \mbox{\hyperlink{classServer_a26265a2754991752eee43f17303147ec}{logger}}-\/>error(\textcolor{stringliteral}{"{}Failed to accept client connection"{}});}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00096}00096             \}}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00097}00097             \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00098}00098         \}}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00099}00099         }
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00100}00100         \mbox{\hyperlink{classClientHandler}{ClientHandler}} handler(clientSocket, clientAddr, *\mbox{\hyperlink{classServer_a46f72b2c47bf2876d4f1c14183e79f8f}{clientBase}}, *\mbox{\hyperlink{classServer_a26265a2754991752eee43f17303147ec}{logger}});}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00101}00101         handler.\mbox{\hyperlink{classClientHandler_a51bc7a8d97802d84b6e62832ef278f58}{handle}}();}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00102}00102     \}}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00103}00103 \}}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00104}00104 }
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00108}\mbox{\hyperlink{classServer_a07c45a7e101a3926d8f9685c3c5d14e4}{00108}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classServer_a07c45a7e101a3926d8f9685c3c5d14e4}{Server::stop}}() \{}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00109}00109     \mbox{\hyperlink{classServer_a4db32e1a16e0423cf619d7914fa9b8c2}{running}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00110}00110     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classServer_a0e1f90d176dd31898b84088e6f4c1d87}{serverSocket}} != -\/1) \{}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00111}00111         close(\mbox{\hyperlink{classServer_a0e1f90d176dd31898b84088e6f4c1d87}{serverSocket}});}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00112}00112         \mbox{\hyperlink{classServer_a0e1f90d176dd31898b84088e6f4c1d87}{serverSocket}} = -\/1;}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00113}00113     \}}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00114}00114     \mbox{\hyperlink{classServer_a26265a2754991752eee43f17303147ec}{logger}}-\/>info(\textcolor{stringliteral}{"{}Server stopped"{}});}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00115}00115 \}}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00116}00116 }
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00120}\mbox{\hyperlink{classServer_a452594d15d1943b0be0569475d4375ec}{00120}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classServer_a452594d15d1943b0be0569475d4375ec}{Server::cleanup}}() \{}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00121}00121     \mbox{\hyperlink{classServer_a07c45a7e101a3926d8f9685c3c5d14e4}{stop}}();}
+\DoxyCodeLine{\Hypertarget{Server_8cpp_source_l00122}00122 \}}
+
+\end{DoxyCode}

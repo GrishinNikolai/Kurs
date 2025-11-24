@@ -3,6 +3,12 @@
 #include <climits>
 #include <iostream>
 
+/**
+ * @brief Вычисление произведения элементов вектора
+ * @param vector Вектор значений для вычисления
+ * @return Произведение элементов вектора
+ * @note При переполнении возвращается UINT64_MAX
+ */
 uint64_t VectorCalculator::computeProduct(const std::vector<uint64_t>& vector) {
     if (vector.empty()) {
         return 0;

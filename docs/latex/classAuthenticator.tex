@@ -1,0 +1,115 @@
+\hypertarget{classAuthenticator}{}\doxysection{Класс Authenticator}
+\label{classAuthenticator}\index{Authenticator@{Authenticator}}
+
+
+Класс для аутентификации клиентов  
+
+
+
+
+{\ttfamily \#include $<$Authenticator.\+h$>$}
+
+\doxysubsection*{Открытые статические члены}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::string \mbox{\hyperlink{classAuthenticator_aeb0de37f54c3fad7f3c5b5a6a3b09d91}{generate\+Salt}} ()
+\begin{DoxyCompactList}\small\item\em Генерация случайной соли \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{classAuthenticator_a5eec671a694056992c7c9f94d6450c40}{compute\+SHA1}} (const std\+::string \&data)
+\begin{DoxyCompactList}\small\item\em Вычисление SHA1 хеша от данных \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classAuthenticator_a8a82cd12b1083d7f0158669bcc12e97a}{authenticate}} (const std\+::string \&password, const std\+::string \&salt, const std\+::string \&client\+Hash)
+\begin{DoxyCompactList}\small\item\em Аутентификация клиента \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс для аутентификации клиентов 
+
+\begin{DoxyAuthor}{Автор}
+Гришин Николай 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Версия}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Дата}
+24.\+11.\+2025 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Авторство}
+ИБСТ ПГУ 
+\end{DoxyCopyright}
+
+
+См. определение в файле \mbox{\hyperlink{Authenticator_8h_source}{Authenticator.\+h}} строка \mbox{\hyperlink{Authenticator_8h_source_l00019}{19}}
+
+
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{classAuthenticator_a8a82cd12b1083d7f0158669bcc12e97a}\label{classAuthenticator_a8a82cd12b1083d7f0158669bcc12e97a}} 
+\index{Authenticator@{Authenticator}!authenticate@{authenticate}}
+\index{authenticate@{authenticate}!Authenticator@{Authenticator}}
+\doxysubsubsection{\texorpdfstring{authenticate()}{authenticate()}}
+{\footnotesize\ttfamily bool Authenticator\+::authenticate (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{password,  }\item[{const std\+::string \&}]{salt,  }\item[{const std\+::string \&}]{client\+Hash }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Аутентификация клиента 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em password} & Пароль пользователя \\
+\hline
+{\em salt} & Соль для аутентификации \\
+\hline
+{\em client\+Hash} & Хеш от клиента \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+true если аутентификация успешна, false в противном случае 
+\end{DoxyReturn}
+
+
+См. определение в файле \mbox{\hyperlink{Authenticator_8cpp_source}{Authenticator.\+cpp}} строка \mbox{\hyperlink{Authenticator_8cpp_source_l00051}{51}}
+
+\mbox{\Hypertarget{classAuthenticator_a5eec671a694056992c7c9f94d6450c40}\label{classAuthenticator_a5eec671a694056992c7c9f94d6450c40}} 
+\index{Authenticator@{Authenticator}!computeSHA1@{computeSHA1}}
+\index{computeSHA1@{computeSHA1}!Authenticator@{Authenticator}}
+\doxysubsubsection{\texorpdfstring{computeSHA1()}{computeSHA1()}}
+{\footnotesize\ttfamily std\+::string Authenticator\+::compute\+SHA1 (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Вычисление SHA1 хеша от данных 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em data} & Данные для хеширования \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Хеш в виде строки шестнадцатеричных цифр 
+\end{DoxyReturn}
+
+
+См. определение в файле \mbox{\hyperlink{Authenticator_8cpp_source}{Authenticator.\+cpp}} строка \mbox{\hyperlink{Authenticator_8cpp_source_l00032}{32}}
+
+\mbox{\Hypertarget{classAuthenticator_aeb0de37f54c3fad7f3c5b5a6a3b09d91}\label{classAuthenticator_aeb0de37f54c3fad7f3c5b5a6a3b09d91}} 
+\index{Authenticator@{Authenticator}!generateSalt@{generateSalt}}
+\index{generateSalt@{generateSalt}!Authenticator@{Authenticator}}
+\doxysubsubsection{\texorpdfstring{generateSalt()}{generateSalt()}}
+{\footnotesize\ttfamily std\+::string Authenticator\+::generate\+Salt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Генерация случайной соли 
+
+\begin{DoxyReturn}{Возвращает}
+Соль в виде строки из 16 шестнадцатеричных цифр 
+\end{DoxyReturn}
+
+
+См. определение в файле \mbox{\hyperlink{Authenticator_8cpp_source}{Authenticator.\+cpp}} строка \mbox{\hyperlink{Authenticator_8cpp_source_l00013}{13}}
+
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Authenticator_8h}{Authenticator.\+h}}\item 
+\mbox{\hyperlink{Authenticator_8cpp}{Authenticator.\+cpp}}\end{DoxyCompactItemize}

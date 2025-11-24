@@ -1,0 +1,16 @@
+PROJECT_NAME           = "Программная реализация сетевого сервера"
+PROJECT_NUMBER         = 1.0
+OUTPUT_LANGUAGE        = Russian
+GENERATE_LATEX         = YES
+GENERATE_HTML          = YES
+USE_PDFLATEX           = YES
+PDF_HYPERLINKS         = YES
+LATEX_BATCHMODE        = NO
+LATEX_HIDE_INDICES     = NO
+OUTPUT_DIRECTORY       = docs
+LATEX_OUTPUT           = latex
+HTML_OUTPUT            = html
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
+SOURCE_BROWSER         = YES

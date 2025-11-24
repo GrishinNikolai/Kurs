@@ -72,3 +72,26 @@
 2025-11-24 21:51:03 [INFO] Client 127.0.0.1 disconnected
 2025-11-24 22:54:27 [INFO] Server stopped
 2025-11-24 22:54:27 [INFO] Server stopped
+2025-11-24 23:52:29 [INFO] Server initialized successfully on port 33333
+2025-11-24 23:52:29 [INFO] Server started and listening for connections
+2025-11-24 23:53:08 [INFO] Client connected from 127.0.0.1:45659
+2025-11-24 23:53:08 [INFO] Received login: 'user'
+2025-11-24 23:53:08 [INFO] Generated salt for user user: 3c127623eee98a1b
+2025-11-24 23:53:08 [INFO] Received hash from client
+2025-11-24 23:53:08 [INFO] Authentication successful for user: user
+2025-11-24 23:53:08 [INFO] Client 127.0.0.1 authenticated successfully
+2025-11-24 23:53:08 [INFO] Client 127.0.0.1 disconnected
+2025-11-24 23:53:22 [ERROR] Failed to bind socket to port 33333
+2025-11-24 23:53:22 [INFO] Server stopped
+2025-11-24 23:53:26 [ERROR] Failed to bind socket to port 33333
+2025-11-24 23:53:26 [INFO] Server stopped
+2025-11-24 23:53:39 [INFO] Server initialized successfully on port 33334
+2025-11-24 23:53:39 [INFO] Server started and listening for connections
+2025-11-24 23:53:40 [INFO] Server stopped
+2025-11-24 23:53:40 [INFO] Server stopped
+2025-11-25 01:30:10 [INFO] Server initialized successfully on port 33334
+2025-11-25 01:30:10 [INFO] Server started and listening for connections
+2025-11-25 01:30:15 [INFO] Server stopped
+2025-11-25 01:30:15 [INFO] Server stopped
+2025-11-25 01:30:18 [ERROR] Failed to bind socket to port 33333
+2025-11-25 01:30:18 [INFO] Server stopped

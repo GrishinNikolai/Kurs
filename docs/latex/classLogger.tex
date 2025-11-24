@@ -1,0 +1,259 @@
+\hypertarget{classLogger}{}\doxysection{Класс Logger}
+\label{classLogger}\index{Logger@{Logger}}
+
+
+Класс для логирования событий сервера  
+
+
+
+
+{\ttfamily \#include $<$Logger.\+h$>$}
+
+\doxysubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLogger_a4f2ee02db1d03a83b6b9b43808e09f15}{Logger}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Конструктор класса \mbox{\hyperlink{classLogger}{Logger}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLogger_acb668a9e186a25fbaad2e4af6d1ed00a}{$\sim$\+Logger}} ()
+\begin{DoxyCompactList}\small\item\em Деструктор класса \mbox{\hyperlink{classLogger}{Logger}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLogger_a3d3f0801eeaf39b33a906ea8569c19b2}{log}} (\mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}} level, const std\+::string \&message)
+\begin{DoxyCompactList}\small\item\em Основной метод логирования \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLogger_ab4c4d86279176eb0ede726bc5b4d5ddb}{info}} (const std\+::string \&message)
+\begin{DoxyCompactList}\small\item\em Логирование информационного сообщения \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLogger_a5164af2f632902fa3c477d5c0cb463f7}{warning}} (const std\+::string \&message)
+\begin{DoxyCompactList}\small\item\em Логирование предупреждения \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLogger_ab6042fdfcbb14026098e0df9d6b32f27}{error}} (const std\+::string \&message)
+\begin{DoxyCompactList}\small\item\em Логирование ошибки \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые члены}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classLogger_a8fe26a13346f80c03fff0667ad8692fc}{get\+Current\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Получение текущего времени в формате строки \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classLogger_acfb794ab842c63396ad1c6a771f43483}{level\+To\+String}} (\mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}} level)
+\begin{DoxyCompactList}\small\item\em Преобразование уровня логирования в строку \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ofstream \mbox{\hyperlink{classLogger_acc94bd19d6a022e574a5733c87fed67a}{log\+File}}
+\begin{DoxyCompactList}\small\item\em Файл для записи логов \end{DoxyCompactList}\item 
+std\+::mutex \mbox{\hyperlink{classLogger_a1a7f5dc4185f8bff7778f1d6aa8525a9}{log\+Mutex}}
+\begin{DoxyCompactList}\small\item\em Мьютекс для синхронизации доступа к файлу \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс для логирования событий сервера 
+
+\begin{DoxyAuthor}{Автор}
+Гришин Николай 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Версия}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Дата}
+24.\+11.\+2025 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Авторство}
+ИБСТ ПГУ 
+\end{DoxyCopyright}
+
+
+См. определение в файле \mbox{\hyperlink{Logger_8h_source}{Logger.\+h}} строка \mbox{\hyperlink{Logger_8h_source_l00028}{28}}
+
+
+
+\doxysubsection{Конструктор(ы)}
+\mbox{\Hypertarget{classLogger_a4f2ee02db1d03a83b6b9b43808e09f15}\label{classLogger_a4f2ee02db1d03a83b6b9b43808e09f15}} 
+\index{Logger@{Logger}!Logger@{Logger}}
+\index{Logger@{Logger}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{Logger()}{Logger()}}
+{\footnotesize\ttfamily Logger\+::\+Logger (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Конструктор класса \mbox{\hyperlink{classLogger}{Logger}}. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em filename} & Имя файла для логирования \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::runtime\+\_\+error} & если файл не может быть открыт \\
+\hline
+\end{DoxyExceptions}
+
+
+См. определение в файле \mbox{\hyperlink{Logger_8cpp_source}{Logger.\+cpp}} строка \mbox{\hyperlink{Logger_8cpp_source_l00010}{10}}
+
+\mbox{\Hypertarget{classLogger_acb668a9e186a25fbaad2e4af6d1ed00a}\label{classLogger_acb668a9e186a25fbaad2e4af6d1ed00a}} 
+\index{Logger@{Logger}!````~Logger@{$\sim$Logger}}
+\index{````~Logger@{$\sim$Logger}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{$\sim$Logger()}{~Logger()}}
+{\footnotesize\ttfamily Logger\+::$\sim$\+Logger (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Деструктор класса \mbox{\hyperlink{classLogger}{Logger}}. 
+
+
+
+См. определение в файле \mbox{\hyperlink{Logger_8cpp_source}{Logger.\+cpp}} строка \mbox{\hyperlink{Logger_8cpp_source_l00020}{20}}
+
+
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{classLogger_ab6042fdfcbb14026098e0df9d6b32f27}\label{classLogger_ab6042fdfcbb14026098e0df9d6b32f27}} 
+\index{Logger@{Logger}!error@{error}}
+\index{error@{error}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{error()}{error()}}
+{\footnotesize\ttfamily void Logger\+::error (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Логирование ошибки 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em message} & Сообщение для записи \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле \mbox{\hyperlink{Logger_8h_source}{Logger.\+h}} строка \mbox{\hyperlink{Logger_8h_source_l00065}{65}}
+
+\mbox{\Hypertarget{classLogger_a8fe26a13346f80c03fff0667ad8692fc}\label{classLogger_a8fe26a13346f80c03fff0667ad8692fc}} 
+\index{Logger@{Logger}!getCurrentTime@{getCurrentTime}}
+\index{getCurrentTime@{getCurrentTime}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{getCurrentTime()}{getCurrentTime()}}
+{\footnotesize\ttfamily std\+::string Logger\+::get\+Current\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Получение текущего времени в формате строки 
+
+\begin{DoxyReturn}{Возвращает}
+Строка с текущим временем 
+\end{DoxyReturn}
+
+
+См. определение в файле \mbox{\hyperlink{Logger_8cpp_source}{Logger.\+cpp}} строка \mbox{\hyperlink{Logger_8cpp_source_l00047}{47}}
+
+\mbox{\Hypertarget{classLogger_ab4c4d86279176eb0ede726bc5b4d5ddb}\label{classLogger_ab4c4d86279176eb0ede726bc5b4d5ddb}} 
+\index{Logger@{Logger}!info@{info}}
+\index{info@{info}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{info()}{info()}}
+{\footnotesize\ttfamily void Logger\+::info (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Логирование информационного сообщения 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em message} & Сообщение для записи \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле \mbox{\hyperlink{Logger_8h_source}{Logger.\+h}} строка \mbox{\hyperlink{Logger_8h_source_l00053}{53}}
+
+\mbox{\Hypertarget{classLogger_acfb794ab842c63396ad1c6a771f43483}\label{classLogger_acfb794ab842c63396ad1c6a771f43483}} 
+\index{Logger@{Logger}!levelToString@{levelToString}}
+\index{levelToString@{levelToString}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{levelToString()}{levelToString()}}
+{\footnotesize\ttfamily std\+::string Logger\+::level\+To\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}}}]{level }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Преобразование уровня логирования в строку 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em level} & Уровень логирования \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Строковое представление уровня 
+\end{DoxyReturn}
+
+
+См. определение в файле \mbox{\hyperlink{Logger_8cpp_source}{Logger.\+cpp}} строка \mbox{\hyperlink{Logger_8cpp_source_l00071}{71}}
+
+\mbox{\Hypertarget{classLogger_a3d3f0801eeaf39b33a906ea8569c19b2}\label{classLogger_a3d3f0801eeaf39b33a906ea8569c19b2}} 
+\index{Logger@{Logger}!log@{log}}
+\index{log@{log}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{log()}{log()}}
+{\footnotesize\ttfamily void Logger\+::log (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}}}]{level,  }\item[{const std\+::string \&}]{message }\end{DoxyParamCaption})}
+
+
+
+Основной метод логирования 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em level} & Уровень логирования \\
+\hline
+{\em message} & Сообщение для записи \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле \mbox{\hyperlink{Logger_8cpp_source}{Logger.\+cpp}} строка \mbox{\hyperlink{Logger_8cpp_source_l00031}{31}}
+
+\mbox{\Hypertarget{classLogger_a5164af2f632902fa3c477d5c0cb463f7}\label{classLogger_a5164af2f632902fa3c477d5c0cb463f7}} 
+\index{Logger@{Logger}!warning@{warning}}
+\index{warning@{warning}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{warning()}{warning()}}
+{\footnotesize\ttfamily void Logger\+::warning (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Логирование предупреждения 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em message} & Сообщение для записи \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле \mbox{\hyperlink{Logger_8h_source}{Logger.\+h}} строка \mbox{\hyperlink{Logger_8h_source_l00059}{59}}
+
+
+
+\doxysubsection{Данные класса}
+\mbox{\Hypertarget{classLogger_acc94bd19d6a022e574a5733c87fed67a}\label{classLogger_acc94bd19d6a022e574a5733c87fed67a}} 
+\index{Logger@{Logger}!logFile@{logFile}}
+\index{logFile@{logFile}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{logFile}{logFile}}
+{\footnotesize\ttfamily std\+::ofstream Logger\+::log\+File\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Файл для записи логов 
+
+
+
+См. определение в файле \mbox{\hyperlink{Logger_8h_source}{Logger.\+h}} строка \mbox{\hyperlink{Logger_8h_source_l00068}{68}}
+
+\mbox{\Hypertarget{classLogger_a1a7f5dc4185f8bff7778f1d6aa8525a9}\label{classLogger_a1a7f5dc4185f8bff7778f1d6aa8525a9}} 
+\index{Logger@{Logger}!logMutex@{logMutex}}
+\index{logMutex@{logMutex}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{logMutex}{logMutex}}
+{\footnotesize\ttfamily std\+::mutex Logger\+::log\+Mutex\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Мьютекс для синхронизации доступа к файлу 
+
+
+
+См. определение в файле \mbox{\hyperlink{Logger_8h_source}{Logger.\+h}} строка \mbox{\hyperlink{Logger_8h_source_l00069}{69}}
+
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Logger_8h}{Logger.\+h}}\item 
+\mbox{\hyperlink{Logger_8cpp}{Logger.\+cpp}}\end{DoxyCompactItemize}

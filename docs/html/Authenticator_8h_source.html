@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Программная реализация сетевого сервера: Исходный файл Authenticator.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Программная реализация сетевого сервера<span id="projectnumber">&#160;1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.4 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Поиск','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Authenticator.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="Authenticator_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef AUTHENTICATOR_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define AUTHENTICATOR_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;random&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;iomanip&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;openssl/sha.h&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;cctype&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classAuthenticator.html">   19</a></span><span class="keyword">class </span><a class="code hl_class" href="classAuthenticator.html">Authenticator</a> {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keyword">static</span> std::string <a class="code hl_function" href="classAuthenticator.html#aeb0de37f54c3fad7f3c5b5a6a3b09d91">generateSalt</a>();</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keyword">static</span> std::string <a class="code hl_function" href="classAuthenticator.html#a5eec671a694056992c7c9f94d6450c40">computeSHA1</a>(<span class="keyword">const</span> std::string&amp; data);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classAuthenticator.html#a8a82cd12b1083d7f0158669bcc12e97a">authenticate</a>(<span class="keyword">const</span> std::string&amp; password, <span class="keyword">const</span> std::string&amp; salt, <span class="keyword">const</span> std::string&amp; clientHash);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>};</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclassAuthenticator_html"><div class="ttname"><a href="classAuthenticator.html">Authenticator</a></div><div class="ttdoc">Класс для аутентификации клиентов</div><div class="ttdef"><b>Definition:</b> <a href="Authenticator_8h_source.html#l00019">Authenticator.h:19</a></div></div>
+<div class="ttc" id="aclassAuthenticator_html_a5eec671a694056992c7c9f94d6450c40"><div class="ttname"><a href="classAuthenticator.html#a5eec671a694056992c7c9f94d6450c40">Authenticator::computeSHA1</a></div><div class="ttdeci">static std::string computeSHA1(const std::string &amp;data)</div><div class="ttdoc">Вычисление SHA1 хеша от данных</div><div class="ttdef"><b>Definition:</b> <a href="Authenticator_8cpp_source.html#l00032">Authenticator.cpp:32</a></div></div>
+<div class="ttc" id="aclassAuthenticator_html_a8a82cd12b1083d7f0158669bcc12e97a"><div class="ttname"><a href="classAuthenticator.html#a8a82cd12b1083d7f0158669bcc12e97a">Authenticator::authenticate</a></div><div class="ttdeci">static bool authenticate(const std::string &amp;password, const std::string &amp;salt, const std::string &amp;clientHash)</div><div class="ttdoc">Аутентификация клиента</div><div class="ttdef"><b>Definition:</b> <a href="Authenticator_8cpp_source.html#l00051">Authenticator.cpp:51</a></div></div>
+<div class="ttc" id="aclassAuthenticator_html_aeb0de37f54c3fad7f3c5b5a6a3b09d91"><div class="ttname"><a href="classAuthenticator.html#aeb0de37f54c3fad7f3c5b5a6a3b09d91">Authenticator::generateSalt</a></div><div class="ttdeci">static std::string generateSalt()</div><div class="ttdoc">Генерация случайной соли</div><div class="ttdef"><b>Definition:</b> <a href="Authenticator_8cpp_source.html#l00013">Authenticator.cpp:13</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+</small></address>
+</body>
+</html>

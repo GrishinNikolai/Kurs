@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Программная реализация сетевого сервера: Файл main.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Программная реализация сетевого сервера<span id="projectnumber">&#160;1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.4 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Поиск','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Функции</a> &#124;
+<a href="#var-members">Переменные</a>  </div>
+  <div class="headertitle"><div class="title">Файл main.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="CommandLineParser_8h_source.html">CommandLineParser.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="Server_8h_source.html">Server.h</a>&quot;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;csignal&gt;</code><br />
+<code>#include &lt;memory&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Граф включаемых заголовочных файлов для main.cpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="main_8cpp__incl.png" border="0" usemap="#amain_8cpp" alt=""/></div>
+<map name="amain_8cpp" id="amain_8cpp">
+<area shape="rect" title=" " alt="" coords="1294,5,1377,32"/>
+<area shape="rect" href="CommandLineParser_8h.html" title=" " alt="" coords="532,80,699,107"/>
+<area shape="rect" href="Server_8h.html" title=" " alt="" coords="1058,80,1133,107"/>
+<area shape="rect" title=" " alt="" coords="711,304,791,331"/>
+<area shape="rect" title=" " alt="" coords="1297,155,1374,181"/>
+<area shape="rect" title=" " alt="" coords="1465,80,1533,107"/>
+<area shape="rect" title=" " alt="" coords="154,304,213,331"/>
+<area shape="rect" href="ClientBase_8h.html" title=" " alt="" coords="325,229,429,256"/>
+<area shape="rect" href="Logger_8h.html" title=" " alt="" coords="487,229,565,256"/>
+<area shape="rect" href="ClientHandler_8h.html" title=" " alt="" coords="818,155,941,181"/>
+<area shape="rect" title=" " alt="" coords="951,229,1053,256"/>
+<area shape="rect" title=" " alt="" coords="1078,229,1174,256"/>
+<area shape="rect" title=" " alt="" coords="1198,229,1273,256"/>
+<area shape="rect" title=" " alt="" coords="1297,229,1389,256"/>
+<area shape="rect" title=" " alt="" coords="1209,155,1273,181"/>
+<area shape="rect" title=" " alt="" coords="5,304,129,331"/>
+<area shape="rect" title=" " alt="" coords="237,304,311,331"/>
+<area shape="rect" title=" " alt="" coords="335,304,399,331"/>
+<area shape="rect" title=" " alt="" coords="423,304,490,331"/>
+<area shape="rect" title=" " alt="" coords="514,304,589,331"/>
+<area shape="rect" title=" " alt="" coords="613,304,687,331"/>
+<area shape="rect" href="Authenticator_8h.html" title=" " alt="" coords="589,229,711,256"/>
+<area shape="rect" href="VectorCalculator_8h.html" title=" " alt="" coords="787,229,927,256"/>
+<area shape="rect" title=" " alt="" coords="1247,304,1309,331"/>
+<area shape="rect" title=" " alt="" coords="815,304,887,331"/>
+<area shape="rect" title=" " alt="" coords="912,304,1023,331"/>
+<area shape="rect" title=" " alt="" coords="1047,304,1133,331"/>
+<area shape="rect" title=" " alt="" coords="1157,304,1223,331"/>
+<area shape="rect" title=" " alt="" coords="1334,304,1401,331"/>
+</map>
+</div>
+</div>
+<p><a href="main_8cpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:ad2e59c7203b3bddc1bc9a2224b52e8e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ad2e59c7203b3bddc1bc9a2224b52e8e7">signalHandler</a> (int signal)</td></tr>
+<tr class="memdesc:ad2e59c7203b3bddc1bc9a2224b52e8e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обработчик сигналов для graceful shutdown.  <a href="main_8cpp.html#ad2e59c7203b3bddc1bc9a2224b52e8e7">Подробнее...</a><br /></td></tr>
+<tr class="separator:ad2e59c7203b3bddc1bc9a2224b52e8e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
+<tr class="memdesc:a0ddf1224851353fc92bfbff6f499fa97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Главная функция сервера  <a href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">Подробнее...</a><br /></td></tr>
+<tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Переменные</h2></td></tr>
+<tr class="memitem:af570b242d81a3a3bf252f54c3ca0054b"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classServer.html">Server</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#af570b242d81a3a3bf252f54c3ca0054b">server</a></td></tr>
+<tr class="memdesc:af570b242d81a3a3bf252f54c3ca0054b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Глобальный указатель на сервер для обработки сигналов  <a href="main_8cpp.html#af570b242d81a3a3bf252f54c3ca0054b">Подробнее...</a><br /></td></tr>
+<tr class="separator:af570b242d81a3a3bf252f54c3ca0054b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Функции</h2>
+<a id="a0ddf1224851353fc92bfbff6f499fa97" name="a0ddf1224851353fc92bfbff6f499fa97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ddf1224851353fc92bfbff6f499fa97">&#9670;&nbsp;</a></span>main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Главная функция сервера </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">argc</td><td>Количество аргументов командной строки </td></tr>
+    <tr><td class="paramname">argv</td><td>Массив аргументов командной строки </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Код завершения программы </dd></dl>
+<dl class="section author"><dt>Автор</dt><dd>Гришин Николай </dd></dl>
+<dl class="section version"><dt>Версия</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Дата</dt><dd>24.11.2025 </dd></dl>
+<dl class="section copyright"><dt>Авторство</dt><dd>ИБСТ ПГУ </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="main_8cpp_source.html">main.cpp</a> строка <a class="el" href="main_8cpp_source.html#l00030">30</a></p>
+
+</div>
+</div>
+<a id="ad2e59c7203b3bddc1bc9a2224b52e8e7" name="ad2e59c7203b3bddc1bc9a2224b52e8e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2e59c7203b3bddc1bc9a2224b52e8e7">&#9670;&nbsp;</a></span>signalHandler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void signalHandler </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>signal</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Обработчик сигналов для graceful shutdown. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">signal</td><td>Номер сигнала </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="main_8cpp_source.html">main.cpp</a> строка <a class="el" href="main_8cpp_source.html#l00013">13</a></p>
+
+</div>
+</div>
+<h2 class="groupheader">Переменные</h2>
+<a id="af570b242d81a3a3bf252f54c3ca0054b" name="af570b242d81a3a3bf252f54c3ca0054b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af570b242d81a3a3bf252f54c3ca0054b">&#9670;&nbsp;</a></span>server</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classServer.html">Server</a>&gt; server</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Глобальный указатель на сервер для обработки сигналов </p>
+
+<p class="definition">См. определение в файле <a class="el" href="main_8cpp_source.html">main.cpp</a> строка <a class="el" href="main_8cpp_source.html#l00007">7</a></p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+</small></address>
+</body>
+</html>

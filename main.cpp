@@ -4,8 +4,12 @@
 #include <csignal>
 #include <memory>
 
-std::unique_ptr<Server> server;
+std::unique_ptr<Server> server; ///< Глобальный указатель на сервер для обработки сигналов
 
+/**
+ * @brief Обработчик сигналов для graceful shutdown
+ * @param signal Номер сигнала
+ */
 void signalHandler(int signal) {
     if (server) {
         std::cout << "\nShutting down server..." << std::endl;
@@ -13,12 +17,22 @@ void signalHandler(int signal) {
     }
 }
 
+/**
+ * @brief Главная функция сервера
+ * @param argc Количество аргументов командной строки
+ * @param argv Массив аргументов командной строки
+ * @return Код завершения программы
+ * @author Гришин Николай
+ * @version 1.0
+ * @date 24.11.2025
+ * @copyright ИБСТ ПГУ
+ */
 int main(int argc, char* argv[]) {
-    // Set up signal handlers
+    // Настройка обработчиковсигналов
     signal(SIGINT, signalHandler);
     signal(SIGTERM, signalHandler);
     
-    // Parse command line arguments
+    // Разбор аргументов командной строки
     CommandLineParser parser;
     if (!parser.parse(argc, argv)) {
         return 0;
@@ -27,7 +41,7 @@ int main(int argc, char* argv[]) {
     ServerConfig config = parser.getConfig();
     
     try {
-        // Create and initialize server
+        // Создание и инициализация сервера
         server = std::make_unique<Server>(config.clientBaseFile, config.logFile, config.port);
         
         if (!server->initialize()) {
@@ -35,7 +49,7 @@ int main(int argc, char* argv[]) {
             return 1;
         }
         
-        // Run server
+        // Запуск сервера
         server->run();
         
     } catch (const std::exception& e) {

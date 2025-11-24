@@ -1,0 +1,142 @@
+\hypertarget{Test__CommandLineParser_8cpp_source}{}\doxysection{Test\+\_\+\+Command\+Line\+Parser.\+cpp}
+\mbox{\hyperlink{Test__CommandLineParser_8cpp}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include <UnitTest++/UnitTest++.h>}}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00002}00002 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{CommandLineParser_8h}{CommandLineParser.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00003}00003 \textcolor{preprocessor}{\#include <sstream>}}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00004}00004 \textcolor{preprocessor}{\#include <cstring>}}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00005}00005 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00007}\mbox{\hyperlink{classOutputRedirect}{00007}} \textcolor{keyword}{class }\mbox{\hyperlink{classOutputRedirect}{OutputRedirect}} \{}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00008}\mbox{\hyperlink{classOutputRedirect_abcd11f3acc7957b5391fd60a70b09006}{00008}}     std::stringstream \mbox{\hyperlink{classOutputRedirect_abcd11f3acc7957b5391fd60a70b09006}{buffer}};}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00009}\mbox{\hyperlink{classOutputRedirect_a70cc86532af8a59f5f26136e4426871c}{00009}}     std::streambuf* \mbox{\hyperlink{classOutputRedirect_a70cc86532af8a59f5f26136e4426871c}{old\_cout}};}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00010}\mbox{\hyperlink{classOutputRedirect_aa3e9a573c398dff067593c4ef6e48072}{00010}}     std::streambuf* \mbox{\hyperlink{classOutputRedirect_aa3e9a573c398dff067593c4ef6e48072}{old\_cerr}};}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00012}00012 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00013}\mbox{\hyperlink{classOutputRedirect_ab5bffd97bd6bf577870895729fd48ade}{00013}}     \mbox{\hyperlink{classOutputRedirect_ab5bffd97bd6bf577870895729fd48ade}{OutputRedirect}}() \{}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00014}00014         \mbox{\hyperlink{classOutputRedirect_a70cc86532af8a59f5f26136e4426871c}{old\_cout}} = std::cout.rdbuf(\mbox{\hyperlink{classOutputRedirect_abcd11f3acc7957b5391fd60a70b09006}{buffer}}.rdbuf());}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00015}00015         \mbox{\hyperlink{classOutputRedirect_aa3e9a573c398dff067593c4ef6e48072}{old\_cerr}} = std::cerr.rdbuf(\mbox{\hyperlink{classOutputRedirect_abcd11f3acc7957b5391fd60a70b09006}{buffer}}.rdbuf());}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00016}00016     \}}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00018}\mbox{\hyperlink{classOutputRedirect_a24b61d413fc281be755593cb1a258ff8}{00018}}     \mbox{\hyperlink{classOutputRedirect_a24b61d413fc281be755593cb1a258ff8}{\string~OutputRedirect}}() \{}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00019}00019         std::cout.rdbuf(\mbox{\hyperlink{classOutputRedirect_a70cc86532af8a59f5f26136e4426871c}{old\_cout}});}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00020}00020         std::cerr.rdbuf(\mbox{\hyperlink{classOutputRedirect_aa3e9a573c398dff067593c4ef6e48072}{old\_cerr}});}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00021}00021     \}}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00023}\mbox{\hyperlink{classOutputRedirect_a8532cc5f9fc183e7723da641b3140af5}{00023}}     std::string \mbox{\hyperlink{classOutputRedirect_a8532cc5f9fc183e7723da641b3140af5}{getOutput}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00024}00024         \textcolor{keywordflow}{return} \mbox{\hyperlink{classOutputRedirect_abcd11f3acc7957b5391fd60a70b09006}{buffer}}.str();}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00025}00025     \}}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00027}\mbox{\hyperlink{classOutputRedirect_a0005b8e61b1976aa8b6be9b29fe830c5}{00027}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{classOutputRedirect_a0005b8e61b1976aa8b6be9b29fe830c5}{clear}}() \{}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00028}00028         \mbox{\hyperlink{classOutputRedirect_abcd11f3acc7957b5391fd60a70b09006}{buffer}}.str(\textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00029}00029         \mbox{\hyperlink{classOutputRedirect_abcd11f3acc7957b5391fd60a70b09006}{buffer}}.clear();}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00030}00030     \}}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00031}00031 \};}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00033}\mbox{\hyperlink{Test__CommandLineParser_8cpp_a3fea19ea4c978dea1bd184cae1937403}{00033}} \mbox{\hyperlink{Test__CommandLineParser_8cpp_a3fea19ea4c978dea1bd184cae1937403}{SUITE}}(CommandLineParserTest)}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00034}00034 \{}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00035}00035     TEST(ValidParameters) \{}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00036}00036         \mbox{\hyperlink{classOutputRedirect}{OutputRedirect}} redirect;}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00037}00037         \mbox{\hyperlink{classCommandLineParser}{CommandLineParser}} parser;}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00039}00039         \textcolor{keyword}{const} \textcolor{keywordtype}{char}* argv[] = \{\textcolor{stringliteral}{"{}server"{}}, \textcolor{stringliteral}{"{}-\/b"{}}, \textcolor{stringliteral}{"{}clients.txt"{}}, \textcolor{stringliteral}{"{}-\/l"{}}, \textcolor{stringliteral}{"{}server.log"{}}, \textcolor{stringliteral}{"{}-\/p"{}}, \textcolor{stringliteral}{"{}33333"{}}, \textcolor{keyword}{nullptr}\};}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00040}00040         \textcolor{keywordtype}{int} argc = \textcolor{keyword}{sizeof}(argv) / \textcolor{keyword}{sizeof}(argv[0]) -\/ 1;}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00042}00042         CHECK(parser.\mbox{\hyperlink{classCommandLineParser_a7d350b3f4481bf7e2595b4b737c9909a}{parse}}(argc, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{char}**\textcolor{keyword}{>}(argv)));}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00044}00044         \mbox{\hyperlink{structServerConfig}{ServerConfig}} config = parser.\mbox{\hyperlink{classCommandLineParser_a30cbb68f7c480c44ca3f3bafb8013ef0}{getConfig}}();}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00045}00045         CHECK\_EQUAL(\textcolor{stringliteral}{"{}clients.txt"{}}, config.\mbox{\hyperlink{structServerConfig_a7acfed3875a50ffc24a4ecc5682a127a}{clientBaseFile}});}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00046}00046         CHECK\_EQUAL(\textcolor{stringliteral}{"{}server.log"{}}, config.\mbox{\hyperlink{structServerConfig_a2824fefce2ee247cee3aec8f953b3023}{logFile}});}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00047}00047         CHECK\_EQUAL(33333, config.\mbox{\hyperlink{structServerConfig_ae459946703124ef5a1d98dba38a8b493}{port}});}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00048}00048     \}}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00050}00050     TEST(HelpParameter) \{}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00051}00051         \mbox{\hyperlink{classOutputRedirect}{OutputRedirect}} redirect;}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00052}00052         \mbox{\hyperlink{classCommandLineParser}{CommandLineParser}} parser;}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00054}00054         \textcolor{keyword}{const} \textcolor{keywordtype}{char}* argv[] = \{\textcolor{stringliteral}{"{}server"{}}, \textcolor{stringliteral}{"{}-\/h"{}}, \textcolor{keyword}{nullptr}\};}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00055}00055         \textcolor{keywordtype}{int} argc = \textcolor{keyword}{sizeof}(argv) / \textcolor{keyword}{sizeof}(argv[0]) -\/ 1;}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00057}00057         \textcolor{comment}{// parse должен вернуть false для -\/h, но без исключений}}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00058}00058         \textcolor{keywordtype}{bool} result = parser.\mbox{\hyperlink{classCommandLineParser_a7d350b3f4481bf7e2595b4b737c9909a}{parse}}(argc, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{char}**\textcolor{keyword}{>}(argv));}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00059}00059         CHECK(!result);}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00061}00061         \textcolor{comment}{// Проверяем что вывод содержит справку}}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00062}00062         std::string output = redirect.\mbox{\hyperlink{classOutputRedirect_a8532cc5f9fc183e7723da641b3140af5}{getOutput}}();}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00063}00063         CHECK(output.find(\textcolor{stringliteral}{"{}Server usage"{}}) != std::string::npos);}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00064}00064     \}}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00066}00066     TEST(MissingRequiredParameters) \{}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00067}00067         \mbox{\hyperlink{classOutputRedirect}{OutputRedirect}} redirect;}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00068}00068         \mbox{\hyperlink{classCommandLineParser}{CommandLineParser}} parser;}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00070}00070         \textcolor{keyword}{const} \textcolor{keywordtype}{char}* argv[] = \{\textcolor{stringliteral}{"{}server"{}}, \textcolor{stringliteral}{"{}-\/b"{}}, \textcolor{stringliteral}{"{}clients.txt"{}}, \textcolor{keyword}{nullptr}\};}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00071}00071         \textcolor{keywordtype}{int} argc = \textcolor{keyword}{sizeof}(argv) / \textcolor{keyword}{sizeof}(argv[0]) -\/ 1;}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00073}00073         \textcolor{keywordtype}{bool} result = parser.\mbox{\hyperlink{classCommandLineParser_a7d350b3f4481bf7e2595b4b737c9909a}{parse}}(argc, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{char}**\textcolor{keyword}{>}(argv));}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00074}00074         CHECK(!result);}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00076}00076         std::string output = redirect.\mbox{\hyperlink{classOutputRedirect_a8532cc5f9fc183e7723da641b3140af5}{getOutput}}();}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00077}00077         CHECK(output.find(\textcolor{stringliteral}{"{}Error: All parameters are required"{}}) != std::string::npos);}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00078}00078     \}}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00080}00080     TEST(InvalidPort) \{}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00081}00081         \mbox{\hyperlink{classOutputRedirect}{OutputRedirect}} redirect;}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00082}00082         \mbox{\hyperlink{classCommandLineParser}{CommandLineParser}} parser;}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00083}00083 }
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00084}00084         \textcolor{keyword}{const} \textcolor{keywordtype}{char}* argv[] = \{\textcolor{stringliteral}{"{}server"{}}, \textcolor{stringliteral}{"{}-\/b"{}}, \textcolor{stringliteral}{"{}clients.txt"{}}, \textcolor{stringliteral}{"{}-\/l"{}}, \textcolor{stringliteral}{"{}server.log"{}}, \textcolor{stringliteral}{"{}-\/p"{}}, \textcolor{stringliteral}{"{}70000"{}}, \textcolor{keyword}{nullptr}\};}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00085}00085         \textcolor{keywordtype}{int} argc = \textcolor{keyword}{sizeof}(argv) / \textcolor{keyword}{sizeof}(argv[0]) -\/ 1;}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00087}00087         \textcolor{keywordtype}{bool} result = parser.\mbox{\hyperlink{classCommandLineParser_a7d350b3f4481bf7e2595b4b737c9909a}{parse}}(argc, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{char}**\textcolor{keyword}{>}(argv));}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00088}00088         CHECK(!result);}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00089}00089 }
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00090}00090         std::string output = redirect.\mbox{\hyperlink{classOutputRedirect_a8532cc5f9fc183e7723da641b3140af5}{getOutput}}();}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00091}00091         CHECK(output.find(\textcolor{stringliteral}{"{}Port must be between 1 and 65535"{}}) != std::string::npos);}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00092}00092     \}}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00093}00093 }
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00094}00094     TEST(LongOptions) \{}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00095}00095         \mbox{\hyperlink{classOutputRedirect}{OutputRedirect}} redirect;}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00096}00096         \mbox{\hyperlink{classCommandLineParser}{CommandLineParser}} parser;}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00097}00097 }
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00098}00098         \textcolor{keyword}{const} \textcolor{keywordtype}{char}* argv[] = \{\textcolor{stringliteral}{"{}server"{}}, \textcolor{stringliteral}{"{}-\/-\/base"{}}, \textcolor{stringliteral}{"{}clients.txt"{}}, \textcolor{stringliteral}{"{}-\/-\/log"{}}, \textcolor{stringliteral}{"{}server.log"{}}, \textcolor{stringliteral}{"{}-\/-\/port"{}}, \textcolor{stringliteral}{"{}44444"{}}, \textcolor{keyword}{nullptr}\};}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00099}00099         \textcolor{keywordtype}{int} argc = \textcolor{keyword}{sizeof}(argv) / \textcolor{keyword}{sizeof}(argv[0]) -\/ 1;}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00100}00100 }
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00101}00101         CHECK(parser.\mbox{\hyperlink{classCommandLineParser_a7d350b3f4481bf7e2595b4b737c9909a}{parse}}(argc, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{char}**\textcolor{keyword}{>}(argv)));}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00102}00102 }
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00103}00103         \mbox{\hyperlink{structServerConfig}{ServerConfig}} config = parser.\mbox{\hyperlink{classCommandLineParser_a30cbb68f7c480c44ca3f3bafb8013ef0}{getConfig}}();}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00104}00104         CHECK\_EQUAL(\textcolor{stringliteral}{"{}clients.txt"{}}, config.\mbox{\hyperlink{structServerConfig_a7acfed3875a50ffc24a4ecc5682a127a}{clientBaseFile}});}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00105}00105         CHECK\_EQUAL(\textcolor{stringliteral}{"{}server.log"{}}, config.\mbox{\hyperlink{structServerConfig_a2824fefce2ee247cee3aec8f953b3023}{logFile}});}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00106}00106         CHECK\_EQUAL(44444, config.\mbox{\hyperlink{structServerConfig_ae459946703124ef5a1d98dba38a8b493}{port}});}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00107}00107     \}}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00108}00108 }
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00109}00109     TEST(MixedOptions) \{}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00110}00110         \mbox{\hyperlink{classOutputRedirect}{OutputRedirect}} redirect;}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00111}00111         \mbox{\hyperlink{classCommandLineParser}{CommandLineParser}} parser;}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00112}00112 }
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00113}00113         \textcolor{keyword}{const} \textcolor{keywordtype}{char}* argv[] = \{\textcolor{stringliteral}{"{}server"{}}, \textcolor{stringliteral}{"{}-\/b"{}}, \textcolor{stringliteral}{"{}clients.txt"{}}, \textcolor{stringliteral}{"{}-\/-\/log"{}}, \textcolor{stringliteral}{"{}server.log"{}}, \textcolor{stringliteral}{"{}-\/p"{}}, \textcolor{stringliteral}{"{}55555"{}}, \textcolor{keyword}{nullptr}\};}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00114}00114         \textcolor{keywordtype}{int} argc = \textcolor{keyword}{sizeof}(argv) / \textcolor{keyword}{sizeof}(argv[0]) -\/ 1;}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00115}00115 }
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00116}00116         CHECK(parser.\mbox{\hyperlink{classCommandLineParser_a7d350b3f4481bf7e2595b4b737c9909a}{parse}}(argc, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{char}**\textcolor{keyword}{>}(argv)));}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00117}00117 }
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00118}00118         \mbox{\hyperlink{structServerConfig}{ServerConfig}} config = parser.\mbox{\hyperlink{classCommandLineParser_a30cbb68f7c480c44ca3f3bafb8013ef0}{getConfig}}();}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00119}00119         CHECK\_EQUAL(\textcolor{stringliteral}{"{}clients.txt"{}}, config.\mbox{\hyperlink{structServerConfig_a7acfed3875a50ffc24a4ecc5682a127a}{clientBaseFile}});}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00120}00120         CHECK\_EQUAL(\textcolor{stringliteral}{"{}server.log"{}}, config.\mbox{\hyperlink{structServerConfig_a2824fefce2ee247cee3aec8f953b3023}{logFile}});}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00121}00121         CHECK\_EQUAL(55555, config.\mbox{\hyperlink{structServerConfig_ae459946703124ef5a1d98dba38a8b493}{port}});}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00122}00122     \}}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00123}00123 }
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00124}00124     TEST(InvalidPortFormat) \{}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00125}00125         \mbox{\hyperlink{classOutputRedirect}{OutputRedirect}} redirect;}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00126}00126         \mbox{\hyperlink{classCommandLineParser}{CommandLineParser}} parser;}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00127}00127 }
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00128}00128         \textcolor{keyword}{const} \textcolor{keywordtype}{char}* argv[] = \{\textcolor{stringliteral}{"{}server"{}}, \textcolor{stringliteral}{"{}-\/b"{}}, \textcolor{stringliteral}{"{}clients.txt"{}}, \textcolor{stringliteral}{"{}-\/l"{}}, \textcolor{stringliteral}{"{}server.log"{}}, \textcolor{stringliteral}{"{}-\/p"{}}, \textcolor{stringliteral}{"{}not\_a\_number"{}}, \textcolor{keyword}{nullptr}\};}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00129}00129         \textcolor{keywordtype}{int} argc = \textcolor{keyword}{sizeof}(argv) / \textcolor{keyword}{sizeof}(argv[0]) -\/ 1;}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00130}00130 }
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00131}00131         \textcolor{keywordtype}{bool} result = parser.\mbox{\hyperlink{classCommandLineParser_a7d350b3f4481bf7e2595b4b737c9909a}{parse}}(argc, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{char}**\textcolor{keyword}{>}(argv));}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00132}00132         CHECK(!result);}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00133}00133 }
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00134}00134         std::string output = redirect.\mbox{\hyperlink{classOutputRedirect_a8532cc5f9fc183e7723da641b3140af5}{getOutput}}();}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00135}00135         CHECK(output.find(\textcolor{stringliteral}{"{}Invalid port number"{}}) != std::string::npos);}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00136}00136     \}}
+\DoxyCodeLine{\Hypertarget{Test__CommandLineParser_8cpp_source_l00137}00137 \}}
+
+\end{DoxyCode}

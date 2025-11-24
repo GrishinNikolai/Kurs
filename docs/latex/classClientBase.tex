@@ -1,0 +1,173 @@
+\hypertarget{classClientBase}{}\doxysection{Класс Client\+Base}
+\label{classClientBase}\index{ClientBase@{ClientBase}}
+
+
+Класс для работы с базой данных клиентов  
+
+
+
+
+{\ttfamily \#include $<$Client\+Base.\+h$>$}
+
+\doxysubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classClientBase_afdcf228ea73d62cbf2bf1340bcff9362}{Client\+Base}} (const std\+::string \&\mbox{\hyperlink{classClientBase_ae3b5e132f05d6f41f6cd27bc33113004}{filename}})
+\begin{DoxyCompactList}\small\item\em Конструктор класса \mbox{\hyperlink{classClientBase}{Client\+Base}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classClientBase_a7a5278105c04692e4e16bd5564fe9cf7}{load}} ()
+\begin{DoxyCompactList}\small\item\em Загрузка базы данных клиентов из файла \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classClientBase_a82e85a3a86240e04c16fbd9c2933d17a}{user\+Exists}} (const std\+::string \&login) const
+\begin{DoxyCompactList}\small\item\em Проверка существования пользователя в базе \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classClientBase_afccfa7bb2e5c6f5627d48020852db567}{get\+Password}} (const std\+::string \&login) const
+\begin{DoxyCompactList}\small\item\em Получение пароля пользователя \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classClientBase_ae3b5e132f05d6f41f6cd27bc33113004}{filename}}
+\begin{DoxyCompactList}\small\item\em Имя файла с базой данных \end{DoxyCompactList}\item 
+std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{classClientBase_a3829d09b535261e33ca607864f16f4a6}{clients}}
+\begin{DoxyCompactList}\small\item\em Контейнер для хранения клиентов \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс для работы с базой данных клиентов 
+
+\begin{DoxyAuthor}{Автор}
+Гришин Николай 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Версия}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Дата}
+24.\+11.\+2025 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Авторство}
+ИБСТ ПГУ 
+\end{DoxyCopyright}
+
+
+См. определение в файле \mbox{\hyperlink{ClientBase_8h_source}{Client\+Base.\+h}} строка \mbox{\hyperlink{ClientBase_8h_source_l00014}{14}}
+
+
+
+\doxysubsection{Конструктор(ы)}
+\mbox{\Hypertarget{classClientBase_afdcf228ea73d62cbf2bf1340bcff9362}\label{classClientBase_afdcf228ea73d62cbf2bf1340bcff9362}} 
+\index{ClientBase@{ClientBase}!ClientBase@{ClientBase}}
+\index{ClientBase@{ClientBase}!ClientBase@{ClientBase}}
+\doxysubsubsection{\texorpdfstring{ClientBase()}{ClientBase()}}
+{\footnotesize\ttfamily Client\+Base\+::\+Client\+Base (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Конструктор класса \mbox{\hyperlink{classClientBase}{Client\+Base}}. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em filename} & Имя файла с базой данных клиентов \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле \mbox{\hyperlink{ClientBase_8cpp_source}{Client\+Base.\+cpp}} строка \mbox{\hyperlink{ClientBase_8cpp_source_l00010}{10}}
+
+
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{classClientBase_afccfa7bb2e5c6f5627d48020852db567}\label{classClientBase_afccfa7bb2e5c6f5627d48020852db567}} 
+\index{ClientBase@{ClientBase}!getPassword@{getPassword}}
+\index{getPassword@{getPassword}!ClientBase@{ClientBase}}
+\doxysubsubsection{\texorpdfstring{getPassword()}{getPassword()}}
+{\footnotesize\ttfamily std\+::string Client\+Base\+::get\+Password (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{login }\end{DoxyParamCaption}) const}
+
+
+
+Получение пароля пользователя 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em login} & Логин пользователя \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Пароль пользователя или пустую строку если пользователь не найден 
+\end{DoxyReturn}
+
+
+См. определение в файле \mbox{\hyperlink{ClientBase_8cpp_source}{Client\+Base.\+cpp}} строка \mbox{\hyperlink{ClientBase_8cpp_source_l00050}{50}}
+
+\mbox{\Hypertarget{classClientBase_a7a5278105c04692e4e16bd5564fe9cf7}\label{classClientBase_a7a5278105c04692e4e16bd5564fe9cf7}} 
+\index{ClientBase@{ClientBase}!load@{load}}
+\index{load@{load}!ClientBase@{ClientBase}}
+\doxysubsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily bool Client\+Base\+::load (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Загрузка базы данных клиентов из файла 
+
+\begin{DoxyReturn}{Возвращает}
+true если загрузка успешна, false в противном случае 
+\end{DoxyReturn}
+
+
+См. определение в файле \mbox{\hyperlink{ClientBase_8cpp_source}{Client\+Base.\+cpp}} строка \mbox{\hyperlink{ClientBase_8cpp_source_l00016}{16}}
+
+\mbox{\Hypertarget{classClientBase_a82e85a3a86240e04c16fbd9c2933d17a}\label{classClientBase_a82e85a3a86240e04c16fbd9c2933d17a}} 
+\index{ClientBase@{ClientBase}!userExists@{userExists}}
+\index{userExists@{userExists}!ClientBase@{ClientBase}}
+\doxysubsubsection{\texorpdfstring{userExists()}{userExists()}}
+{\footnotesize\ttfamily bool Client\+Base\+::user\+Exists (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{login }\end{DoxyParamCaption}) const}
+
+
+
+Проверка существования пользователя в базе 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em login} & Логин пользователя \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+true если пользователь существует, false в противном случае 
+\end{DoxyReturn}
+
+
+См. определение в файле \mbox{\hyperlink{ClientBase_8cpp_source}{Client\+Base.\+cpp}} строка \mbox{\hyperlink{ClientBase_8cpp_source_l00041}{41}}
+
+
+
+\doxysubsection{Данные класса}
+\mbox{\Hypertarget{classClientBase_a3829d09b535261e33ca607864f16f4a6}\label{classClientBase_a3829d09b535261e33ca607864f16f4a6}} 
+\index{ClientBase@{ClientBase}!clients@{clients}}
+\index{clients@{clients}!ClientBase@{ClientBase}}
+\doxysubsubsection{\texorpdfstring{clients}{clients}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, std\+::string$>$ Client\+Base\+::clients\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Контейнер для хранения клиентов 
+
+
+
+См. определение в файле \mbox{\hyperlink{ClientBase_8h_source}{Client\+Base.\+h}} строка \mbox{\hyperlink{ClientBase_8h_source_l00044}{44}}
+
+\mbox{\Hypertarget{classClientBase_ae3b5e132f05d6f41f6cd27bc33113004}\label{classClientBase_ae3b5e132f05d6f41f6cd27bc33113004}} 
+\index{ClientBase@{ClientBase}!filename@{filename}}
+\index{filename@{filename}!ClientBase@{ClientBase}}
+\doxysubsubsection{\texorpdfstring{filename}{filename}}
+{\footnotesize\ttfamily std\+::string Client\+Base\+::filename\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Имя файла с базой данных 
+
+
+
+См. определение в файле \mbox{\hyperlink{ClientBase_8h_source}{Client\+Base.\+h}} строка \mbox{\hyperlink{ClientBase_8h_source_l00043}{43}}
+
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{ClientBase_8h}{Client\+Base.\+h}}\item 
+\mbox{\hyperlink{ClientBase_8cpp}{Client\+Base.\+cpp}}\end{DoxyCompactItemize}

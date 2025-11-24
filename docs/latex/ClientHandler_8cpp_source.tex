@@ -1,0 +1,280 @@
+\hypertarget{ClientHandler_8cpp_source}{}\doxysection{Client\+Handler.\+cpp}
+\mbox{\hyperlink{ClientHandler_8cpp}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{ClientHandler_8h}{ClientHandler.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00002}00002 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00003}00003 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00004}00004 \textcolor{preprocessor}{\#include <cstring>}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00005}00005 \textcolor{preprocessor}{\#include <arpa/inet.h>} \textcolor{comment}{// для be64toh/htobe64}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00007}00007 \textcolor{preprocessor}{\#ifndef be64toh}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00008}00008 \textcolor{comment}{// Если макросы не определены, создаем свои}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00009}00009 \textcolor{preprocessor}{\#if \_\_BYTE\_ORDER == \_\_LITTLE\_ENDIAN}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00010}\mbox{\hyperlink{ClientHandler_8cpp_af94eb043f5be14b4f260fb9b4c89ca2e}{00010}} \textcolor{preprocessor}{\#define be64toh(x) \_\_bswap\_64(x)}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00011}\mbox{\hyperlink{ClientHandler_8cpp_a5c81b75e6da4507e0a90b6f6169c4787}{00011}} \textcolor{preprocessor}{\#define htobe64(x) \_\_bswap\_64(x)}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00012}00012 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00013}00013 \textcolor{preprocessor}{\#define be64toh(x) (x)}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00014}00014 \textcolor{preprocessor}{\#define htobe64(x) (x)}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00015}00015 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00016}00016 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00025}\mbox{\hyperlink{classClientHandler_a0ce22e114d6eb644918758aa356f1119}{00025}} \mbox{\hyperlink{classClientHandler_a0ce22e114d6eb644918758aa356f1119}{ClientHandler::ClientHandler}}(\textcolor{keywordtype}{int} clientSocket, \textcolor{keyword}{const} sockaddr\_in\& clientAddr, }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00026}00026                            \mbox{\hyperlink{classClientBase}{ClientBase}}\& clientBase, \mbox{\hyperlink{classLogger}{Logger}}\& logger)}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00027}00027     : clientSocket(clientSocket), clientAddr(clientAddr), }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00028}00028       clientBase(clientBase), logger(logger) \{\}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00034}\mbox{\hyperlink{classClientHandler_a51bc7a8d97802d84b6e62832ef278f58}{00034}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classClientHandler_a51bc7a8d97802d84b6e62832ef278f58}{ClientHandler::handle}}() \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00035}00035     std::string clientIP = inet\_ntoa(\mbox{\hyperlink{classClientHandler_adefd3a4802a5d9ef85cc4d97cf6d007e}{clientAddr}}.sin\_addr);}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00036}00036     \textcolor{keywordtype}{int} clientPort = ntohs(\mbox{\hyperlink{classClientHandler_adefd3a4802a5d9ef85cc4d97cf6d007e}{clientAddr}}.sin\_port);}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00037}00037     }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00038}00038     \mbox{\hyperlink{classClientHandler_a7d0767f8f02465e43ff6042f30206e43}{logger}}.\mbox{\hyperlink{classLogger_ab4c4d86279176eb0ede726bc5b4d5ddb}{info}}(\textcolor{stringliteral}{"{}Client connected from "{}} + clientIP + \textcolor{stringliteral}{"{}:"{}} + std::to\_string(clientPort));}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00039}00039     }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00040}00040     \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00041}00041         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classClientHandler_a31756d2f3ef847259223260e1d96c709}{authenticateClient}}()) \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00042}00042             \mbox{\hyperlink{classClientHandler_a7d0767f8f02465e43ff6042f30206e43}{logger}}.\mbox{\hyperlink{classLogger_a5164af2f632902fa3c477d5c0cb463f7}{warning}}(\textcolor{stringliteral}{"{}Authentication failed for client "{}} + clientIP);}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00043}00043             close(\mbox{\hyperlink{classClientHandler_a754e26f5c7bf63f9419cd127a5591d0c}{clientSocket}});}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00044}00044             \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00045}00045         \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00046}00046         }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00047}00047         \mbox{\hyperlink{classClientHandler_a7d0767f8f02465e43ff6042f30206e43}{logger}}.\mbox{\hyperlink{classLogger_ab4c4d86279176eb0ede726bc5b4d5ddb}{info}}(\textcolor{stringliteral}{"{}Client "{}} + clientIP + \textcolor{stringliteral}{"{} authenticated successfully"{}});}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00048}00048         }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00049}00049         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classClientHandler_a5489f70d86ee1834a313316306dc7200}{receiveVectorsAndProcess}}()) \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00050}00050             \mbox{\hyperlink{classClientHandler_a7d0767f8f02465e43ff6042f30206e43}{logger}}.\mbox{\hyperlink{classLogger_a5164af2f632902fa3c477d5c0cb463f7}{warning}}(\textcolor{stringliteral}{"{}Vector processing failed for client "{}} + clientIP);}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00051}00051         \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00052}00052         }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00053}00053     \} \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} std::exception\& e) \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00054}00054         \mbox{\hyperlink{classClientHandler_a7d0767f8f02465e43ff6042f30206e43}{logger}}.\mbox{\hyperlink{classLogger_ab6042fdfcbb14026098e0df9d6b32f27}{error}}(\textcolor{stringliteral}{"{}Error handling client "{}} + clientIP + \textcolor{stringliteral}{"{}: "{}} + e.what());}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00055}00055     \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00056}00056     }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00057}00057     close(\mbox{\hyperlink{classClientHandler_a754e26f5c7bf63f9419cd127a5591d0c}{clientSocket}});}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00058}00058     \mbox{\hyperlink{classClientHandler_a7d0767f8f02465e43ff6042f30206e43}{logger}}.\mbox{\hyperlink{classLogger_ab4c4d86279176eb0ede726bc5b4d5ddb}{info}}(\textcolor{stringliteral}{"{}Client "{}} + clientIP + \textcolor{stringliteral}{"{} disconnected"{}});}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00059}00059 \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00071}\mbox{\hyperlink{classClientHandler_a31756d2f3ef847259223260e1d96c709}{00071}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classClientHandler_a31756d2f3ef847259223260e1d96c709}{ClientHandler::authenticateClient}}() \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00073}00073     \textcolor{comment}{// Шаг 1: Получаем логин}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00074}00074     std::string login;}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00075}00075     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classClientHandler_a892adb559e65f0eedd76698592bc8176}{receiveString}}(login)) \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00076}00076         \mbox{\hyperlink{classClientHandler_a7d0767f8f02465e43ff6042f30206e43}{logger}}.\mbox{\hyperlink{classLogger_ab6042fdfcbb14026098e0df9d6b32f27}{error}}(\textcolor{stringliteral}{"{}Failed to receive login"{}});}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00077}00077         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00078}00078     \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00080}00080     \textcolor{comment}{// Удаляем все пробелы из имени пользователя}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00081}00081     login.erase(0, login.find\_first\_not\_of(\textcolor{stringliteral}{"{} \(\backslash\)t\(\backslash\)n\(\backslash\)r"{}}));}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00082}00082     login.erase(login.find\_last\_not\_of(\textcolor{stringliteral}{"{} \(\backslash\)t\(\backslash\)n\(\backslash\)r"{}}) + 1);}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00083}00083 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00084}00084     \mbox{\hyperlink{classClientHandler_a7d0767f8f02465e43ff6042f30206e43}{logger}}.\mbox{\hyperlink{classLogger_ab4c4d86279176eb0ede726bc5b4d5ddb}{info}}(\textcolor{stringliteral}{"{}Received login: '"{}} + login + \textcolor{stringliteral}{"{}'"{}});}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00085}00085 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00086}00086     \textcolor{comment}{// Шаг 2: Проверяем, существует ли пользователь -\/ ВОЗВРАЩАЕМ ПРОВЕРКУ}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00087}00087     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classClientHandler_a0682f1553034c2e01fe500c01eb26a9c}{clientBase}}.\mbox{\hyperlink{classClientBase_a82e85a3a86240e04c16fbd9c2933d17a}{userExists}}(login)) \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00088}00088         \mbox{\hyperlink{classClientHandler_a7d0767f8f02465e43ff6042f30206e43}{logger}}.\mbox{\hyperlink{classLogger_a5164af2f632902fa3c477d5c0cb463f7}{warning}}(\textcolor{stringliteral}{"{}User not found: "{}} + login);}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00089}00089         \mbox{\hyperlink{classClientHandler_a3965f2e59a78cecc0ea22b7ea3655988}{sendMessage}}(\textcolor{stringliteral}{"{}ERR"{}});}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00090}00090         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00091}00091     \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00092}00092 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00093}00093     \textcolor{comment}{// ИСПОЛЬЗУЕМ ПАРОЛЬ ИЗ БАЗЫ ДАННЫХ}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00094}00094     std::string password = \mbox{\hyperlink{classClientHandler_a0682f1553034c2e01fe500c01eb26a9c}{clientBase}}.\mbox{\hyperlink{classClientBase_afccfa7bb2e5c6f5627d48020852db567}{getPassword}}(login);}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00095}00095 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00096}00096     \textcolor{comment}{// Шаг 3: Генерируем и отправляем соль}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00097}00097     std::string salt = \mbox{\hyperlink{classAuthenticator_aeb0de37f54c3fad7f3c5b5a6a3b09d91}{Authenticator::generateSalt}}();}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00098}00098     \mbox{\hyperlink{classClientHandler_a7d0767f8f02465e43ff6042f30206e43}{logger}}.\mbox{\hyperlink{classLogger_ab4c4d86279176eb0ede726bc5b4d5ddb}{info}}(\textcolor{stringliteral}{"{}Generated salt for user "{}} + login + \textcolor{stringliteral}{"{}: "{}} + salt);}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00099}00099 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00100}00100     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classClientHandler_ade2db53cabbe8379edec95bef4a9edac}{sendSalt}}(salt)) \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00101}00101         \mbox{\hyperlink{classClientHandler_a7d0767f8f02465e43ff6042f30206e43}{logger}}.\mbox{\hyperlink{classLogger_ab6042fdfcbb14026098e0df9d6b32f27}{error}}(\textcolor{stringliteral}{"{}Failed to send salt"{}});}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00102}00102         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00103}00103     \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00104}00104 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00105}00105     \textcolor{comment}{// Шаг 4: Получаем хэш}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00106}00106     std::string clientHash;}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00107}00107 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00108}00108     \textcolor{comment}{// Используем receiveString для хеша тоже}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00109}00109     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classClientHandler_a892adb559e65f0eedd76698592bc8176}{receiveString}}(clientHash)) \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00110}00110         \mbox{\hyperlink{classClientHandler_a7d0767f8f02465e43ff6042f30206e43}{logger}}.\mbox{\hyperlink{classLogger_ab6042fdfcbb14026098e0df9d6b32f27}{error}}(\textcolor{stringliteral}{"{}Failed to receive hash"{}});}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00111}00111         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00112}00112     \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00113}00113 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00114}00114     \mbox{\hyperlink{classClientHandler_a7d0767f8f02465e43ff6042f30206e43}{logger}}.\mbox{\hyperlink{classLogger_ab4c4d86279176eb0ede726bc5b4d5ddb}{info}}(\textcolor{stringliteral}{"{}Received hash from client"{}});}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00115}00115 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00116}00116     \textcolor{comment}{// Шаг 5: Аутентификация}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00117}00117     std::string combined = salt + password;}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00118}00118     std::string serverHash = \mbox{\hyperlink{classAuthenticator_a5eec671a694056992c7c9f94d6450c40}{Authenticator::computeSHA1}}(combined);}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00119}00119 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00120}00120     \textcolor{keywordtype}{bool} authResult = \mbox{\hyperlink{classAuthenticator_a8a82cd12b1083d7f0158669bcc12e97a}{Authenticator::authenticate}}(password, salt, clientHash);}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00121}00121 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00122}00122 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00123}00123     \textcolor{keywordflow}{if} (authResult) \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00124}00124         \mbox{\hyperlink{classClientHandler_a7d0767f8f02465e43ff6042f30206e43}{logger}}.\mbox{\hyperlink{classLogger_ab4c4d86279176eb0ede726bc5b4d5ddb}{info}}(\textcolor{stringliteral}{"{}Authentication successful for user: "{}} + login);}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00125}00125         \textcolor{keywordflow}{return} \mbox{\hyperlink{classClientHandler_a3965f2e59a78cecc0ea22b7ea3655988}{sendMessage}}(\textcolor{stringliteral}{"{}OK"{}});}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00126}00126     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00127}00127         \mbox{\hyperlink{classClientHandler_a7d0767f8f02465e43ff6042f30206e43}{logger}}.\mbox{\hyperlink{classLogger_a5164af2f632902fa3c477d5c0cb463f7}{warning}}(\textcolor{stringliteral}{"{}Authentication failed for user: "{}} + login);}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00128}00128         \mbox{\hyperlink{classClientHandler_a3965f2e59a78cecc0ea22b7ea3655988}{sendMessage}}(\textcolor{stringliteral}{"{}ERR"{}});}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00129}00129         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00130}00130     \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00131}00131 \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00132}00132 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00144}\mbox{\hyperlink{classClientHandler_a5489f70d86ee1834a313316306dc7200}{00144}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classClientHandler_a5489f70d86ee1834a313316306dc7200}{ClientHandler::receiveVectorsAndProcess}}() \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00145}00145     \textcolor{comment}{// Шаг 6: Получаем количество векторов}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00146}00146     uint32\_t numVectors;}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00147}00147     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classClientHandler_a063fb4fdf3ed51e568aec20e90cfa146}{receiveData}}(\&numVectors, \textcolor{keyword}{sizeof}(numVectors))) \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00148}00148         \mbox{\hyperlink{classClientHandler_a7d0767f8f02465e43ff6042f30206e43}{logger}}.\mbox{\hyperlink{classLogger_ab6042fdfcbb14026098e0df9d6b32f27}{error}}(\textcolor{stringliteral}{"{}Failed to receive number of vectors"{}});}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00149}00149         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00150}00150     \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00151}00151 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00152}00152     numVectors = le32toh(numVectors);}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00153}00153 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00154}00154     \textcolor{keywordflow}{if} (numVectors > 1000) \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00155}00155         \mbox{\hyperlink{classClientHandler_a7d0767f8f02465e43ff6042f30206e43}{logger}}.\mbox{\hyperlink{classLogger_ab6042fdfcbb14026098e0df9d6b32f27}{error}}(\textcolor{stringliteral}{"{}Invalid number of vectors: "{}} + std::to\_string(numVectors));}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00156}00156         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00157}00157     \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00158}00158 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00159}00159     \textcolor{comment}{// НЕ отправляем количество результатов -\/ это не результат вычислений}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00160}00160     \textcolor{comment}{// Просто переходим к обработке векторов}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00161}00161 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00162}00162     \textcolor{comment}{// Обрабатываем каждый вектор}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00163}00163     \textcolor{keywordflow}{for} (uint32\_t i = 0; i < numVectors; i++) \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00164}00164         \textcolor{comment}{// Шаг 7: Получаем размер вектора}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00165}00165         uint32\_t vectorSize;}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00166}00166         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classClientHandler_a063fb4fdf3ed51e568aec20e90cfa146}{receiveData}}(\&vectorSize, \textcolor{keyword}{sizeof}(vectorSize))) \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00167}00167             \mbox{\hyperlink{classClientHandler_a7d0767f8f02465e43ff6042f30206e43}{logger}}.\mbox{\hyperlink{classLogger_ab6042fdfcbb14026098e0df9d6b32f27}{error}}(\textcolor{stringliteral}{"{}Failed to receive vector size"{}});}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00168}00168             \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00169}00169         \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00170}00170         vectorSize = le32toh(vectorSize);}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00171}00171 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00172}00172         \textcolor{keywordflow}{if} (vectorSize > 100000) \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00173}00173             \mbox{\hyperlink{classClientHandler_a7d0767f8f02465e43ff6042f30206e43}{logger}}.\mbox{\hyperlink{classLogger_ab6042fdfcbb14026098e0df9d6b32f27}{error}}(\textcolor{stringliteral}{"{}Invalid vector size: "{}} + std::to\_string(vectorSize));}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00174}00174             \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00175}00175         \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00176}00176 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00177}00177         \textcolor{comment}{// Шаг 8: Получаем данные вектора}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00178}00178         std::vector<uint64\_t> vector(vectorSize);}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00179}00179         \textcolor{keywordflow}{for} (uint32\_t j = 0; j < vectorSize; j++) \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00180}00180             uint64\_t value;}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00181}00181             \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classClientHandler_a063fb4fdf3ed51e568aec20e90cfa146}{receiveData}}(\&value, \textcolor{keyword}{sizeof}(value))) \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00182}00182                 \mbox{\hyperlink{classClientHandler_a7d0767f8f02465e43ff6042f30206e43}{logger}}.\mbox{\hyperlink{classLogger_ab6042fdfcbb14026098e0df9d6b32f27}{error}}(\textcolor{stringliteral}{"{}Failed to receive vector data"{}});}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00183}00183                 \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00184}00184             \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00185}00185             value = le64toh(value);}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00186}00186             vector[j] = value;}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00187}00187         \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00188}00188 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00189}00189         \textcolor{comment}{// Шаг 9: Вычисляем и отправляем результат}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00190}00190         uint64\_t result = \mbox{\hyperlink{classVectorCalculator_aee70c284c8decfdbe4e742fd219c1f10}{VectorCalculator::computeProduct}}(vector);}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00191}00191 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00192}00192         result = htole64(result);}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00193}00193         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classClientHandler_a7ed3f95e9b517359e232003e416ed2e3}{sendData}}(\&result, \textcolor{keyword}{sizeof}(result))) \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00194}00194             \mbox{\hyperlink{classClientHandler_a7d0767f8f02465e43ff6042f30206e43}{logger}}.\mbox{\hyperlink{classLogger_ab6042fdfcbb14026098e0df9d6b32f27}{error}}(\textcolor{stringliteral}{"{}Failed to send result"{}});}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00195}00195             \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00196}00196         \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00197}00197     \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00198}00198 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00199}00199     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00200}00200 \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00201}00201 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00208}\mbox{\hyperlink{classClientHandler_ade2db53cabbe8379edec95bef4a9edac}{00208}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classClientHandler_ade2db53cabbe8379edec95bef4a9edac}{ClientHandler::sendSalt}}(\textcolor{keyword}{const} std::string\& salt) \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00209}00209     \textcolor{comment}{// Для соли отправляем БЕЗ нулевого байта (16 байт)}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00210}00210     \textcolor{keywordflow}{return} \mbox{\hyperlink{classClientHandler_a7ed3f95e9b517359e232003e416ed2e3}{sendData}}(salt.c\_str(), 16); \textcolor{comment}{// Только 16 байт}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00211}00211 \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00212}00212 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00219}\mbox{\hyperlink{classClientHandler_a3965f2e59a78cecc0ea22b7ea3655988}{00219}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classClientHandler_a3965f2e59a78cecc0ea22b7ea3655988}{ClientHandler::sendMessage}}(\textcolor{keyword}{const} std::string\& message) \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00220}00220     \textcolor{comment}{// Для текстовых сообщений отправляем С нулевым байтом}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00221}00221     \textcolor{keywordflow}{return} \mbox{\hyperlink{classClientHandler_a7ed3f95e9b517359e232003e416ed2e3}{sendData}}(message.c\_str(), message.length() + 1);}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00222}00222 \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00223}00223 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00231}\mbox{\hyperlink{classClientHandler_a063fb4fdf3ed51e568aec20e90cfa146}{00231}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classClientHandler_a063fb4fdf3ed51e568aec20e90cfa146}{ClientHandler::receiveData}}(\textcolor{keywordtype}{void}* buffer, \textcolor{keywordtype}{size\_t} size) \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00232}00232     \textcolor{comment}{// Для бинарных данных всегда читаем точное количество байт}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00233}00233     \textcolor{comment}{// без поиска нулевого терминатора}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00234}00234 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00235}00235     \textcolor{keywordtype}{size\_t} totalReceived = 0;}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00236}00236     \textcolor{keywordflow}{while} (totalReceived < size) \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00237}00237         ssize\_t received = recv(\mbox{\hyperlink{classClientHandler_a754e26f5c7bf63f9419cd127a5591d0c}{clientSocket}},}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00238}00238                                \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(buffer) + totalReceived,}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00239}00239                                size -\/ totalReceived, 0);}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00240}00240 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00241}00241         \textcolor{keywordflow}{if} (received <= 0) \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00242}00242             \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00243}00243         \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00244}00244         totalReceived += received;}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00245}00245     \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00246}00246 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00247}00247     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00248}00248 \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00249}00249 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00257}\mbox{\hyperlink{classClientHandler_a7ed3f95e9b517359e232003e416ed2e3}{00257}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classClientHandler_a7ed3f95e9b517359e232003e416ed2e3}{ClientHandler::sendData}}(\textcolor{keyword}{const} \textcolor{keywordtype}{void}* data, \textcolor{keywordtype}{size\_t} size) \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00258}00258     \textcolor{keyword}{const} \textcolor{keywordtype}{char}* charData = \textcolor{keyword}{static\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(data);}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00259}00259 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00260}00260     \textcolor{keywordtype}{size\_t} totalSent = 0;}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00261}00261     \textcolor{keywordflow}{while} (totalSent < size) \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00262}00262         ssize\_t sent = send(\mbox{\hyperlink{classClientHandler_a754e26f5c7bf63f9419cd127a5591d0c}{clientSocket}},}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00263}00263                            \textcolor{keyword}{static\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(data) + totalSent,}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00264}00264                            size -\/ totalSent, 0);}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00265}00265         \textcolor{keywordflow}{if} (sent <= 0) \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00266}00266             \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00267}00267         \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00268}00268         totalSent += sent;}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00269}00269     \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00270}00270     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00271}00271 \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00272}00272 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00283}\mbox{\hyperlink{classClientHandler_a892adb559e65f0eedd76698592bc8176}{00283}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classClientHandler_a892adb559e65f0eedd76698592bc8176}{ClientHandler::receiveString}}(std::string\& result, \textcolor{keywordtype}{size\_t} maxSize) \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00284}00284     \textcolor{keywordtype}{char} buffer[256] = \{0\};}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00285}00285     \textcolor{keywordtype}{size\_t} totalReceived = 0;}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00286}00286 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00287}00287 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00288}00288     \textcolor{comment}{// Сначала посмотрим, что находится в буфере}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00289}00289     \textcolor{keywordtype}{char} peekBuffer[256] = \{0\};}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00290}00290     ssize\_t peeked = recv(\mbox{\hyperlink{classClientHandler_a754e26f5c7bf63f9419cd127a5591d0c}{clientSocket}}, peekBuffer, \textcolor{keyword}{sizeof}(peekBuffer) -\/ 1, MSG\_PEEK);}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00291}00291 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00292}00292     \textcolor{keywordflow}{if} (peeked > 0) \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00293}00293 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00294}00294         \textcolor{comment}{// Если мы видим полную строку без терминатора, считываем ровно столько байт}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00295}00295         \textcolor{keywordtype}{bool} hasTerminator = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00296}00296         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < peeked; i++) \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00297}00297             \textcolor{keywordflow}{if} (peekBuffer[i] == \textcolor{charliteral}{'\(\backslash\)0'} || peekBuffer[i] == \textcolor{charliteral}{'\(\backslash\)n'} || peekBuffer[i] == \textcolor{charliteral}{'\(\backslash\)r'}) \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00298}00298                 hasTerminator = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00299}00299                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00300}00300             \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00301}00301         \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00302}00302 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00303}00303         \textcolor{keywordflow}{if} (!hasTerminator \&\& peeked > 0) \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00304}00304             \textcolor{comment}{// Терминатор не найден, прочитаем ровно столько байт, сколько мы просмотрели}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00305}00305             ssize\_t received = recv(\mbox{\hyperlink{classClientHandler_a754e26f5c7bf63f9419cd127a5591d0c}{clientSocket}}, buffer, peeked, 0);}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00306}00306             \textcolor{keywordflow}{if} (received == peeked) \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00307}00307                 buffer[received] = \textcolor{charliteral}{'\(\backslash\)0'}; \textcolor{comment}{// Добавляем нулевой терминатор}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00308}00308                 result = std::string(buffer);}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00309}00309                 \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00310}00310             \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00311}00311         \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00312}00312     \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00313}00313 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00314}00314     \textcolor{comment}{// Резервный вариант: читаем побайтно}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00315}00315     \textcolor{keywordflow}{while} (totalReceived < maxSize -\/ 1) \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00316}00316         ssize\_t received = recv(\mbox{\hyperlink{classClientHandler_a754e26f5c7bf63f9419cd127a5591d0c}{clientSocket}}, \&buffer[totalReceived], 1, 0);}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00317}00317 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00318}00318         \textcolor{keywordflow}{if} (received <= 0) \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00319}00319             \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00320}00320         \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00321}00321 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00322}00322 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00323}00323         \textcolor{comment}{// Проверяем наличие различных возможных терминаторов}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00324}00324         \textcolor{keywordflow}{if} (buffer[totalReceived] == \textcolor{charliteral}{'\(\backslash\)0'} ||}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00325}00325             buffer[totalReceived] == \textcolor{charliteral}{'\(\backslash\)n'} ||}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00326}00326             buffer[totalReceived] == \textcolor{charliteral}{'\(\backslash\)r'}) \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00327}00327 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00328}00328             buffer[totalReceived] = \textcolor{charliteral}{'\(\backslash\)0'}; \textcolor{comment}{// Гарантируем нулевой терминатор}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00329}00329             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00330}00330         \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00331}00331 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00332}00332         totalReceived++;}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00333}00333 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00334}00334         \textcolor{comment}{// Если мы получили 4 байта и это «пользователь», считаем, что он завершен}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00335}00335         \textcolor{keywordflow}{if} (totalReceived == 4 \&\& strncmp(buffer, \textcolor{stringliteral}{"{}user"{}}, 4) == 0) \{}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00336}00336             buffer[4] = \textcolor{charliteral}{'\(\backslash\)0'}; \textcolor{comment}{// Добавляем нулевой терминатор}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00337}00337             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00338}00338         \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00339}00339     \}}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00340}00340 }
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00341}00341     result = std::string(buffer);}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00342}00342     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{ClientHandler_8cpp_source_l00343}00343 \}}
+
+\end{DoxyCode}

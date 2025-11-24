@@ -1,0 +1,283 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Программная реализация сетевого сервера: Класс ClientBase</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Программная реализация сетевого сервера<span id="projectnumber">&#160;1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.4 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Поиск','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="#pri-attribs">Закрытые данные</a> &#124;
+<a href="classClientBase-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle"><div class="title">Класс ClientBase</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Класс для работы с базой данных клиентов  
+ <a href="classClientBase.html#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="ClientBase_8h_source.html">ClientBase.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:afdcf228ea73d62cbf2bf1340bcff9362"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientBase.html#afdcf228ea73d62cbf2bf1340bcff9362">ClientBase</a> (const std::string &amp;<a class="el" href="classClientBase.html#ae3b5e132f05d6f41f6cd27bc33113004">filename</a>)</td></tr>
+<tr class="memdesc:afdcf228ea73d62cbf2bf1340bcff9362"><td class="mdescLeft">&#160;</td><td class="mdescRight">Конструктор класса <a class="el" href="classClientBase.html" title="Класс для работы с базой данных клиентов">ClientBase</a>.  <a href="classClientBase.html#afdcf228ea73d62cbf2bf1340bcff9362">Подробнее...</a><br /></td></tr>
+<tr class="separator:afdcf228ea73d62cbf2bf1340bcff9362"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a5278105c04692e4e16bd5564fe9cf7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientBase.html#a7a5278105c04692e4e16bd5564fe9cf7">load</a> ()</td></tr>
+<tr class="memdesc:a7a5278105c04692e4e16bd5564fe9cf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Загрузка базы данных клиентов из файла  <a href="classClientBase.html#a7a5278105c04692e4e16bd5564fe9cf7">Подробнее...</a><br /></td></tr>
+<tr class="separator:a7a5278105c04692e4e16bd5564fe9cf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82e85a3a86240e04c16fbd9c2933d17a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientBase.html#a82e85a3a86240e04c16fbd9c2933d17a">userExists</a> (const std::string &amp;login) const</td></tr>
+<tr class="memdesc:a82e85a3a86240e04c16fbd9c2933d17a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Проверка существования пользователя в базе  <a href="classClientBase.html#a82e85a3a86240e04c16fbd9c2933d17a">Подробнее...</a><br /></td></tr>
+<tr class="separator:a82e85a3a86240e04c16fbd9c2933d17a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afccfa7bb2e5c6f5627d48020852db567"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientBase.html#afccfa7bb2e5c6f5627d48020852db567">getPassword</a> (const std::string &amp;login) const</td></tr>
+<tr class="memdesc:afccfa7bb2e5c6f5627d48020852db567"><td class="mdescLeft">&#160;</td><td class="mdescRight">Получение пароля пользователя  <a href="classClientBase.html#afccfa7bb2e5c6f5627d48020852db567">Подробнее...</a><br /></td></tr>
+<tr class="separator:afccfa7bb2e5c6f5627d48020852db567"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Закрытые данные</h2></td></tr>
+<tr class="memitem:ae3b5e132f05d6f41f6cd27bc33113004"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientBase.html#ae3b5e132f05d6f41f6cd27bc33113004">filename</a></td></tr>
+<tr class="memdesc:ae3b5e132f05d6f41f6cd27bc33113004"><td class="mdescLeft">&#160;</td><td class="mdescRight">Имя файла с базой данных  <a href="classClientBase.html#ae3b5e132f05d6f41f6cd27bc33113004">Подробнее...</a><br /></td></tr>
+<tr class="separator:ae3b5e132f05d6f41f6cd27bc33113004"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3829d09b535261e33ca607864f16f4a6"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientBase.html#a3829d09b535261e33ca607864f16f4a6">clients</a></td></tr>
+<tr class="memdesc:a3829d09b535261e33ca607864f16f4a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Контейнер для хранения клиентов  <a href="classClientBase.html#a3829d09b535261e33ca607864f16f4a6">Подробнее...</a><br /></td></tr>
+<tr class="separator:a3829d09b535261e33ca607864f16f4a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p >Класс для работы с базой данных клиентов </p>
+<dl class="section author"><dt>Автор</dt><dd>Гришин Николай </dd></dl>
+<dl class="section version"><dt>Версия</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Дата</dt><dd>24.11.2025 </dd></dl>
+<dl class="section copyright"><dt>Авторство</dt><dd>ИБСТ ПГУ </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="ClientBase_8h_source.html">ClientBase.h</a> строка <a class="el" href="ClientBase_8h_source.html#l00014">14</a></p>
+</div><h2 class="groupheader">Конструктор(ы)</h2>
+<a id="afdcf228ea73d62cbf2bf1340bcff9362" name="afdcf228ea73d62cbf2bf1340bcff9362"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdcf228ea73d62cbf2bf1340bcff9362">&#9670;&nbsp;</a></span>ClientBase()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ClientBase::ClientBase </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Конструктор класса <a class="el" href="classClientBase.html" title="Класс для работы с базой данных клиентов">ClientBase</a>. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>Имя файла с базой данных клиентов </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="ClientBase_8cpp_source.html">ClientBase.cpp</a> строка <a class="el" href="ClientBase_8cpp_source.html#l00010">10</a></p>
+
+</div>
+</div>
+<h2 class="groupheader">Методы</h2>
+<a id="afccfa7bb2e5c6f5627d48020852db567" name="afccfa7bb2e5c6f5627d48020852db567"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afccfa7bb2e5c6f5627d48020852db567">&#9670;&nbsp;</a></span>getPassword()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string ClientBase::getPassword </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>login</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Получение пароля пользователя </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">login</td><td>Логин пользователя </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Пароль пользователя или пустую строку если пользователь не найден </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="ClientBase_8cpp_source.html">ClientBase.cpp</a> строка <a class="el" href="ClientBase_8cpp_source.html#l00050">50</a></p>
+
+</div>
+</div>
+<a id="a7a5278105c04692e4e16bd5564fe9cf7" name="a7a5278105c04692e4e16bd5564fe9cf7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a5278105c04692e4e16bd5564fe9cf7">&#9670;&nbsp;</a></span>load()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ClientBase::load </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Загрузка базы данных клиентов из файла </p>
+<dl class="section return"><dt>Возвращает</dt><dd>true если загрузка успешна, false в противном случае </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="ClientBase_8cpp_source.html">ClientBase.cpp</a> строка <a class="el" href="ClientBase_8cpp_source.html#l00016">16</a></p>
+
+</div>
+</div>
+<a id="a82e85a3a86240e04c16fbd9c2933d17a" name="a82e85a3a86240e04c16fbd9c2933d17a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82e85a3a86240e04c16fbd9c2933d17a">&#9670;&nbsp;</a></span>userExists()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ClientBase::userExists </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>login</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Проверка существования пользователя в базе </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">login</td><td>Логин пользователя </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true если пользователь существует, false в противном случае </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="ClientBase_8cpp_source.html">ClientBase.cpp</a> строка <a class="el" href="ClientBase_8cpp_source.html#l00041">41</a></p>
+
+</div>
+</div>
+<h2 class="groupheader">Данные класса</h2>
+<a id="a3829d09b535261e33ca607864f16f4a6" name="a3829d09b535261e33ca607864f16f4a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3829d09b535261e33ca607864f16f4a6">&#9670;&nbsp;</a></span>clients</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unordered_map&lt;std::string, std::string&gt; ClientBase::clients</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Контейнер для хранения клиентов </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ClientBase_8h_source.html">ClientBase.h</a> строка <a class="el" href="ClientBase_8h_source.html#l00044">44</a></p>
+
+</div>
+</div>
+<a id="ae3b5e132f05d6f41f6cd27bc33113004" name="ae3b5e132f05d6f41f6cd27bc33113004"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3b5e132f05d6f41f6cd27bc33113004">&#9670;&nbsp;</a></span>filename</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string ClientBase::filename</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Имя файла с базой данных </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ClientBase_8h_source.html">ClientBase.h</a> строка <a class="el" href="ClientBase_8h_source.html#l00043">43</a></p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li><a class="el" href="ClientBase_8h_source.html">ClientBase.h</a></li>
+<li><a class="el" href="ClientBase_8cpp_source.html">ClientBase.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+</small></address>
+</body>
+</html>

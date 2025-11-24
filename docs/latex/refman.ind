@@ -1,0 +1,318 @@
+\begin{theindex}
+
+  \item {$\sim$ClientBaseFixture}
+    \subitem {ClientBaseFixture}, \hyperpage{11}
+  \item {$\sim$Logger}
+    \subitem {Logger}, \hyperpage{23}
+  \item {$\sim$LoggerFixture}
+    \subitem {LoggerFixture}, \hyperpage{28}
+  \item {$\sim$OutputRedirect}
+    \subitem {OutputRedirect}, \hyperpage{29}
+  \item {$\sim$Server}
+    \subitem {Server}, \hyperpage{32}
+
+  \indexspace
+
+  \item {authenticate}
+    \subitem {Authenticator}, \hyperpage{6}
+  \item {authenticateClient}
+    \subitem {ClientHandler}, \hyperpage{13}
+  \item {Authenticator}, \hyperpage{5}
+    \subitem {authenticate}, \hyperpage{6}
+    \subitem {computeSHA1}, \hyperpage{6}
+    \subitem {generateSalt}, \hyperpage{6}
+  \item {Authenticator.cpp}, \hyperpage{39}
+  \item {Authenticator.h}, \hyperpage{40}
+
+  \indexspace
+
+  \item {be64toh}
+    \subitem {ClientHandler.cpp}, \hyperpage{44}
+  \item {buffer}
+    \subitem {OutputRedirect}, \hyperpage{30}
+
+  \indexspace
+
+  \item {cleanup}
+    \subitem {Server}, \hyperpage{32}
+  \item {clear}
+    \subitem {OutputRedirect}, \hyperpage{29}
+  \item {clientAddr}
+    \subitem {ClientHandler}, \hyperpage{18}
+  \item {ClientBase}, \hyperpage{7}
+    \subitem {ClientBase}, \hyperpage{8}
+    \subitem {clients}, \hyperpage{10}
+    \subitem {filename}, \hyperpage{10}
+    \subitem {getPassword}, \hyperpage{8}
+    \subitem {load}, \hyperpage{9}
+    \subitem {userExists}, \hyperpage{9}
+  \item {clientBase}
+    \subitem {ClientHandler}, \hyperpage{18}
+    \subitem {Server}, \hyperpage{33}
+  \item {ClientBase.cpp}, \hyperpage{41}
+  \item {ClientBase.h}, \hyperpage{42}
+  \item {clientBaseFile}
+    \subitem {Server}, \hyperpage{33}
+    \subitem {ServerConfig}, \hyperpage{35}
+  \item {ClientBaseFixture}, \hyperpage{10}
+    \subitem {$\sim$ClientBaseFixture}, \hyperpage{11}
+    \subitem {ClientBaseFixture}, \hyperpage{10}
+    \subitem {testFilename}, \hyperpage{11}
+  \item {ClientHandler}, \hyperpage{11}
+    \subitem {authenticateClient}, \hyperpage{13}
+    \subitem {clientAddr}, \hyperpage{18}
+    \subitem {clientBase}, \hyperpage{18}
+    \subitem {ClientHandler}, \hyperpage{13}
+    \subitem {clientSocket}, \hyperpage{18}
+    \subitem {handle}, \hyperpage{13}
+    \subitem {logger}, \hyperpage{18}
+    \subitem {receiveData}, \hyperpage{14}
+    \subitem {receiveString}, \hyperpage{14}
+    \subitem {receiveVectorsAndProcess}, \hyperpage{15}
+    \subitem {sendData}, \hyperpage{16}
+    \subitem {sendMessage}, \hyperpage{17}
+    \subitem {sendSalt}, \hyperpage{17}
+  \item {ClientHandler.cpp}, \hyperpage{44}
+    \subitem {be64toh}, \hyperpage{44}
+    \subitem {htobe64}, \hyperpage{44}
+  \item {ClientHandler.h}, \hyperpage{48}
+  \item {clients}
+    \subitem {ClientBase}, \hyperpage{10}
+  \item {clientSocket}
+    \subitem {ClientHandler}, \hyperpage{18}
+  \item {CommandLineParser}, \hyperpage{19}
+    \subitem {CommandLineParser}, \hyperpage{20}
+    \subitem {config}, \hyperpage{21}
+    \subitem {getConfig}, \hyperpage{20}
+    \subitem {getHelp}, \hyperpage{20}
+    \subitem {helpText}, \hyperpage{21}
+    \subitem {parse}, \hyperpage{21}
+  \item {CommandLineParser.cpp}, \hyperpage{49}
+  \item {CommandLineParser.h}, \hyperpage{51}
+  \item {computeProduct}
+    \subitem {VectorCalculator}, \hyperpage{37}
+  \item {computeSHA1}
+    \subitem {Authenticator}, \hyperpage{6}
+  \item {config}
+    \subitem {CommandLineParser}, \hyperpage{21}
+
+  \indexspace
+
+  \item {ERROR}
+    \subitem {Logger.h}, \hyperpage{55}
+  \item {error}
+    \subitem {Logger}, \hyperpage{24}
+
+  \indexspace
+
+  \item {filename}
+    \subitem {ClientBase}, \hyperpage{10}
+
+  \indexspace
+
+  \item {generateSalt}
+    \subitem {Authenticator}, \hyperpage{6}
+  \item {getConfig}
+    \subitem {CommandLineParser}, \hyperpage{20}
+  \item {getCurrentTime}
+    \subitem {Logger}, \hyperpage{24}
+  \item {getHelp}
+    \subitem {CommandLineParser}, \hyperpage{20}
+  \item {getOutput}
+    \subitem {OutputRedirect}, \hyperpage{29}
+  \item {getPassword}
+    \subitem {ClientBase}, \hyperpage{8}
+
+  \indexspace
+
+  \item {handle}
+    \subitem {ClientHandler}, \hyperpage{13}
+  \item {helpText}
+    \subitem {CommandLineParser}, \hyperpage{21}
+  \item {htobe64}
+    \subitem {ClientHandler.cpp}, \hyperpage{44}
+
+  \indexspace
+
+  \item {INFO}
+    \subitem {Logger.h}, \hyperpage{55}
+  \item {info}
+    \subitem {Logger}, \hyperpage{24}
+  \item {initialize}
+    \subitem {Server}, \hyperpage{32}
+
+  \indexspace
+
+  \item {levelToString}
+    \subitem {Logger}, \hyperpage{25}
+  \item {load}
+    \subitem {ClientBase}, \hyperpage{9}
+  \item {log}
+    \subitem {Logger}, \hyperpage{25}
+  \item {logFile}
+    \subitem {Logger}, \hyperpage{27}
+    \subitem {Server}, \hyperpage{34}
+    \subitem {ServerConfig}, \hyperpage{35}
+  \item {Logger}, \hyperpage{22}
+    \subitem {$\sim$Logger}, \hyperpage{23}
+    \subitem {error}, \hyperpage{24}
+    \subitem {getCurrentTime}, \hyperpage{24}
+    \subitem {info}, \hyperpage{24}
+    \subitem {levelToString}, \hyperpage{25}
+    \subitem {log}, \hyperpage{25}
+    \subitem {logFile}, \hyperpage{27}
+    \subitem {Logger}, \hyperpage{23}
+    \subitem {logMutex}, \hyperpage{27}
+    \subitem {warning}, \hyperpage{25}
+  \item {logger}
+    \subitem {ClientHandler}, \hyperpage{18}
+    \subitem {Server}, \hyperpage{34}
+  \item {Logger.cpp}, \hyperpage{52}
+  \item {Logger.h}, \hyperpage{54}
+    \subitem {ERROR}, \hyperpage{55}
+    \subitem {INFO}, \hyperpage{55}
+    \subitem {LogLevel}, \hyperpage{55}
+    \subitem {WARNING}, \hyperpage{55}
+  \item {LoggerFixture}, \hyperpage{27}
+    \subitem {$\sim$LoggerFixture}, \hyperpage{28}
+    \subitem {LoggerFixture}, \hyperpage{28}
+    \subitem {readLogFile}, \hyperpage{28}
+    \subitem {testLogFile}, \hyperpage{28}
+  \item {LogLevel}
+    \subitem {Logger.h}, \hyperpage{55}
+  \item {logMutex}
+    \subitem {Logger}, \hyperpage{27}
+
+  \indexspace
+
+  \item {main}
+    \subitem {main.cpp}, \hyperpage{56}
+    \subitem {test\_main.cpp}, \hyperpage{69}
+  \item {main.cpp}, \hyperpage{56}
+    \subitem {main}, \hyperpage{56}
+    \subitem {server}, \hyperpage{57}
+    \subitem {signalHandler}, \hyperpage{57}
+
+  \indexspace
+
+  \item {old\_cerr}
+    \subitem {OutputRedirect}, \hyperpage{30}
+  \item {old\_cout}
+    \subitem {OutputRedirect}, \hyperpage{30}
+  \item {OutputRedirect}, \hyperpage{29}
+    \subitem {$\sim$OutputRedirect}, \hyperpage{29}
+    \subitem {buffer}, \hyperpage{30}
+    \subitem {clear}, \hyperpage{29}
+    \subitem {getOutput}, \hyperpage{29}
+    \subitem {old\_cerr}, \hyperpage{30}
+    \subitem {old\_cout}, \hyperpage{30}
+    \subitem {OutputRedirect}, \hyperpage{29}
+
+  \indexspace
+
+  \item {parse}
+    \subitem {CommandLineParser}, \hyperpage{21}
+  \item {port}
+    \subitem {Server}, \hyperpage{34}
+    \subitem {ServerConfig}, \hyperpage{36}
+
+  \indexspace
+
+  \item {readLogFile}
+    \subitem {LoggerFixture}, \hyperpage{28}
+  \item {receiveData}
+    \subitem {ClientHandler}, \hyperpage{14}
+  \item {receiveString}
+    \subitem {ClientHandler}, \hyperpage{14}
+  \item {receiveVectorsAndProcess}
+    \subitem {ClientHandler}, \hyperpage{15}
+  \item {run}
+    \subitem {Server}, \hyperpage{33}
+  \item {running}
+    \subitem {Server}, \hyperpage{34}
+
+  \indexspace
+
+  \item {sendData}
+    \subitem {ClientHandler}, \hyperpage{16}
+  \item {sendMessage}
+    \subitem {ClientHandler}, \hyperpage{17}
+  \item {sendSalt}
+    \subitem {ClientHandler}, \hyperpage{17}
+  \item {Server}, \hyperpage{30}
+    \subitem {$\sim$Server}, \hyperpage{32}
+    \subitem {cleanup}, \hyperpage{32}
+    \subitem {clientBase}, \hyperpage{33}
+    \subitem {clientBaseFile}, \hyperpage{33}
+    \subitem {initialize}, \hyperpage{32}
+    \subitem {logFile}, \hyperpage{34}
+    \subitem {logger}, \hyperpage{34}
+    \subitem {port}, \hyperpage{34}
+    \subitem {run}, \hyperpage{33}
+    \subitem {running}, \hyperpage{34}
+    \subitem {Server}, \hyperpage{32}
+    \subitem {serverSocket}, \hyperpage{34}
+    \subitem {stop}, \hyperpage{33}
+  \item {server}
+    \subitem {main.cpp}, \hyperpage{57}
+  \item {Server.cpp}, \hyperpage{58}
+  \item {Server.h}, \hyperpage{60}
+  \item {ServerConfig}, \hyperpage{35}
+    \subitem {clientBaseFile}, \hyperpage{35}
+    \subitem {logFile}, \hyperpage{35}
+    \subitem {port}, \hyperpage{36}
+  \item {serverSocket}
+    \subitem {Server}, \hyperpage{34}
+  \item {signalHandler}
+    \subitem {main.cpp}, \hyperpage{57}
+  \item {stop}
+    \subitem {Server}, \hyperpage{33}
+  \item {SUITE}
+    \subitem {Test\_Authenticator.cpp}, \hyperpage{62}
+    \subitem {Test\_ClientBase.cpp}, \hyperpage{63}
+    \subitem {Test\_CommandLineParser.cpp}, \hyperpage{65}
+    \subitem {Test\_Logger.cpp}, \hyperpage{67}
+    \subitem {Test\_ServerIntegration.cpp}, \hyperpage{70}
+    \subitem {Test\_VectorCalculator.cpp}, \hyperpage{71}
+
+  \indexspace
+
+  \item {Test\_Authenticator.cpp}, \hyperpage{61}
+    \subitem {SUITE}, \hyperpage{62}
+  \item {Test\_ClientBase.cpp}, \hyperpage{62}
+    \subitem {SUITE}, \hyperpage{63}
+  \item {Test\_CommandLineParser.cpp}, \hyperpage{64}
+    \subitem {SUITE}, \hyperpage{65}
+  \item {Test\_Logger.cpp}, \hyperpage{67}
+    \subitem {SUITE}, \hyperpage{67}
+  \item {test\_main.cpp}, \hyperpage{69}
+    \subitem {main}, \hyperpage{69}
+  \item {Test\_ServerIntegration.cpp}, \hyperpage{70}
+    \subitem {SUITE}, \hyperpage{70}
+  \item {Test\_VectorCalculator.cpp}, \hyperpage{71}
+    \subitem {SUITE}, \hyperpage{71}
+  \item {testFilename}
+    \subitem {ClientBaseFixture}, \hyperpage{11}
+  \item {testLogFile}
+    \subitem {LoggerFixture}, \hyperpage{28}
+
+  \indexspace
+
+  \item {userExists}
+    \subitem {ClientBase}, \hyperpage{9}
+
+  \indexspace
+
+  \item {VectorCalculator}, \hyperpage{36}
+    \subitem {computeProduct}, \hyperpage{37}
+  \item {VectorCalculator.cpp}, \hyperpage{72}
+  \item {VectorCalculator.h}, \hyperpage{73}
+
+  \indexspace
+
+  \item {WARNING}
+    \subitem {Logger.h}, \hyperpage{55}
+  \item {warning}
+    \subitem {Logger}, \hyperpage{25}
+
+\end{theindex}

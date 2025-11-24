@@ -4,6 +4,9 @@
 #include <string>
 #include <cstring>
 
+/**
+ * @brief Конструктор класса CommandLineParser
+ */
 CommandLineParser::CommandLineParser() {
     config.port = 0;
     config.clientBaseFile = "";
@@ -19,6 +22,12 @@ CommandLineParser::CommandLineParser() {
     helpText = oss.str();
 }
 
+/**
+ * @brief Разбор аргументов командной строки
+ * @param argc Количество аргументов
+ * @param argv Массив аргументов
+ * @return true если разбор успешен, false в противном случае
+ */
 bool CommandLineParser::parse(int argc, char* argv[]) {
     // Всегда сбрасываем конфиг перед парсингом
     config.port = 0;
@@ -75,6 +84,7 @@ bool CommandLineParser::parse(int argc, char* argv[]) {
         return false;
     }
 
+    // Проверяем значение порта
     if (config.port < 1 || config.port > 65535) {
         std::cerr << "Error: Port must be between 1 and 65535\n";
         return false;
@@ -83,6 +93,10 @@ bool CommandLineParser::parse(int argc, char* argv[]) {
     return true;
 }
 
+/**
+ * @brief Получение текста справки
+ * @return Строка с текстом справки
+ */
 std::string CommandLineParser::getHelp() const {
     return helpText;
 }

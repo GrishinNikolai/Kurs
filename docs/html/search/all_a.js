@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['old_5fcerr_0',['old_cerr',['../classOutputRedirect.html#aa3e9a573c398dff067593c4ef6e48072',1,'OutputRedirect']]],
-  ['old_5fcout_1',['old_cout',['../classOutputRedirect.html#a70cc86532af8a59f5f26136e4426871c',1,'OutputRedirect']]],
-  ['outputredirect_2',['OutputRedirect',['../classOutputRedirect.html',1,'OutputRedirect'],['../classOutputRedirect.html#ab5bffd97bd6bf577870895729fd48ade',1,'OutputRedirect::OutputRedirect()']]]
+  ['parse_0',['parse',['../classCommandLineParser.html#a7d350b3f4481bf7e2595b4b737c9909a',1,'CommandLineParser']]],
+  ['port_1',['port',['../classServer.html#a926c9dae229a62b6d33fdbb41dca6d82',1,'Server::port()'],['../structServerConfig.html#ae459946703124ef5a1d98dba38a8b493',1,'ServerConfig::port()']]]
 ];

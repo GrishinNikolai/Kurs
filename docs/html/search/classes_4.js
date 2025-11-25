@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['server_0',['Server',['../classServer.html',1,'']]],
-  ['serverconfig_1',['ServerConfig',['../structServerConfig.html',1,'']]]
+  ['vectorcalculator_0',['VectorCalculator',['../classVectorCalculator.html',1,'']]]
 ];

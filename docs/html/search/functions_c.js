@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['userexists_0',['userExists',['../classClientBase.html#a82e85a3a86240e04c16fbd9c2933d17a',1,'ClientBase']]]
+  ['warning_0',['warning',['../classLogger.html#a5164af2f632902fa3c477d5c0cb463f7',1,'Logger']]]
 ];

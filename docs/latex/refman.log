@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2025.11.25)  25 NOV 2025 01:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2025.11.25)  25 NOV 2025 15:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1124,9 +1124,6 @@ LaTeX Font Info:    Trying to load font information for U+wasy on input line 17
 (/usr/share/texlive/texmf-dist/tex/latex/wasysym/uwasy.fd
 File: uwasy.fd 2020/01/19 v2.4 Wasy-2 symbol font definitions
 ) [1] [2] [3] [4]
-[5] [6
-
-]
 Package hyperref Info: Option `pageanchor' set `true' on input line 178.
 
 {\cyrillictext \CYRG \cyrl \cyra \cyrv \cyra } 1.
@@ -1135,6 +1132,7 @@ LaTeX Font Warning: Font shape `T2A/phv/bc/n' undefined
 (Font)              using `T2A/phv/m/n' instead on input line 180.
 
 (./annotated.tex) [1
+
 
 ]
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
@@ -1242,19 +1240,18 @@ Underfull \hbox (badness 10000) detected at line 130
 [][][]
  []
 
-[9]) (./structClientBaseFixture.tex [10]) (./classClientHandler.tex <./classCli
-entHandler__coll__graph.pdf
+[9]) (./classClientHandler.tex <./classClientHandler__coll__graph.pdf
 
 pdfTeX warning: pdflatex (file ./classClientHandler__coll__graph.pdf): PDF incl
 usion: multiple pdfs with page group included in a single page
 >
-<classClientHandler__coll__graph.pdf, id=1239, 218.8175pt x 167.62625pt>
+<classClientHandler__coll__graph.pdf, id=895, 218.8175pt x 167.62625pt>
 File: classClientHandler__coll__graph.pdf Graphic file (type pdf)
 <use classClientHandler__coll__graph.pdf>
 Package pdftex.def Info: classClientHandler__coll__graph.pdf  used on input lin
 e 19.
 (pdftex.def)             Requested size: 218.0pt x 167.00172pt.
- [11]
+ [10]
 Underfull \hbox (badness 10000) detected at line 62
 [][][]
  []
@@ -1274,12 +1271,12 @@ Underfull \hbox (badness 10000) detected at line 71
 [][][]
  []
 
-[12]
+[11]
 Underfull \hbox (badness 10000) detected at line 121
 [][][]
  []
 
-[13]
+[12]
 Underfull \hbox (badness 10000) detected at line 172
 [][][]
  []
@@ -1289,7 +1286,7 @@ Underfull \hbox (badness 10000) detected at line 182
 [][][]
  []
 
-[14]
+[13]
 Underfull \hbox (badness 10000) detected at line 206
 [][][]
  []
@@ -1304,7 +1301,7 @@ Underfull \hbox (badness 10000) detected at line 241
 [][][]
  []
 
-[15]
+[14]
 Underfull \hbox (badness 10000) detected at line 279
 [][][]
  []
@@ -1314,7 +1311,7 @@ Underfull \hbox (badness 10000) detected at line 289
 [][][]
  []
 
-[16]
+[15]
 Underfull \hbox (badness 10000) detected at line 311
 [][][]
  []
@@ -1329,7 +1326,7 @@ Underfull \hbox (badness 10000) detected at line 322
 [][][]
  []
 
-[17]
+[16]
 Underfull \hbox (badness 10000) detected at line 344
 [][][]
  []
@@ -1344,19 +1341,19 @@ Underfull \hbox (badness 10000) detected at line 355
 [][][]
  []
 
-) (./classCommandLineParser.tex [18] <./classCommandLineParser__coll__graph.pdf
+) (./classCommandLineParser.tex [17] <./classCommandLineParser__coll__graph.pdf
 
 
 pdfTeX warning: pdflatex (file ./classCommandLineParser__coll__graph.pdf): PDF 
 inclusion: multiple pdfs with page group included in a single page
 >
-<classCommandLineParser__coll__graph.pdf, id=1395, 197.73875pt x 167.62625pt>
+<classCommandLineParser__coll__graph.pdf, id=1050, 197.73875pt x 167.62625pt>
 File: classCommandLineParser__coll__graph.pdf Graphic file (type pdf)
 <use classCommandLineParser__coll__graph.pdf>
 Package pdftex.def Info: classCommandLineParser__coll__graph.pdf  used on input
  line 19.
 (pdftex.def)             Requested size: 197.0pt x 167.00172pt.
- [19]
+ [18]
 Underfull \hbox (badness 10000) detected at line 45
 [][][]
  []
@@ -1386,17 +1383,17 @@ Underfull \hbox (badness 10000) detected at line 108
 [][][]
  []
 
-[20]
+[19]
 Underfull \hbox (badness 10000) detected at line 132
 [][][]
  []
 
-[21]) (./classLogger.tex
+[20]) (./classLogger.tex
 Underfull \hbox (badness 10000) detected at line 46
 [][][]
  []
 
-[22]
+[21]
 Underfull \hbox (badness 10000) detected at line 49
 [][][]
  []
@@ -1411,18 +1408,17 @@ Underfull \hbox (badness 10000) detected at line 55
 [][][]
  []
 
-[23]
+[22]
 Underfull \hbox (badness 10000) detected at line 135
 [][][]
  []
 
-[24]
+[23]
 Underfull \hbox (badness 10000) detected at line 176
 [][][]
  []
 
-[25] [26]) (./structLoggerFixture.tex [27]) (./classOutputRedirect.tex [28]
-[29]) (./classServer.tex [30]
+[24] [25]) (./classServer.tex [26]
 Underfull \hbox (badness 10000) detected at line 52
 [][][]
  []
@@ -1442,12 +1438,13 @@ Underfull \hbox (badness 10000) detected at line 61
 [][][]
  []
 
-[31]
+[27]
 Underfull \hbox (badness 10000) detected at line 135
 [][][]
  []
 
-[32] [33]) (./structServerConfig.tex [34] [35]) (./classVectorCalculator.tex
+[28] [29]) (./structServerConfig.tex [30]) (./classVectorCalculator.tex
+[31]
 Underfull \hbox (badness 10000) detected at line 22
 [][][]
  []
@@ -1467,7 +1464,7 @@ Underfull \hbox (badness 10000) detected at line 31
 [][][]
  []
 
-[36]
+[32]
 Underfull \hbox (badness 10000) detected at line 56
 [][][]
  []
@@ -1477,7 +1474,7 @@ Underfull \hbox (badness 10000) detected at line 59
 [][][]
  []
 
-) [37] [38
+) [33] [34
 
 ]
 {\cyrillictext \CYRG \cyrl \cyra \cyrv \cyra } 4.
@@ -1486,14 +1483,14 @@ Underfull \hbox (badness 10000) detected at line 59
 pdfTeX warning: pdflatex (file ./Authenticator_8cpp__incl.pdf): PDF inclusion: 
 multiple pdfs with page group included in a single page
 >
-<Authenticator_8cpp__incl.pdf, id=1813, 598.235pt x 212.795pt>
+<Authenticator_8cpp__incl.pdf, id=1386, 598.235pt x 212.795pt>
 File: Authenticator_8cpp__incl.pdf Graphic file (type pdf)
 <use Authenticator_8cpp__incl.pdf>
 Package pdftex.def Info: Authenticator_8cpp__incl.pdf  used on input line 15.
 (pdftex.def)             Requested size: 350.0pt x 124.49918pt.
-) (./Authenticator_8cpp_source.tex [39]) (./Authenticator_8h.tex <./Authenticat
+) (./Authenticator_8cpp_source.tex [35]) (./Authenticator_8h.tex <./Authenticat
 or_8h__incl.pdf>
-<Authenticator_8h__incl.pdf, id=1851, 598.235pt x 156.585pt>
+<Authenticator_8h__incl.pdf, id=1424, 598.235pt x 156.585pt>
 File: Authenticator_8h__incl.pdf Graphic file (type pdf)
 <use Authenticator_8h__incl.pdf>
 Package pdftex.def Info: Authenticator_8h__incl.pdf  used on input line 15.
@@ -1503,51 +1500,47 @@ Package pdftex.def Info: Authenticator_8h__incl.pdf  used on input line 15.
 pdfTeX warning: pdflatex (file ./Authenticator_8h__dep__incl.pdf): PDF inclusio
 n: multiple pdfs with page group included in a single page
 >
-<Authenticator_8h__dep__incl.pdf, id=1859, 604.2575pt x 269.005pt>
+<Authenticator_8h__dep__incl.pdf, id=1432, 368.37625pt x 269.005pt>
 File: Authenticator_8h__dep__incl.pdf Graphic file (type pdf)
 <use Authenticator_8h__dep__incl.pdf>
 Package pdftex.def Info: Authenticator_8h__dep__incl.pdf  used on input line 23
 .
-(pdftex.def)             Requested size: 350.0pt x 155.81366pt.
- [40]) (./Authenticator_8h_source.tex) (./ClientBase_8cpp.tex <./ClientBase_8cp
+(pdftex.def)             Requested size: 350.0pt x 255.58202pt.
+ [36]) (./Authenticator_8h_source.tex) (./ClientBase_8cpp.tex <./ClientBase_8cp
 p__incl.pdf>
-<ClientBase_8cpp__incl.pdf, id=1914, 411.5375pt x 212.795pt>
+<ClientBase_8cpp__incl.pdf, id=1487, 411.5375pt x 212.795pt>
 File: ClientBase_8cpp__incl.pdf Graphic file (type pdf)
 <use ClientBase_8cpp__incl.pdf>
 Package pdftex.def Info: ClientBase_8cpp__incl.pdf  used on input line 12.
 (pdftex.def)             Requested size: 350.0pt x 180.97725pt.
-) (./ClientBase_8cpp_source.tex [41]) (./ClientBase_8h.tex <./ClientBase_8h__in
+) (./ClientBase_8cpp_source.tex [37]) (./ClientBase_8h.tex <./ClientBase_8h__in
 cl.pdf>
-<ClientBase_8h__incl.pdf, id=1966, 236.885pt x 156.585pt>
+<ClientBase_8h__incl.pdf, id=1539, 236.885pt x 156.585pt>
 File: ClientBase_8h__incl.pdf Graphic file (type pdf)
 <use ClientBase_8h__incl.pdf>
 Package pdftex.def Info: ClientBase_8h__incl.pdf  used on input line 10.
 (pdftex.def)             Requested size: 236.0pt x 156.004pt.
- [42] <./ClientBase_8h__dep__incl.pdf>
-<ClientBase_8h__dep__incl.pdf, id=2012, 616.3025pt x 269.005pt>
+ [38] <./ClientBase_8h__dep__incl.pdf>
+<ClientBase_8h__dep__incl.pdf, id=1585, 382.42876pt x 269.005pt>
 File: ClientBase_8h__dep__incl.pdf Graphic file (type pdf)
 <use ClientBase_8h__dep__incl.pdf>
 Package pdftex.def Info: ClientBase_8h__dep__incl.pdf  used on input line 18.
-(pdftex.def)             Requested size: 350.0pt x 152.7721pt.
+(pdftex.def)             Requested size: 350.0pt x 246.20692pt.
 )
-(./ClientBase_8h_source.tex) (./ClientHandler_8cpp.tex <./ClientHandler_8cpp__i
-ncl.pdf
-
-pdfTeX warning: pdflatex (file ./ClientHandler_8cpp__incl.pdf): PDF inclusion: 
-multiple pdfs with page group included in a single page
->
-<ClientHandler_8cpp__incl.pdf, id=2033, 1132.23pt x 269.005pt>
+(./ClientBase_8h_source.tex [39]) (./ClientHandler_8cpp.tex <./ClientHandler_8c
+pp__incl.pdf>
+<ClientHandler_8cpp__incl.pdf, id=1620, 1132.23pt x 269.005pt>
 File: ClientHandler_8cpp__incl.pdf Graphic file (type pdf)
 <use ClientHandler_8cpp__incl.pdf>
 Package pdftex.def Info: ClientHandler_8cpp__incl.pdf  used on input line 13.
 (pdftex.def)             Requested size: 350.0pt x 83.1526pt.
- [43]) (./ClientHandler_8cpp_source.tex [44] [45] [46] [47])
+) (./ClientHandler_8cpp_source.tex [40] [41] [42] [43])
 (./ClientHandler_8h.tex <./ClientHandler_8h__incl.pdf
 
 pdfTeX warning: pdflatex (file ./ClientHandler_8h__incl.pdf): PDF inclusion: mu
 ltiple pdfs with page group included in a single page
 >
-<ClientHandler_8h__incl.pdf, id=2445, 1439.3775pt x 212.795pt>
+<ClientHandler_8h__incl.pdf, id=2004, 1439.3775pt x 212.795pt>
 File: ClientHandler_8h__incl.pdf Graphic file (type pdf)
 <use ClientHandler_8h__incl.pdf>
 Package pdftex.def Info: ClientHandler_8h__incl.pdf  used on input line 17.
@@ -1557,65 +1550,73 @@ Package pdftex.def Info: ClientHandler_8h__incl.pdf  used on input line 17.
 pdfTeX warning: pdflatex (file ./ClientHandler_8h__dep__incl.pdf): PDF inclusio
 n: multiple pdfs with page group included in a single page
 >
-<ClientHandler_8h__dep__incl.pdf, id=2453, 303.1325pt x 212.795pt>
+<ClientHandler_8h__dep__incl.pdf, id=2012, 303.1325pt x 212.795pt>
 File: ClientHandler_8h__dep__incl.pdf Graphic file (type pdf)
 <use ClientHandler_8h__dep__incl.pdf>
 Package pdftex.def Info: ClientHandler_8h__dep__incl.pdf  used on input line 25
 .
 (pdftex.def)             Requested size: 302.0pt x 212.0022pt.
- [48]) (./ClientHandler_8h_source.tex) (./CommandLineParser_8cpp.tex <./Command
-LineParser_8cpp__incl.pdf>
-<CommandLineParser_8cpp__incl.pdf, id=2521, 465.74pt x 212.795pt>
+ [44]) (./ClientHandler_8h_source.tex) (./CommandLineParser_8cpp.tex [45] <./Co
+mmandLineParser_8cpp__incl.pdf>
+<CommandLineParser_8cpp__incl.pdf, id=2132, 465.74pt x 212.795pt>
 File: CommandLineParser_8cpp__incl.pdf Graphic file (type pdf)
 <use CommandLineParser_8cpp__incl.pdf>
 Package pdftex.def Info: CommandLineParser_8cpp__incl.pdf  used on input line 1
 3.
 (pdftex.def)             Requested size: 350.0pt x 159.92053pt.
-) (./CommandLineParser_8cpp_source.tex [49] [50])
+) (./CommandLineParser_8cpp_source.tex [46])
 (./CommandLineParser_8h.tex <./CommandLineParser_8h__incl.pdf>
-<CommandLineParser_8h__incl.pdf, id=2669, 205.76875pt x 156.585pt>
+<CommandLineParser_8h__incl.pdf, id=2222, 205.76875pt x 156.585pt>
 File: CommandLineParser_8h__incl.pdf Graphic file (type pdf)
 <use CommandLineParser_8h__incl.pdf>
 Package pdftex.def Info: CommandLineParser_8h__incl.pdf  used on input line 9.
 (pdftex.def)             Requested size: 205.0pt x 156.00162pt.
- <./CommandLineParser_8h__dep__incl.pdf
+ [47] <./CommandLineParser_8h__dep__incl.pdf
 
 pdfTeX warning: pdflatex (file ./CommandLineParser_8h__dep__incl.pdf): PDF incl
 usion: multiple pdfs with page group included in a single page
 >
-<CommandLineParser_8h__dep__incl.pdf, id=2677, 478.78876pt x 156.585pt>
+<CommandLineParser_8h__dep__incl.pdf, id=2291, 299.1175pt x 156.585pt>
 File: CommandLineParser_8h__dep__incl.pdf Graphic file (type pdf)
 <use CommandLineParser_8h__dep__incl.pdf>
 Package pdftex.def Info: CommandLineParser_8h__dep__incl.pdf  used on input lin
 e 17.
-(pdftex.def)             Requested size: 350.0pt x 114.46617pt.
- [51]) (./CommandLineParser_8h_source.tex) (./Logger_8cpp.tex <./Logger_8cpp__i
+(pdftex.def)             Requested size: 298.0pt x 156.01117pt.
+) (./CommandLineParser_8h_source.tex [48]) (./Logger_8cpp.tex <./Logger_8cpp__i
 ncl.pdf>
-<Logger_8cpp__incl.pdf, id=2752, 560.0925pt x 212.795pt>
+<Logger_8cpp__incl.pdf, id=2337, 560.0925pt x 212.795pt>
 File: Logger_8cpp__incl.pdf Graphic file (type pdf)
 <use Logger_8cpp__incl.pdf>
 Package pdftex.def Info: Logger_8cpp__incl.pdf  used on input line 11.
 (pdftex.def)             Requested size: 350.0pt x 132.9803pt.
-) (./Logger_8cpp_source.tex [52]) (./Logger_8h.tex <./Logger_8h__incl.pdf>
-<Logger_8h__incl.pdf, id=2813, 560.0925pt x 156.585pt>
+) (./Logger_8cpp_source.tex [49]) (./Logger_8h.tex <./Logger_8h__incl.pdf>
+<Logger_8h__incl.pdf, id=2414, 560.0925pt x 156.585pt>
 File: Logger_8h__incl.pdf Graphic file (type pdf)
 <use Logger_8h__incl.pdf>
 Package pdftex.def Info: Logger_8h__incl.pdf  used on input line 15.
 (pdftex.def)             Requested size: 350.0pt x 97.85342pt.
- [53] <./Logger_8h__dep__incl.pdf>
-<Logger_8h__dep__incl.pdf, id=2883, 441.65pt x 269.005pt>
+ <./Logger_8h__dep__incl.pdf
+
+pdfTeX warning: pdflatex (file ./Logger_8h__dep__incl.pdf): PDF inclusion: mult
+iple pdfs with page group included in a single page
+>
+<Logger_8h__dep__incl.pdf, id=2422, 328.22626pt x 269.005pt>
 File: Logger_8h__dep__incl.pdf Graphic file (type pdf)
 <use Logger_8h__dep__incl.pdf>
 Package pdftex.def Info: Logger_8h__dep__incl.pdf  used on input line 23.
-(pdftex.def)             Requested size: 350.0pt x 213.193pt.
- [54]) (./Logger_8h_source.tex)
-(./main_8cpp.tex <./main_8cpp__incl.pdf>
-<main_8cpp__incl.pdf, id=2939, 1230.5975pt x 325.215pt>
+(pdftex.def)             Requested size: 327.0pt x 268.00278pt.
+ [50]
+Overfull \vbox (6.0034pt too high) has occurred while \output is active []
+
+
+[51]) (./Logger_8h_source.tex) (./main_8cpp.tex <./main_8cpp__incl.pdf>
+<main_8cpp__incl.pdf, id=2518, 1230.5975pt x 325.215pt>
 File: main_8cpp__incl.pdf Graphic file (type pdf)
 <use main_8cpp__incl.pdf>
 Package pdftex.def Info: main_8cpp__incl.pdf  used on input line 13.
 (pdftex.def)             Requested size: 350.0pt x 92.4937pt.
- [55] [56]
+
+[52]
 Underfull \hbox (badness 10000) detected at line 48
 [][][]
  []
@@ -1640,113 +1641,45 @@ Underfull \hbox (badness 10000) detected at line 60
 [][][]
  []
 
-) (./main_8cpp_source.tex [57]) (./Server_8cpp.tex <./Server_8cpp__incl.pdf
+[53]) (./main_8cpp_source.tex [54]) (./Server_8cpp.tex <./Server_8cpp__incl.pdf
+
 
 pdfTeX warning: pdflatex (file ./Server_8cpp__incl.pdf): PDF inclusion: multipl
 e pdfs with page group included in a single page
 >
-<Server_8cpp__incl.pdf, id=3043, 1247.66125pt x 325.215pt>
+<Server_8cpp__incl.pdf, id=2653, 1247.66125pt x 325.215pt>
 File: Server_8cpp__incl.pdf Graphic file (type pdf)
 <use Server_8cpp__incl.pdf>
 Package pdftex.def Info: Server_8cpp__incl.pdf  used on input line 12.
 (pdftex.def)             Requested size: 350.0pt x 91.22829pt.
-) (./Server_8cpp_source.tex [58] [59]) (./Server_8h.tex <./Server_8h__incl.pdf
-
-pdfTeX warning: pdflatex (file ./Server_8h__incl.pdf): PDF inclusion: multiple 
-pdfs with page group included in a single page
->
-<Server_8h__incl.pdf, id=3236, 1239.63126pt x 269.005pt>
+) (./Server_8cpp_source.tex [55]) (./Server_8h.tex <./Server_8h__incl.pdf>
+<Server_8h__incl.pdf, id=2762, 1239.63126pt x 269.005pt>
 File: Server_8h__incl.pdf Graphic file (type pdf)
 <use Server_8h__incl.pdf>
 Package pdftex.def Info: Server_8h__incl.pdf  used on input line 17.
 (pdftex.def)             Requested size: 350.0pt x 75.9489pt.
- <./Server_8h__dep__incl.pdf
+
+[56] <./Server_8h__dep__incl.pdf
 
 pdfTeX warning: pdflatex (file ./Server_8h__dep__incl.pdf): PDF inclusion: mult
 iple pdfs with page group included in a single page
 >
-<Server_8h__dep__incl.pdf, id=3244, 228.855pt x 156.585pt>
+<Server_8h__dep__incl.pdf, id=2838, 228.855pt x 156.585pt>
 File: Server_8h__dep__incl.pdf Graphic file (type pdf)
 <use Server_8h__dep__incl.pdf>
 Package pdftex.def Info: Server_8h__dep__incl.pdf  used on input line 25.
 (pdftex.def)             Requested size: 228.0pt x 156.0064pt.
-) (./Server_8h_source.tex [60]) (./Test__Authenticator_8cpp.tex <./Test__Authen
-ticator_8cpp__incl.pdf>
-<Test__Authenticator_8cpp__incl.pdf, id=3307, 598.235pt x 212.795pt>
-File: Test__Authenticator_8cpp__incl.pdf Graphic file (type pdf)
-<use Test__Authenticator_8cpp__incl.pdf>
-Package pdftex.def Info: Test__Authenticator_8cpp__incl.pdf  used on input line
- 10.
-(pdftex.def)             Requested size: 350.0pt x 124.49918pt.
- [61]) (./Test__Authenticator_8cpp_source.tex)
-(./Test__ClientBase_8cpp.tex <./Test__ClientBase_8cpp__incl.pdf>
-<Test__ClientBase_8cpp__incl.pdf, id=3366, 392.46625pt x 212.795pt>
-File: Test__ClientBase_8cpp__incl.pdf Graphic file (type pdf)
-<use Test__ClientBase_8cpp__incl.pdf>
-Package pdftex.def Info: Test__ClientBase_8cpp__incl.pdf  used on input line 11
-.
-(pdftex.def)             Requested size: 350.0pt x 189.78307pt.
- [62])
-(./Test__ClientBase_8cpp_source.tex [63]) (./Test__CommandLineParser_8cpp.tex <
-./Test__CommandLineParser_8cpp__incl.pdf>
-<Test__CommandLineParser_8cpp__incl.pdf, id=3478, 587.19376pt x 212.795pt>
-File: Test__CommandLineParser_8cpp__incl.pdf Graphic file (type pdf)
-<use Test__CommandLineParser_8cpp__incl.pdf>
-Package pdftex.def Info: Test__CommandLineParser_8cpp__incl.pdf  used on input 
-line 13.
-(pdftex.def)             Requested size: 350.0pt x 126.837pt.
- [64])
-(./Test__CommandLineParser_8cpp_source.tex [65]) (./Test__Logger_8cpp.tex <./Te
-st__Logger_8cpp__incl.pdf
-
-pdfTeX warning: pdflatex (file ./Test__Logger_8cpp__incl.pdf): PDF inclusion: m
-ultiple pdfs with page group included in a single page
->
-<Test__Logger_8cpp__incl.pdf, id=3657, 560.0925pt x 212.795pt>
-File: Test__Logger_8cpp__incl.pdf Graphic file (type pdf)
-<use Test__Logger_8cpp__incl.pdf>
-Package pdftex.def Info: Test__Logger_8cpp__incl.pdf  used on input line 12.
-(pdftex.def)             Requested size: 350.0pt x 132.9803pt.
- [66]) (./Test__Logger_8cpp_source.tex [67]) (./test__main_8cpp.tex <./test__ma
-in_8cpp__incl.pdf>
-<test__main_8cpp__incl.pdf, id=3803, 221.82875pt x 156.585pt>
-File: test__main_8cpp__incl.pdf Graphic file (type pdf)
-<use test__main_8cpp__incl.pdf>
-Package pdftex.def Info: test__main_8cpp__incl.pdf  used on input line 9.
-(pdftex.def)             Requested size: 221.0pt x 155.99922pt.
- [68]) (./test__main_8cpp_source.tex)
-(./Test__ServerIntegration_8cpp.tex <./Test__ServerIntegration_8cpp__incl.pdf
-
-pdfTeX warning: pdflatex (file ./Test__ServerIntegration_8cpp__incl.pdf): PDF i
-nclusion: multiple pdfs with page group included in a single page
->
-<Test__ServerIntegration_8cpp__incl.pdf, id=3892, 891.33pt x 212.795pt>
-File: Test__ServerIntegration_8cpp__incl.pdf Graphic file (type pdf)
-<use Test__ServerIntegration_8cpp__incl.pdf>
-Package pdftex.def Info: Test__ServerIntegration_8cpp__incl.pdf  used on input 
-line 12.
-(pdftex.def)             Requested size: 350.0pt x 83.55792pt.
- [69]) (./Test__ServerIntegration_8cpp_source.tex)
-(./Test__VectorCalculator_8cpp.tex <./Test__VectorCalculator_8cpp__incl.pdf>
-<Test__VectorCalculator_8cpp__incl.pdf, id=3928, 491.8375pt x 212.795pt>
-File: Test__VectorCalculator_8cpp__incl.pdf Graphic file (type pdf)
-<use Test__VectorCalculator_8cpp__incl.pdf>
-Package pdftex.def Info: Test__VectorCalculator_8cpp__incl.pdf  used on input l
-ine 13.
-(pdftex.def)             Requested size: 350.0pt x 151.43292pt.
-
-[70]) (./Test__VectorCalculator_8cpp_source.tex [71])
-(./VectorCalculator_8cpp.tex <./VectorCalculator_8cpp__incl.pdf>
-<VectorCalculator_8cpp__incl.pdf, id=4015, 399.4925pt x 212.795pt>
+) (./Server_8h_source.tex [57]) (./VectorCalculator_8cpp.tex <./VectorCalculato
+r_8cpp__incl.pdf>
+<VectorCalculator_8cpp__incl.pdf, id=2910, 399.4925pt x 212.795pt>
 File: VectorCalculator_8cpp__incl.pdf Graphic file (type pdf)
 <use VectorCalculator_8cpp__incl.pdf>
 Package pdftex.def Info: VectorCalculator_8cpp__incl.pdf  used on input line 12
 .
 (pdftex.def)             Requested size: 350.0pt x 186.44193pt.
-)
-(./VectorCalculator_8cpp_source.tex [72]) (./VectorCalculator_8h.tex <./VectorC
-alculator_8h__incl.pdf>
-<VectorCalculator_8h__incl.pdf, id=4069, 196.735pt x 156.585pt>
+) (./VectorCalculator_8cpp_source.tex)
+(./VectorCalculator_8h.tex [58] <./VectorCalculator_8h__incl.pdf>
+<VectorCalculator_8h__incl.pdf, id=2956, 196.735pt x 156.585pt>
 File: VectorCalculator_8h__incl.pdf Graphic file (type pdf)
 <use VectorCalculator_8h__incl.pdf>
 Package pdftex.def Info: VectorCalculator_8h__incl.pdf  used on input line 10.
@@ -1756,13 +1689,13 @@ Package pdftex.def Info: VectorCalculator_8h__incl.pdf  used on input line 10.
 pdfTeX warning: pdflatex (file ./VectorCalculator_8h__dep__incl.pdf): PDF inclu
 sion: multiple pdfs with page group included in a single page
 >
-<VectorCalculator_8h__dep__incl.pdf, id=4077, 687.56876pt x 269.005pt>
+<VectorCalculator_8h__dep__incl.pdf, id=2964, 362.35374pt x 269.005pt>
 File: VectorCalculator_8h__dep__incl.pdf Graphic file (type pdf)
 <use VectorCalculator_8h__dep__incl.pdf>
 Package pdftex.def Info: VectorCalculator_8h__dep__incl.pdf  used on input line
  18.
-(pdftex.def)             Requested size: 350.0pt x 136.93213pt.
-) (./VectorCalculator_8h_source.tex [73]) [74] (./refman.ind [75
+(pdftex.def)             Requested size: 350.0pt x 259.83858pt.
+) (./VectorCalculator_8h_source.tex [59]) [60] (./refman.ind [61
 
 
 
@@ -1775,29 +1708,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-0.51453pt}.
 
-[76]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.51453pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.51453pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-0.51453pt}.
-
-[77
-
-]) (./refman.aux)
+[62]) (./refman.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `refman.out' has not changed.
-(rerunfilecheck)             Checksum: 7604BEA6A863182CB7B072A524B3DE7B;34776.
+(rerunfilecheck)             Checksum: 49889BC181729CFE4CD0D451674193BC;23995.
  ) 
 Here is how much of TeX's memory you used:
- 22384 strings out of 477525
- 394588 string characters out of 5832488
+ 21627 strings out of 477525
+ 368902 string characters out of 5832488
  1874330 words of memory out of 5000000
- 40263 multiletter control sequences out of 15000+600000
+ 40069 multiletter control sequences out of 15000+600000
  530319 words of font info for 71 fonts, out of 8000000 for 9000
  430 hyphenation exceptions out of 8191
  101i,16n,117p,710b,755s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1816,10 +1738,10 @@ ic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
 
-Output written on refman.pdf (85 pages, 653319 bytes).
+Output written on refman.pdf (68 pages, 542107 bytes).
 PDF statistics:
- 5334 PDF objects out of 6186 (max. 8388607)
- 4522 compressed objects within 46 object streams
- 1797 named destinations out of 2073 (max. 500000)
- 1692 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 4024 PDF objects out of 4296 (max. 8388607)
+ 3282 compressed objects within 33 object streams
+ 1273 named destinations out of 1440 (max. 500000)
+ 1209 words of extra memory for PDF output out of 10000 (max. 10000000)
 

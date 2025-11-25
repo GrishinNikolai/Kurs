@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['port_0',['port',['../structServerConfig.html#ae459946703124ef5a1d98dba38a8b493',1,'ServerConfig::port()'],['../classServer.html#a926c9dae229a62b6d33fdbb41dca6d82',1,'Server::port()']]]
+  ['server_0',['server',['../main_8cpp.html#af570b242d81a3a3bf252f54c3ca0054b',1,'main.cpp']]],
+  ['serversocket_1',['serverSocket',['../classServer.html#a0e1f90d176dd31898b84088e6f4c1d87',1,'Server']]]
 ];

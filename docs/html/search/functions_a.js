@@ -1,8 +1,9 @@
 var searchData=
 [
-  ['readlogfile_0',['readLogFile',['../structLoggerFixture.html#ac1ce5034ac69173c34ef1b1a510ca0de',1,'LoggerFixture']]],
-  ['receivedata_1',['receiveData',['../classClientHandler.html#a063fb4fdf3ed51e568aec20e90cfa146',1,'ClientHandler']]],
-  ['receivestring_2',['receiveString',['../classClientHandler.html#a892adb559e65f0eedd76698592bc8176',1,'ClientHandler']]],
-  ['receivevectorsandprocess_3',['receiveVectorsAndProcess',['../classClientHandler.html#a5489f70d86ee1834a313316306dc7200',1,'ClientHandler']]],
-  ['run_4',['run',['../classServer.html#abb27d30b40a94326e3fd629d3b30b7d5',1,'Server']]]
+  ['senddata_0',['sendData',['../classClientHandler.html#a7ed3f95e9b517359e232003e416ed2e3',1,'ClientHandler']]],
+  ['sendmessage_1',['sendMessage',['../classClientHandler.html#a3965f2e59a78cecc0ea22b7ea3655988',1,'ClientHandler']]],
+  ['sendsalt_2',['sendSalt',['../classClientHandler.html#ade2db53cabbe8379edec95bef4a9edac',1,'ClientHandler']]],
+  ['server_3',['Server',['../classServer.html#abf4af0d3efaac2e1dad53bdd98dad5c4',1,'Server']]],
+  ['signalhandler_4',['signalHandler',['../main_8cpp.html#ad2e59c7203b3bddc1bc9a2224b52e8e7',1,'main.cpp']]],
+  ['stop_5',['stop',['../classServer.html#a07c45a7e101a3926d8f9685c3c5d14e4',1,'Server']]]
 ];

@@ -2,7 +2,7 @@
 \label{classCommandLineParser}\index{CommandLineParser@{CommandLineParser}}
 
 
-Класс для разбора командной строки  
+Класс для разбора командной строки с использованием getopt/getopt\+\_\+long.  
 
 
 
@@ -25,11 +25,16 @@
 \mbox{\hyperlink{classCommandLineParser_a9bbf0d70950652b7944f12f0564014ac}{Command\+Line\+Parser}} ()
 \begin{DoxyCompactList}\small\item\em Конструктор класса \mbox{\hyperlink{classCommandLineParser}{Command\+Line\+Parser}}. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classCommandLineParser_a7d350b3f4481bf7e2595b4b737c9909a}{parse}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
-\begin{DoxyCompactList}\small\item\em Разбор аргументов командной строки \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Разбор аргументов командной строки с использованием getopt\+\_\+long. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structServerConfig}{Server\+Config}} \mbox{\hyperlink{classCommandLineParser_a30cbb68f7c480c44ca3f3bafb8013ef0}{get\+Config}} () const
 \begin{DoxyCompactList}\small\item\em Получение конфигурации сервера \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{classCommandLineParser_a83a903c5b6f63e1133646470592690ed}{get\+Help}} () const
 \begin{DoxyCompactList}\small\item\em Получение текста справки \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые члены}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classCommandLineParser_a4219c7c8eb22253a3af99b6434f3add3}{validate\+Required\+Params}} () const
+\begin{DoxyCompactList}\small\item\em Проверка обязательных параметров \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Закрытые данные}
 \begin{DoxyCompactItemize}
 \item 
@@ -40,7 +45,7 @@ std\+::string \mbox{\hyperlink{classCommandLineParser_a9084fcadf5fd4b4b4e6a997fd
 
 
 \doxysubsection{Подробное описание}
-Класс для разбора командной строки 
+Класс для разбора командной строки с использованием getopt/getopt\+\_\+long. 
 
 \begin{DoxyAuthor}{Автор}
 Гришин Николай 
@@ -73,7 +78,7 @@ std\+::string \mbox{\hyperlink{classCommandLineParser_a9084fcadf5fd4b4b4e6a997fd
 
 
 
-См. определение в файле \mbox{\hyperlink{CommandLineParser_8cpp_source}{Command\+Line\+Parser.\+cpp}} строка \mbox{\hyperlink{CommandLineParser_8cpp_source_l00010}{10}}
+См. определение в файле \mbox{\hyperlink{CommandLineParser_8cpp_source}{Command\+Line\+Parser.\+cpp}} строка \mbox{\hyperlink{CommandLineParser_8cpp_source_l00014}{14}}
 
 
 
@@ -110,7 +115,7 @@ std\+::string \mbox{\hyperlink{classCommandLineParser_a9084fcadf5fd4b4b4e6a997fd
 \end{DoxyReturn}
 
 
-См. определение в файле \mbox{\hyperlink{CommandLineParser_8cpp_source}{Command\+Line\+Parser.\+cpp}} строка \mbox{\hyperlink{CommandLineParser_8cpp_source_l00100}{100}}
+См. определение в файле \mbox{\hyperlink{CommandLineParser_8cpp_source}{Command\+Line\+Parser.\+cpp}} строка \mbox{\hyperlink{CommandLineParser_8cpp_source_l00153}{153}}
 
 \mbox{\Hypertarget{classCommandLineParser_a7d350b3f4481bf7e2595b4b737c9909a}\label{classCommandLineParser_a7d350b3f4481bf7e2595b4b737c9909a}} 
 \index{CommandLineParser@{CommandLineParser}!parse@{parse}}
@@ -120,7 +125,7 @@ std\+::string \mbox{\hyperlink{classCommandLineParser_a9084fcadf5fd4b4b4e6a997fd
 
 
 
-Разбор аргументов командной строки 
+Разбор аргументов командной строки с использованием getopt\+\_\+long. 
 
 
 \begin{DoxyParams}{Аргументы}
@@ -134,7 +139,24 @@ true если разбор успешен, false в противном случ�
 \end{DoxyReturn}
 
 
-См. определение в файле \mbox{\hyperlink{CommandLineParser_8cpp_source}{Command\+Line\+Parser.\+cpp}} строка \mbox{\hyperlink{CommandLineParser_8cpp_source_l00031}{31}}
+См. определение в файле \mbox{\hyperlink{CommandLineParser_8cpp_source}{Command\+Line\+Parser.\+cpp}} строка \mbox{\hyperlink{CommandLineParser_8cpp_source_l00058}{58}}
+
+\mbox{\Hypertarget{classCommandLineParser_a4219c7c8eb22253a3af99b6434f3add3}\label{classCommandLineParser_a4219c7c8eb22253a3af99b6434f3add3}} 
+\index{CommandLineParser@{CommandLineParser}!validateRequiredParams@{validateRequiredParams}}
+\index{validateRequiredParams@{validateRequiredParams}!CommandLineParser@{CommandLineParser}}
+\doxysubsubsection{\texorpdfstring{validateRequiredParams()}{validateRequiredParams()}}
+{\footnotesize\ttfamily bool Command\+Line\+Parser\+::validate\+Required\+Params (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Проверка обязательных параметров 
+
+\begin{DoxyReturn}{Возвращает}
+true если все обязательные параметры заданы, false в противном случае 
+\end{DoxyReturn}
+
+
+См. определение в файле \mbox{\hyperlink{CommandLineParser_8cpp_source}{Command\+Line\+Parser.\+cpp}} строка \mbox{\hyperlink{CommandLineParser_8cpp_source_l00033}{33}}
 
 
 

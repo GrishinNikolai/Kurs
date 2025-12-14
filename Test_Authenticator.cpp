@@ -3,6 +3,7 @@
 
 SUITE(AuthenticatorTest)
 {
+    //Тест 3.1
     TEST(GenerateSalt) {
         std::string salt = Authenticator::generateSalt();
         
@@ -12,6 +13,7 @@ SUITE(AuthenticatorTest)
         }
     }
     
+    //Тест 3.2
     TEST(ComputeSHA1) {
         std::string testData = "test123";
         std::string hash = Authenticator::computeSHA1(testData);
@@ -22,6 +24,7 @@ SUITE(AuthenticatorTest)
         }
     }
     
+    //Тест 3.3
     TEST(AuthenticationSuccess) {
         std::string password = "P@ssW0rd";
         std::string salt = "1234567890ABCDEF";
@@ -33,10 +36,11 @@ SUITE(AuthenticatorTest)
         CHECK(result);
     }
     
+    //Тест 3.4
     TEST(AuthenticationFailure) {
         std::string password = "P@ssW0rd";
         std::string salt = "1234567890ABCDEF";
-        std::string wrongHash = "invalidhash1234567890abcdef1234567890abcdef";
+        std::string wrongHash = "1234567890abcdef1234567890abcdef";
         
         bool result = Authenticator::authenticate(password, salt, wrongHash);
         CHECK(!result);

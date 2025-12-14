@@ -1,7 +1,7 @@
 # Makefile для одной папки
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall -Wextra -pthread
-LIBS = -lssl -lcrypto
+LIBS =  -lcrypto++ -lpthread
 
 # Основные исходные файлы сервера
 SRCS = CommandLineParser.cpp \

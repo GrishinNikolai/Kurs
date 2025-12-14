@@ -2,15 +2,14 @@
 #define AUTHENTICATOR_H
 
 #include <string>
-#include <random>
-#include <iomanip>
-#include <sstream>
-#include <openssl/sha.h>
-#include <algorithm>
-#include <cctype>
+#include <cryptopp/sha.h>
+#include <cryptopp/hex.h>
+#include <cryptopp/osrng.h>
+#include <cryptopp/filters.h>
+#include <cryptopp/secblock.h>
 
 /**
- * @brief Класс для аутентификации клиентов
+ * @brief Класс для аутентификации клиентов с использованием Crypto++
  * @author Гришин Николай
  * @version 1.0
  * @date 24.11.2025
@@ -19,18 +18,18 @@
 class Authenticator {
 public:
     /**
-     * @brief Генерация случайной соли
+     * @brief Генерация случайной соли с помощью Crypto++
      * @return Соль в виде строки из 16 шестнадцатеричных цифр
      */
     static std::string generateSalt();
-    
+
     /**
-     * @brief Вычисление SHA1 хеша от данных
+     * @brief Вычисление SHA1 хеша от данных с помощью Crypto++
      * @param data Данные для хеширования
      * @return Хеш в виде строки шестнадцатеричных цифр
      */
     static std::string computeSHA1(const std::string& data);
-    
+
     /**
      * @brief Аутентификация клиента
      * @param password Пароль пользователя

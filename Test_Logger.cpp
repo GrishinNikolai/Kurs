@@ -24,6 +24,7 @@ struct LoggerFixture {
 
 SUITE(LoggerTest)
 {
+    //Тест 5.1
     TEST_FIXTURE(LoggerFixture, Constructor) {
         bool success = false;
         try {
@@ -35,6 +36,7 @@ SUITE(LoggerTest)
         CHECK(success);
     }
 
+    //Тест 5.2
     TEST_FIXTURE(LoggerFixture, LogInfo) {
         Logger logger(testLogFile);
         logger.info("Test info message");
@@ -44,6 +46,7 @@ SUITE(LoggerTest)
         CHECK(logContent.find("Test info message") != std::string::npos);
     }
 
+    //Тест 5.3
     TEST_FIXTURE(LoggerFixture, LogWarning) {
         Logger logger(testLogFile);
         logger.warning("Test warning message");
@@ -53,6 +56,7 @@ SUITE(LoggerTest)
         CHECK(logContent.find("Test warning message") != std::string::npos);
     }
 
+    //Тест 5.4
     TEST_FIXTURE(LoggerFixture, LogError) {
         Logger logger(testLogFile);
         logger.error("Test error message");
@@ -62,6 +66,7 @@ SUITE(LoggerTest)
         CHECK(logContent.find("Test error message") != std::string::npos);
     }
 
+    //Тест 5.5
     TEST_FIXTURE(LoggerFixture, MultipleLogs) {
         Logger logger(testLogFile);
         logger.info("Message 1");

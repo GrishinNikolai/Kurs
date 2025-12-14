@@ -21,9 +21,9 @@ uint64_t VectorCalculator::computeProduct(const std::vector<uint64_t>& vector) {
             return 0;
         }
 
-        // Check for overflow for uint64_t
+        // Проверка на переполнение перед умножением
         if (product > UINT64_MAX / value) {
-            return UINT64_MAX;
+            return UINT64_MAX; // 2^64 - 1
         }
 
         product *= value;

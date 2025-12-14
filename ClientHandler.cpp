@@ -69,7 +69,6 @@ void ClientHandler::handle() {
  * 5. Проверка хеша аутентификации
  */
 bool ClientHandler::authenticateClient() {
-
     // Шаг 1: Получаем логин
     std::string login;
     if (!receiveString(login)) {
@@ -83,7 +82,7 @@ bool ClientHandler::authenticateClient() {
 
     logger.info("Received login: '" + login + "'");
 
-    // Шаг 2: Проверяем, существует ли пользователь - ВОЗВРАЩАЕМ ПРОВЕРКУ
+    // Шаг 2: Проверяем, существует ли пользователь
     if (!clientBase.userExists(login)) {
         logger.warning("User not found: " + login);
         sendMessage("ERR");
@@ -93,7 +92,7 @@ bool ClientHandler::authenticateClient() {
     // ИСПОЛЬЗУЕМ ПАРОЛЬ ИЗ БАЗЫ ДАННЫХ
     std::string password = clientBase.getPassword(login);
 
-    // Шаг 3: Генерируем и отправляем соль
+    // Шаг 3: Генерируем и отправляем соль с помощью Crypto++
     std::string salt = Authenticator::generateSalt();
     logger.info("Generated salt for user " + login + ": " + salt);
 
@@ -102,7 +101,7 @@ bool ClientHandler::authenticateClient() {
         return false;
     }
 
-    // Шаг 4: Получаем хэш
+    // Шаг 4: Получаем хэш от клиента
     std::string clientHash;
 
     // Используем receiveString для хеша тоже
@@ -113,12 +112,8 @@ bool ClientHandler::authenticateClient() {
 
     logger.info("Received hash from client");
 
-    // Шаг 5: Аутентификация
-    std::string combined = salt + password;
-    std::string serverHash = Authenticator::computeSHA1(combined);
-
+    // Шаг 5: Аутентификация с помощью Crypto++
     bool authResult = Authenticator::authenticate(password, salt, clientHash);
-
 
     if (authResult) {
         logger.info("Authentication successful for user: " + login);

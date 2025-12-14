@@ -3,6 +3,10 @@
 #include <sstream>
 #include <string>
 #include <cstring>
+#include <getopt.h>
+#include <cstdlib>
+
+using namespace std;
 
 /**
  * @brief Конструктор класса CommandLineParser
@@ -23,70 +27,119 @@ CommandLineParser::CommandLineParser() {
 }
 
 /**
- * @brief Разбор аргументов командной строки
+ * @brief Проверка обязательных параметров
+ * @return true если все обязательные параметры заданы, false в противном случае
+ */
+bool CommandLineParser::validateRequiredParams() const {
+    if (config.clientBaseFile.empty()) {
+        cerr << "Error: Client database file is required (-b, --base)" << endl;
+        return false;
+    }
+
+    if (config.logFile.empty()) {
+        cerr << "Error: Log file is required (-l, --log)" << endl;
+        return false;
+    }
+
+    if (config.port == 0) {
+        cerr << "Error: Port is required (-p, --port)" << endl;
+        return false;
+    }
+
+    return true;
+}
+
+/**
+ * @brief Разбор аргументов командной строки с использованием getopt_long
  * @param argc Количество аргументов
  * @param argv Массив аргументов
  * @return true если разбор успешен, false в противном случае
  */
 bool CommandLineParser::parse(int argc, char* argv[]) {
-    // Всегда сбрасываем конфиг перед парсингом
+    // Сбрасываем конфиг перед парсингом
     config.port = 0;
     config.clientBaseFile = "";
     config.logFile = "";
 
-    // Ручной парсинг аргументов
-    for (int i = 1; i < argc; i++) {
-        std::string arg = argv[i];
+    // Сбрасываем optind для повторных вызовов getopt_long
+    optind = 1;
 
-        if (arg == "-h" || arg == "--help") {
-            std::cout << helpText;
-            return false;
-        }
-        else if (arg == "-b" || arg == "--base") {
-            if (i + 1 < argc) {
-                config.clientBaseFile = argv[++i];
-            } else {
-                std::cerr << "Error: Missing value for " << arg << std::endl;
-                return false;
-            }
-        }
-        else if (arg == "-l" || arg == "--log") {
-            if (i + 1 < argc) {
-                config.logFile = argv[++i];
-            } else {
-                std::cerr << "Error: Missing value for " << arg << std::endl;
-                return false;
-            }
-        }
-        else if (arg == "-p" || arg == "--port") {
-            if (i + 1 < argc) {
+    // Структура для длинных опций getopt_long
+    static struct option long_options[] = {
+        {"base",    required_argument, 0, 'b'},   // Файл базы клиентов
+        {"log",     required_argument, 0, 'l'},   // Файл журнала
+        {"port",    required_argument, 0, 'p'},   // Порт сервера
+        {"help",    no_argument,       0, 'h'},   // Справка
+        {0, 0, 0, 0}                             // Конец массива
+    };
+
+    // Строка коротких опций для getopt
+    const char* short_options = "b:l:p:h";
+
+    // Разбор опций с помощью getopt_long
+    int opt;
+    int option_index = 0;
+
+    // Используем цикл для обработки всех опций
+    while ((opt = getopt_long(argc, argv, short_options, long_options, &option_index)) != -1) {
+        switch (opt) {
+            case 'b': // Файл базы клиентов
+                config.clientBaseFile = optarg;
+                break;
+
+            case 'l': // Файл журнала
+                config.logFile = optarg;
+                break;
+
+            case 'p': // Порт сервера
                 try {
-                    config.port = std::stoi(argv[++i]);
-                } catch (const std::exception&) {
-                    std::cerr << "Error: Invalid port number" << std::endl;
+                    config.port = stoi(string(optarg));
+
+                    // Проверяем допустимость порта
+                    if (config.port < 1 || config.port > 65535) {
+                        cerr << "Error: Port must be between 1 and 65535" << endl;
+                        return false;
+                    }
+                } catch (const exception&) {
+                    cerr << "Error: Invalid port number: " << optarg << endl;
                     return false;
                 }
-            } else {
-                std::cerr << "Error: Missing value for " << arg << std::endl;
+                break;
+
+            case 'h': // Справка
+                cout << helpText;
+                return false; // Завершаем выполнение после вывода справки
+
+            case '?': // Неизвестная опция
+                // getopt_long уже выводит сообщение об ошибке
+                cerr << "\nUse -h or --help for usage information" << endl;
                 return false;
-            }
-        }
-        else {
-            std::cerr << "Error: Unknown option: " << arg << std::endl;
-            return false;
+
+            case ':': // Отсутствует аргумент для опции
+                cerr << "Error: Missing argument for option '"
+                     << static_cast<char>(optopt) << "'" << endl;
+                cerr << "Use -h or --help for usage information" << endl;
+                return false;
+
+            default:
+                cerr << "Error: Unknown error parsing parameters" << endl;
+                return false;
         }
     }
 
-    // Проверяем обязательные параметры
-    if (config.clientBaseFile.empty() || config.logFile.empty() || config.port == 0) {
-        std::cerr << "Error: All parameters are required!\n\n";
-        std::cerr << helpText;
+    // Проверяем наличие лишних аргументов (не опций)
+    if (optind < argc) {
+        cerr << "Error: Unknown arguments: ";
+        for (int i = optind; i < argc; i++) {
+            cerr << argv[i] << " ";
+        }
+        cerr << "\nUse -h or --help for usage information" << endl;
         return false;
     }
 
-    // Проверяем значение порта
-    if (config.port < 1 || config.port > 65535) {
-        std::cerr << "Error: Port must be between 1 and 65535\n";
+    // Проверяем обязательные параметры
+    if (!validateRequiredParams()) {
+        cerr << "Use -h or --help for usage information" << endl;
         return false;
     }
 

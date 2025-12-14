@@ -1,97 +1,47 @@
-2025-11-24 21:50:49 [INFO] Server initialized successfully on port 33333
-2025-11-24 21:50:49 [INFO] Server started and listening for connections
-2025-11-24 21:50:52 [INFO] Client connected from 127.0.0.1:49421
-2025-11-24 21:50:52 [INFO] Received login: 'user'
-2025-11-24 21:50:52 [INFO] Generated salt for user user: 2df4fc73a3a19690
-2025-11-24 21:50:52 [INFO] Received hash from client
-2025-11-24 21:50:52 [INFO] Authentication successful for user: user
-2025-11-24 21:50:52 [INFO] Client 127.0.0.1 authenticated successfully
-2025-11-24 21:50:52 [INFO] Client 127.0.0.1 disconnected
-2025-11-24 21:50:53 [INFO] Client connected from 127.0.0.1:53651
-2025-11-24 21:50:53 [INFO] Received login: 'user'
-2025-11-24 21:50:53 [INFO] Generated salt for user user: b9d75852e0d97155
-2025-11-24 21:50:53 [INFO] Received hash from client
-2025-11-24 21:50:53 [INFO] Authentication successful for user: user
-2025-11-24 21:50:53 [INFO] Client 127.0.0.1 authenticated successfully
-2025-11-24 21:50:53 [INFO] Client 127.0.0.1 disconnected
-2025-11-24 21:50:54 [INFO] Client connected from 127.0.0.1:35893
-2025-11-24 21:50:54 [INFO] Received login: 'user'
-2025-11-24 21:50:54 [INFO] Generated salt for user user: 9aa95c2ab20a6b61
-2025-11-24 21:50:54 [INFO] Received hash from client
-2025-11-24 21:50:54 [INFO] Authentication successful for user: user
-2025-11-24 21:50:54 [INFO] Client 127.0.0.1 authenticated successfully
-2025-11-24 21:50:54 [INFO] Client 127.0.0.1 disconnected
-2025-11-24 21:50:55 [INFO] Client connected from 127.0.0.1:53309
-2025-11-24 21:50:55 [INFO] Received login: 'user'
-2025-11-24 21:50:55 [INFO] Generated salt for user user: b685f193e9c7a8a7
-2025-11-24 21:50:55 [INFO] Received hash from client
-2025-11-24 21:50:55 [INFO] Authentication successful for user: user
-2025-11-24 21:50:55 [INFO] Client 127.0.0.1 authenticated successfully
-2025-11-24 21:50:55 [INFO] Client 127.0.0.1 disconnected
-2025-11-24 21:50:57 [INFO] Client connected from 127.0.0.1:49253
-2025-11-24 21:50:57 [INFO] Received login: 'user'
-2025-11-24 21:50:57 [INFO] Generated salt for user user: 001163afe9340f3c
-2025-11-24 21:50:57 [INFO] Received hash from client
-2025-11-24 21:50:57 [INFO] Authentication successful for user: user
-2025-11-24 21:50:57 [INFO] Client 127.0.0.1 authenticated successfully
-2025-11-24 21:50:57 [INFO] Client 127.0.0.1 disconnected
-2025-11-24 21:50:58 [INFO] Client connected from 127.0.0.1:45283
-2025-11-24 21:50:58 [INFO] Received login: 'user'
-2025-11-24 21:50:58 [INFO] Generated salt for user user: 82417c3bb93ac58c
-2025-11-24 21:50:58 [INFO] Received hash from client
-2025-11-24 21:50:58 [INFO] Authentication successful for user: user
-2025-11-24 21:50:58 [INFO] Client 127.0.0.1 authenticated successfully
-2025-11-24 21:50:58 [INFO] Client 127.0.0.1 disconnected
-2025-11-24 21:50:59 [INFO] Client connected from 127.0.0.1:47587
-2025-11-24 21:50:59 [INFO] Received login: 'user'
-2025-11-24 21:50:59 [INFO] Generated salt for user user: c07fd3f52ea06238
-2025-11-24 21:50:59 [INFO] Received hash from client
-2025-11-24 21:50:59 [INFO] Authentication successful for user: user
-2025-11-24 21:50:59 [INFO] Client 127.0.0.1 authenticated successfully
-2025-11-24 21:50:59 [INFO] Client 127.0.0.1 disconnected
-2025-11-24 21:51:00 [INFO] Client connected from 127.0.0.1:36355
-2025-11-24 21:51:00 [INFO] Received login: 'user'
-2025-11-24 21:51:00 [INFO] Generated salt for user user: 958f9d43994a7340
-2025-11-24 21:51:00 [INFO] Received hash from client
-2025-11-24 21:51:00 [INFO] Authentication successful for user: user
-2025-11-24 21:51:00 [INFO] Client 127.0.0.1 authenticated successfully
-2025-11-24 21:51:00 [INFO] Client 127.0.0.1 disconnected
-2025-11-24 21:51:01 [INFO] Client connected from 127.0.0.1:40735
-2025-11-24 21:51:01 [INFO] Received login: 'user'
-2025-11-24 21:51:01 [INFO] Generated salt for user user: dd69dee19b4e2855
-2025-11-24 21:51:01 [INFO] Received hash from client
-2025-11-24 21:51:01 [INFO] Authentication successful for user: user
-2025-11-24 21:51:01 [INFO] Client 127.0.0.1 authenticated successfully
-2025-11-24 21:51:02 [INFO] Client 127.0.0.1 disconnected
-2025-11-24 21:51:02 [INFO] Client connected from 127.0.0.1:37085
-2025-11-24 21:51:02 [INFO] Received login: 'user'
-2025-11-24 21:51:02 [INFO] Generated salt for user user: 53294990eef801b5
-2025-11-24 21:51:02 [INFO] Received hash from client
-2025-11-24 21:51:02 [INFO] Authentication successful for user: user
-2025-11-24 21:51:02 [INFO] Client 127.0.0.1 authenticated successfully
-2025-11-24 21:51:03 [INFO] Client 127.0.0.1 disconnected
-2025-11-24 22:54:27 [INFO] Server stopped
-2025-11-24 22:54:27 [INFO] Server stopped
-2025-11-24 23:52:29 [INFO] Server initialized successfully on port 33333
-2025-11-24 23:52:29 [INFO] Server started and listening for connections
-2025-11-24 23:53:08 [INFO] Client connected from 127.0.0.1:45659
-2025-11-24 23:53:08 [INFO] Received login: 'user'
-2025-11-24 23:53:08 [INFO] Generated salt for user user: 3c127623eee98a1b
-2025-11-24 23:53:08 [INFO] Received hash from client
-2025-11-24 23:53:08 [INFO] Authentication successful for user: user
-2025-11-24 23:53:08 [INFO] Client 127.0.0.1 authenticated successfully
-2025-11-24 23:53:08 [INFO] Client 127.0.0.1 disconnected
-2025-11-24 23:53:22 [ERROR] Failed to bind socket to port 33333
-2025-11-24 23:53:22 [INFO] Server stopped
-2025-11-24 23:53:26 [ERROR] Failed to bind socket to port 33333
-2025-11-24 23:53:26 [INFO] Server stopped
-2025-11-24 23:53:39 [INFO] Server initialized successfully on port 33334
-2025-11-24 23:53:39 [INFO] Server started and listening for connections
-2025-11-24 23:53:40 [INFO] Server stopped
-2025-11-24 23:53:40 [INFO] Server stopped
-2025-11-25 01:30:10 [INFO] Server initialized successfully on port 33334
-2025-11-25 01:30:10 [INFO] Server started and listening for connections
-2025-11-25 01:30:15 [INFO] Server stopped
-2025-11-25 01:30:15 [INFO] Server stopped
-2025-11-25 01:30:18 [ERROR] Failed to bind socket to port 33333
-2025-11-25 01:30:18 [INFO] Server stopped
+2025-12-14 20:55:38 [INFO] Server stopped
+2025-12-14 20:55:38 [INFO] Server stopped
+2025-12-14 20:55:39 [INFO] Server initialized successfully on port 33333
+2025-12-14 20:55:39 [INFO] Server started and listening for connections
+2025-12-14 20:55:42 [INFO] Client connected from 127.0.0.1:43761
+2025-12-14 20:55:42 [INFO] Received login: 'user'
+2025-12-14 20:55:42 [WARNING] User not found: user
+2025-12-14 20:55:42 [WARNING] Authentication failed for client 127.0.0.1
+2025-12-14 21:00:40 [ERROR] Failed to bind socket to port 33333
+2025-12-14 21:00:40 [INFO] Server stopped
+2025-12-14 21:01:04 [ERROR] Failed to bind socket to port 33333
+2025-12-14 21:01:04 [INFO] Server stopped
+2025-12-14 21:01:05 [ERROR] Failed to bind socket to port 33333
+2025-12-14 21:01:05 [INFO] Server stopped
+2025-12-14 21:04:25 [INFO] Server initialized successfully on port 33333
+2025-12-14 21:04:25 [INFO] Server started and listening for connections
+2025-12-14 21:04:42 [INFO] Client connected from 127.0.0.1:51373
+2025-12-14 21:04:42 [INFO] Received login: 'user'
+2025-12-14 21:04:42 [INFO] Generated salt for user user: 2903AE3DAF45B240
+2025-12-14 21:04:42 [INFO] Received hash from client
+2025-12-14 21:04:42 [INFO] Authentication successful for user: user
+2025-12-14 21:04:42 [INFO] Client 127.0.0.1 authenticated successfully
+2025-12-14 21:04:43 [INFO] Client 127.0.0.1 disconnected
+2025-12-14 21:04:55 [INFO] Server stopped
+2025-12-14 21:04:55 [INFO] Server stopped
+2025-12-14 23:00:33 [INFO] Server initialized successfully on port 33333
+2025-12-14 23:00:33 [INFO] Server started and listening for connections
+2025-12-14 23:00:48 [INFO] Client connected from 127.0.0.1:35265
+2025-12-14 23:00:48 [INFO] Received login: 'user'
+2025-12-14 23:00:48 [INFO] Generated salt for user user: 8AC72215DF11D7AD
+2025-12-14 23:00:48 [INFO] Received hash from client
+2025-12-14 23:00:48 [INFO] Authentication successful for user: user
+2025-12-14 23:00:48 [INFO] Client 127.0.0.1 authenticated successfully
+2025-12-14 23:00:49 [INFO] Client 127.0.0.1 disconnected
+2025-12-14 23:00:52 [INFO] Server stopped
+2025-12-14 23:00:52 [INFO] Server stopped
+2025-12-14 23:05:36 [INFO] Server initialized successfully on port 33333
+2025-12-14 23:05:36 [INFO] Server started and listening for connections
+2025-12-14 23:05:48 [INFO] Client connected from 127.0.0.1:51813
+2025-12-14 23:05:48 [INFO] Received login: 'user'
+2025-12-14 23:05:48 [INFO] Generated salt for user user: F9F9C80A6A1270A8
+2025-12-14 23:05:48 [INFO] Received hash from client
+2025-12-14 23:05:48 [INFO] Authentication successful for user: user
+2025-12-14 23:05:48 [INFO] Client 127.0.0.1 authenticated successfully
+2025-12-14 23:05:49 [INFO] Client 127.0.0.1 disconnected
+2025-12-14 23:05:51 [INFO] Server stopped
+2025-12-14 23:05:51 [INFO] Server stopped

@@ -18,9 +18,9 @@
 \DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00021}00021             \textcolor{keywordflow}{return} 0;}
 \DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00022}00022         \}}
 \DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00023}00023 }
-\DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00024}00024         \textcolor{comment}{// Check for overflow for uint64\_t}}
+\DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00024}00024         \textcolor{comment}{// Проверка на переполнение перед умножением}}
 \DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00025}00025         \textcolor{keywordflow}{if} (product > UINT64\_MAX / value) \{}
-\DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00026}00026             \textcolor{keywordflow}{return} UINT64\_MAX;}
+\DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00026}00026             \textcolor{keywordflow}{return} UINT64\_MAX; \textcolor{comment}{// 2\string^64 -\/ 1}}
 \DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00027}00027         \}}
 \DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00028}00028 }
 \DoxyCodeLine{\Hypertarget{VectorCalculator_8cpp_source_l00029}00029         product *= value;}

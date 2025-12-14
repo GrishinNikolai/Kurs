@@ -5,6 +5,7 @@
 
 SUITE(ServerIntegrationTest)
 {
+    //Тест 6.1
     TEST(FullAuthenticationFlow) {
         // Setup
         std::string login = "testuser";
@@ -20,6 +21,7 @@ SUITE(ServerIntegrationTest)
         CHECK(authResult);
     }
     
+    //Тест 6.2
     TEST(VectorProcessingIntegration) {
         // Test data
         std::vector<uint64_t> testVector = {2, 3, 5, 7};

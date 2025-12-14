@@ -22,29 +22,47 @@ struct ClientBaseFixture {
 
 SUITE(ClientBaseTest)
 {
+    //Тест 4.1
     TEST_FIXTURE(ClientBaseFixture, LoadSuccess) {
         ClientBase clientBase(testFilename);
         CHECK(clientBase.load());
     }
     
+    //Тест 4.2
     TEST_FIXTURE(ClientBaseFixture, UserExists) {
         ClientBase clientBase(testFilename);
         clientBase.load();
         
         CHECK(clientBase.userExists("user1"));
         CHECK(clientBase.userExists("user2"));
+    }
+
+    //Тест 4.3
+    TEST_FIXTURE(ClientBaseFixture, UserExists2) {
+        ClientBase clientBase(testFilename);
+        clientBase.load();
+
         CHECK(!clientBase.userExists("nonexistent"));
     }
     
+    //Тест 4.4
     TEST_FIXTURE(ClientBaseFixture, GetPassword) {
         ClientBase clientBase(testFilename);
         clientBase.load();
         
         CHECK_EQUAL("pass1", clientBase.getPassword("user1"));
         CHECK_EQUAL("pass2", clientBase.getPassword("user2"));
+    }
+
+    //Тест 4.5
+    TEST_FIXTURE(ClientBaseFixture, GetPassword2) {
+        ClientBase clientBase(testFilename);
+        clientBase.load();
+
         CHECK_EQUAL("", clientBase.getPassword("nonexistent"));
     }
     
+    //Тест 4.6
     TEST(LoadFailure) {
         ClientBase clientBase("nonexistent_file.txt");
         CHECK(!clientBase.load());

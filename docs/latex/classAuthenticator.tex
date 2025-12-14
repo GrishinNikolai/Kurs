@@ -2,7 +2,7 @@
 \label{classAuthenticator}\index{Authenticator@{Authenticator}}
 
 
-Класс для аутентификации клиентов  
+Класс для аутентификации клиентов с использованием Crypto++.  
 
 
 
@@ -13,15 +13,15 @@
 \begin{DoxyCompactItemize}
 \item 
 static std\+::string \mbox{\hyperlink{classAuthenticator_aeb0de37f54c3fad7f3c5b5a6a3b09d91}{generate\+Salt}} ()
-\begin{DoxyCompactList}\small\item\em Генерация случайной соли \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Генерация случайной соли с помощью Crypto++. \end{DoxyCompactList}\item 
 static std\+::string \mbox{\hyperlink{classAuthenticator_a5eec671a694056992c7c9f94d6450c40}{compute\+SHA1}} (const std\+::string \&data)
-\begin{DoxyCompactList}\small\item\em Вычисление SHA1 хеша от данных \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Вычисление SHA1 хеша от данных с помощью Crypto++. \end{DoxyCompactList}\item 
 static bool \mbox{\hyperlink{classAuthenticator_a8a82cd12b1083d7f0158669bcc12e97a}{authenticate}} (const std\+::string \&password, const std\+::string \&salt, const std\+::string \&client\+Hash)
 \begin{DoxyCompactList}\small\item\em Аутентификация клиента \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Подробное описание}
-Класс для аутентификации клиентов 
+Класс для аутентификации клиентов с использованием Crypto++. 
 
 \begin{DoxyAuthor}{Автор}
 Гришин Николай 
@@ -37,7 +37,7 @@ static bool \mbox{\hyperlink{classAuthenticator_a8a82cd12b1083d7f0158669bcc12e97
 \end{DoxyCopyright}
 
 
-См. определение в файле \mbox{\hyperlink{Authenticator_8h_source}{Authenticator.\+h}} строка \mbox{\hyperlink{Authenticator_8h_source_l00019}{19}}
+См. определение в файле \mbox{\hyperlink{Authenticator_8h_source}{Authenticator.\+h}} строка \mbox{\hyperlink{Authenticator_8h_source_l00018}{18}}
 
 
 
@@ -66,7 +66,7 @@ true если аутентификация успешна, false в против
 \end{DoxyReturn}
 
 
-См. определение в файле \mbox{\hyperlink{Authenticator_8cpp_source}{Authenticator.\+cpp}} строка \mbox{\hyperlink{Authenticator_8cpp_source_l00051}{51}}
+См. определение в файле \mbox{\hyperlink{Authenticator_8cpp_source}{Authenticator.\+cpp}} строка \mbox{\hyperlink{Authenticator_8cpp_source_l00073}{73}}
 
 \mbox{\Hypertarget{classAuthenticator_a5eec671a694056992c7c9f94d6450c40}\label{classAuthenticator_a5eec671a694056992c7c9f94d6450c40}} 
 \index{Authenticator@{Authenticator}!computeSHA1@{computeSHA1}}
@@ -76,7 +76,7 @@ true если аутентификация успешна, false в против
 
 
 
-Вычисление SHA1 хеша от данных 
+Вычисление SHA1 хеша от данных с помощью Crypto++. 
 
 
 \begin{DoxyParams}{Аргументы}
@@ -88,7 +88,7 @@ true если аутентификация успешна, false в против
 \end{DoxyReturn}
 
 
-См. определение в файле \mbox{\hyperlink{Authenticator_8cpp_source}{Authenticator.\+cpp}} строка \mbox{\hyperlink{Authenticator_8cpp_source_l00032}{32}}
+См. определение в файле \mbox{\hyperlink{Authenticator_8cpp_source}{Authenticator.\+cpp}} строка \mbox{\hyperlink{Authenticator_8cpp_source_l00051}{51}}
 
 \mbox{\Hypertarget{classAuthenticator_aeb0de37f54c3fad7f3c5b5a6a3b09d91}\label{classAuthenticator_aeb0de37f54c3fad7f3c5b5a6a3b09d91}} 
 \index{Authenticator@{Authenticator}!generateSalt@{generateSalt}}
@@ -98,14 +98,14 @@ true если аутентификация успешна, false в против
 
 
 
-Генерация случайной соли 
+Генерация случайной соли с помощью Crypto++. 
 
 \begin{DoxyReturn}{Возвращает}
 Соль в виде строки из 16 шестнадцатеричных цифр 
 \end{DoxyReturn}
 
 
-См. определение в файле \mbox{\hyperlink{Authenticator_8cpp_source}{Authenticator.\+cpp}} строка \mbox{\hyperlink{Authenticator_8cpp_source_l00013}{13}}
+См. определение в файле \mbox{\hyperlink{Authenticator_8cpp_source}{Authenticator.\+cpp}} строка \mbox{\hyperlink{Authenticator_8cpp_source_l00018}{18}}
 
 
 

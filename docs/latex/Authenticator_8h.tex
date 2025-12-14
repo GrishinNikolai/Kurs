@@ -1,12 +1,11 @@
 \hypertarget{Authenticator_8h}{}\doxysection{Файл Authenticator.\+h}
 \label{Authenticator_8h}\index{Authenticator.h@{Authenticator.h}}
 {\ttfamily \#include $<$string$>$}\newline
-{\ttfamily \#include $<$random$>$}\newline
-{\ttfamily \#include $<$iomanip$>$}\newline
-{\ttfamily \#include $<$sstream$>$}\newline
-{\ttfamily \#include $<$openssl/sha.\+h$>$}\newline
-{\ttfamily \#include $<$algorithm$>$}\newline
-{\ttfamily \#include $<$cctype$>$}\newline
+{\ttfamily \#include $<$cryptopp/sha.\+h$>$}\newline
+{\ttfamily \#include $<$cryptopp/hex.\+h$>$}\newline
+{\ttfamily \#include $<$cryptopp/osrng.\+h$>$}\newline
+{\ttfamily \#include $<$cryptopp/filters.\+h$>$}\newline
+{\ttfamily \#include $<$cryptopp/secblock.\+h$>$}\newline
 Граф включаемых заголовочных файлов для Authenticator.\+h\+:
 \nopagebreak
 \begin{figure}[H]
@@ -27,4 +26,4 @@
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{classAuthenticator}{Authenticator}}
-\begin{DoxyCompactList}\small\item\em Класс для аутентификации клиентов \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Класс для аутентификации клиентов с использованием Crypto++. \end{DoxyCompactList}\end{DoxyCompactItemize}

@@ -1,4 +1,4 @@
 *.o
 server
 server_tests
-/docs/
+docs

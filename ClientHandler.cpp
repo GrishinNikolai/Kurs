@@ -2,18 +2,6 @@
 #include <iostream>
 #include <string>
 #include <cstring>
-#include <arpa/inet.h> // для be64toh/htobe64
-
-#ifndef be64toh
-// Если макросы не определены, создаем свои
-#if __BYTE_ORDER == __LITTLE_ENDIAN
-#define be64toh(x) __bswap_64(x)
-#define htobe64(x) __bswap_64(x)
-#else
-#define be64toh(x) (x)
-#define htobe64(x) (x)
-#endif
-#endif
 
 /**
  * @brief Конструктор класса ClientHandler

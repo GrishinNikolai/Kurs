@@ -48,4 +48,8 @@ clean:
 	rm -f $(OBJS) $(TEST_OBJS) $(TARGET) $(TEST_TARGET)
 	rm -f test_log.txt test_clients.txt valid_test.log
 
+# Документирование
+dox:
+	doxygen Doxyfile
+
 .PHONY: test clean

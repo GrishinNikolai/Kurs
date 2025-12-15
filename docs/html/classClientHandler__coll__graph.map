@@ -1,5 +1,0 @@
-<map id="ClientHandler" name="ClientHandler">
-<area shape="rect" id="node1" title="Класс для обработки клиентских подключений" alt="" coords="48,95,159,121"/>
-<area shape="rect" id="node2" href="$classClientBase.html" title="Класс для работы с базой данных клиентов" alt="" coords="5,5,97,32"/>
-<area shape="rect" id="node3" href="$classLogger.html" title="Класс для логирования событий сервера" alt="" coords="122,5,189,32"/>
-</map>

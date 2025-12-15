@@ -1,6 +1,4 @@
-#ifndef COMMANDLINEPARSER_H
-#define COMMANDLINEPARSER_H
-
+#pragma once
 #include <string>
 
 /**
@@ -56,5 +54,3 @@ private:
      */
     bool validateRequiredParams() const;
 };
-
-#endif

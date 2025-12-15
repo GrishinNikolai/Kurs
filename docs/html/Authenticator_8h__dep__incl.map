@@ -1,9 +1,0 @@
-<map id="Authenticator.h" name="Authenticator.h">
-<area shape="rect" id="node1" title=" " alt="" coords="89,5,210,32"/>
-<area shape="rect" id="node2" href="$Authenticator_8cpp.html" title=" " alt="" coords="5,80,141,107"/>
-<area shape="rect" id="node3" href="$ClientHandler_8h.html" title=" " alt="" coords="165,80,288,107"/>
-<area shape="rect" id="node4" href="$ClientHandler_8cpp.html" title=" " alt="" coords="93,155,230,181"/>
-<area shape="rect" id="node5" href="$Server_8h.html" title=" " alt="" coords="255,155,329,181"/>
-<area shape="rect" id="node6" href="$Server_8cpp.html" title=" " alt="" coords="191,229,281,256"/>
-<area shape="rect" id="node7" href="$main_8cpp.html" title=" " alt="" coords="305,229,388,256"/>
-</map>

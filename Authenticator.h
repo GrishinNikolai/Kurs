@@ -1,6 +1,4 @@
-#ifndef AUTHENTICATOR_H
-#define AUTHENTICATOR_H
-
+#pragma once
 #include <string>
 #include <cryptopp/sha.h>
 #include <cryptopp/hex.h>
@@ -39,5 +37,3 @@ public:
      */
     static bool authenticate(const std::string& password, const std::string& salt, const std::string& clientHash);
 };
-
-#endif

@@ -1,6 +1,4 @@
-#ifndef CLIENTBASE_H
-#define CLIENTBASE_H
-
+#pragma once
 #include <string>
 #include <unordered_map>
 
@@ -43,5 +41,3 @@ private:
     std::string filename; ///< Имя файла с базой данных
     std::unordered_map<std::string, std::string> clients; ///< Контейнер для хранения клиентов
 };
-
-#endif

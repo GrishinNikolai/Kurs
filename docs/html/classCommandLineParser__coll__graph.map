@@ -1,4 +1,0 @@
-<map id="CommandLineParser" name="CommandLineParser">
-<area shape="rect" id="node1" title="Класс для разбора командной строки с использованием getopt/getopt_long." alt="" coords="5,95,161,121"/>
-<area shape="rect" id="node2" href="$structServerConfig.html" title="Структура для хранения конфигурации сервера" alt="" coords="31,5,136,32"/>
-</map>

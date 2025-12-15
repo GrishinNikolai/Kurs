@@ -1,6 +1,4 @@
-#ifndef SERVER_H
-#define SERVER_H
-
+#pragma once
 #include "ClientBase.h"
 #include "Logger.h"
 #include "ClientHandler.h"
@@ -64,5 +62,3 @@ private:
      */
     void cleanup();
 };
-
-#endif

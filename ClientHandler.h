@@ -1,6 +1,4 @@
-#ifndef CLIENTHANDLER_H
-#define CLIENTHANDLER_H
-
+#pragma once
 #include "ClientBase.h"
 #include "Logger.h"
 #include "Authenticator.h"
@@ -91,5 +89,3 @@ private:
      */
     bool sendSalt(const std::string& salt);
 };
-
-#endif

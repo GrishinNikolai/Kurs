@@ -1,6 +1,4 @@
-#ifndef LOGGER_H
-#define LOGGER_H
-
+#pragma once
 #include <string>
 #include <fstream>
 #include <mutex>
@@ -81,5 +79,3 @@ private:
      */
     std::string levelToString(LogLevel level);
 };
-
-#endif
